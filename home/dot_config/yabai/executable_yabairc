@@ -1,0 +1,88 @@
+#!/usr/bin/env sh
+
+# Documents:
+#  - https://github.com/koekeishiya/yabai/wiki/Configuration#configuration-file
+
+# see this wiki page for information:
+#  - https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# ╭──────────────────────────────────────────────────────────╮
+# │                        Status bar                        │
+# ╰──────────────────────────────────────────────────────────╯
+
+yabai -m config external_bar    all:32:0
+yabai -m config menubar_opacity 1.0
+
+# ╭──────────────────────────────────────────────────────────╮
+# │                          Space                           │
+# ╰──────────────────────────────────────────────────────────╯
+
+# Layout
+yabai -m config layout bsp # bsp, stack, float
+
+# Padding and gaps
+yabai -m config top_padding    12
+yabai -m config bottom_padding 12
+yabai -m config left_padding   12
+yabai -m config right_padding  12
+yabai -m config window_gap     06
+
+# Window placement
+yabai -m config display_arrangement_order default      # default, vertical, horizontal
+yabai -m config window_origin_display     default      # default, focused, cursor
+yabai -m config window_placement          second_child # first_child, second_child
+
+# Split ratios
+yabai -m config auto_balance off
+yabai -m config split_ratio  0.5
+yabai -m config split_type   auto 
+
+# ╭──────────────────────────────────────────────────────────╮
+# │                   Window modifications                   │
+# ╰──────────────────────────────────────────────────────────╯
+
+yabai -m config window_zoom_persist on
+
+yabai -m config window_shadow on  # on, off, float
+
+yabai -m config window_opacity          on
+yabai -m config window_opacity_duration 0.2
+yabai -m config active_window_opacity   1.0
+yabai -m config normal_window_opacity   0.9
+
+yabai -m config window_animation_duration 0.2
+yabai -m config window_animation_easing   ease_out_circ # https://easings.net/
+
+yabai -m config insert_feedback_color 0xffd75f5f
+
+# borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0 &
+
+# ╭──────────────────────────────────────────────────────────╮
+# │                      Mouse support                       │
+# ╰──────────────────────────────────────────────────────────╯
+
+yabai -m config mouse_drop_action swap
+
+yabai -m config mouse_modifier fn
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
+
+yabai -m config focus_follows_mouse off  # off, autoraise, autofocus
+yabai -m config mouse_follows_focus off
+
+# ╭──────────────────────────────────────────────────────────╮
+# │                          Rules                           │
+# ╰──────────────────────────────────────────────────────────╯
+# Query: `yabai -m query --windows`
+# sticky=on: Window appears on all spaces.
+
+yabai -m rule --add app="^(System Preferences|系统设置)$" manage=off
+yabai -m rule --add app="^(Finder|访达)$" sticky=on manage=off
+yabai -m rule --add app="^Raycast$" manage=off
+yabai -m rule --add app="^音乐$" manage=off
+yabai -m rule --add app="^微信$" manage=off
+yabai -m rule --add app="^欧路词典$" sticky=on manage=off
+
+echo "yabai configuration loaded.."
