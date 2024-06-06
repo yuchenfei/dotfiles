@@ -1,0 +1,103 @@
+# Documents:
+#  - https://github.com/koekeishiya/skhd?tab=readme-ov-file
+
+# ╭──────────────────────────────────────────────────────────╮
+# │                          Yabai                           │
+# ╰──────────────────────────────────────────────────────────╯
+# Commands:
+#  - https://github.com/koekeishiya/yabai/wiki/Commands#window-commands
+
+# Reload config
+ctrl + alt + cmd - r : yabai --restart-service && skhd --restart-service
+
+# ── Space ─────────────────────────────────────────────────────────────
+
+# Layout
+# - [S]tack mode
+ctrl + alt - s: yabai -m space --layout stack
+# - Tiling mode, [d]efault
+ctrl + alt - d: yabai -m space --layout bsp
+# - [F]loat mode
+ctrl + alt - f: yabai -m space --layout float
+
+# Create/Delete Space
+hyper - c : yabai -m space --create
+hyper - x : yabai -m space --destroy
+
+# Space Navigation
+hyper - 1 : yabai -m space --focus 1
+hyper - 2 : yabai -m space --focus 2
+hyper - 3 : yabai -m space --focus 3
+hyper - 4 : yabai -m space --focus 4
+hyper - 5 : yabai -m space --focus 5
+
+# Mirror Space
+ctrl + alt - x : yabai -m space --mirror x-axis
+ctrl + alt - y : yabai -m space --mirror y-axis
+
+# Rotate Space
+ctrl + alt - r : yabai -m space --rotate 270
+ctrl + alt - e : yabai -m space --rotate 90
+
+# Balance Space
+ctrl + alt - b : yabai -m space --balance
+
+# Toggle gaps
+ctrl + alt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
+
+# ── Window ────────────────────────────────────────────────────────────
+
+# Focus window
+hyper - h : yabai -m window --focus west
+hyper - j : yabai -m window --focus south
+hyper - k : yabai -m window --focus north
+hyper - l : yabai -m window --focus east
+# Stack mode focus
+hyper - n : yabai -m window --focus stack.next
+hyper - p : yabai -m window --focus stack.prev
+
+# Move window
+ctrl + alt - h : yabai -m window --swap west; \
+                 or begin; yabai -m window --display west --focus && yabai -m window --warp last; end; \
+                 or yabai -m window --move rel:-50:0
+ctrl + alt - j : yabai -m window --swap south; \
+                 or yabai -m window --display south --focus; \
+                 or yabai -m window --move rel:0:50
+ctrl + alt - k : yabai -m window --swap north; \
+                 or yabai -m window --display north --focus; \
+                 or yabai -m window --move rel:0:-50
+ctrl + alt - l : yabai -m window --swap east; \
+                 or begin; yabai -m window --display east --focus && yabai -m window --warp first; end; \
+                 or yabai -m window --move rel:50:0
+
+# Move window to space
+ctrl + alt - 1: yabai -m window --space 1 --focus
+ctrl + alt - 2: yabai -m window --space 2 --focus
+ctrl + alt - 3: yabai -m window --space 3 --focus
+ctrl + alt - 4: yabai -m window --space 4 --focus
+ctrl + alt - 5: yabai -m window --space 5 --focus
+
+ctrl + alt - p : yabai -m window --space prev --focus
+ctrl + alt - n : yabai -m window --space next --focus
+
+# Toggle split orientation
+ctrl + alt - v : yabai -m window --toggle split
+# Toggle float window
+ctrl + alt - space : yabai -m window --toggle float; yabai -m window --grid 12:12:1:1:10:10
+# Toggle fullscreen window
+ctrl + alt - return : yabai -m window --toggle zoom-fullscreen
+
+# Resize window
+ctrl + alt + shift - h : yabai -m window --resize right:-100:0 \
+                         || yabai -m window --resize left:-100:0
+ctrl + alt + shift - j : yabai -m window --resize top:0:100 \
+                         || yabai -m window --resize bottom:0:100
+ctrl + alt + shift - k : yabai -m window --resize top:0:-100 \
+                         || yabai -m window --resize bottom:0:-100
+ctrl + alt + shift - l : yabai -m window --resize right:100:0 \
+                         || yabai -m window --resize left:100:0
+
+# ── Other ─────────────────────────────────────────────────────────────
+
+# Toggle sketchybar
+ctrl + alt + cmd - space : sketchybar --bar hidden=toggle
