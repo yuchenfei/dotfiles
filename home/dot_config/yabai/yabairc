@@ -79,10 +79,11 @@ yabai -m config mouse_follows_focus off
 # sticky=on: Window appears on all spaces.
 
 yabai -m rule --add app="^(System Preferences|系统设置)$" manage=off
-yabai -m rule --add app="^(Finder|访达)$" sticky=on manage=off
+yabai -m rule --add app="^(Finder|访达)$" manage=off
 yabai -m rule --add app="^App Store$" sticky=on manage=off
 yabai -m rule --add app="^Raycast$" manage=off
 yabai -m rule --add app="^Moonlight$" manage=off
+yabai -m rule --add app="^OrbStack$" manage=off
 yabai -m rule --add app="^音乐$" manage=off
 yabai -m rule --add app="^微信$" manage=off
 yabai -m rule --add app="^欧路词典$" sticky=on manage=off
