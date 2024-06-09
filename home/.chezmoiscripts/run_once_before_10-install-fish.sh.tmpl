@@ -11,6 +11,7 @@ fi
 if ! $(dpkg-query -W -f='installed' fish &> /dev/null); then
   echo "Installing fish"
   sudo apt install -y fish
+fi
 {{   end -}}
 
 if [ $SHELL != $(which fish) ]; then
