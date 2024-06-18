@@ -1,8 +1,4 @@
-{{ if eq .chezmoi.os "darwin" -}}
-#!/opt/homebrew/bin/fish
-{{- else }}
-#!/usr/bin/fish
-{{- end }}
+{{ template "shebang_fish" . }}
 
 if not type -q fisher
   echo "Installing fisher"
