@@ -16,11 +16,28 @@ Updating dotfiles on any machine is a single command:
 chezmoi update
 ```
 
+## Packages
+
+- [GitHub - aristocratos/btop: A monitor of resources](https://github.com/aristocratos/btop)
+- [GitHub - dandavison/delta: A syntax-highlighting pager for git, diff, grep, and blame output](https://github.com/dandavison/delta)
+- [GitHub - eza-community/eza: A modern alternative to ls](https://github.com/eza-community/eza)
+- [GitHub - fastfetch-cli/fastfetch: An actively maintained, feature-rich and performance oriented, neofetch like system information tool.](https://github.com/fastfetch-cli/fastfetch)
+- [GitHub - fish-shell/fish-shell: The user-friendly command line shell.](https://github.com/fish-shell/fish-shell)
+- [GitHub - junegunn/fzf: :cherry\_blossom: A command-line fuzzy finder](https://github.com/junegunn/fzf)
+- [GitHub - jesseduffield/lazygit: simple terminal UI for git commands](https://github.com/jesseduffield/lazygit)
+- [GitHub - neovim/neovim: Vim-fork focused on extensibility and usability](https://github.com/neovim/neovim)
+- [GitHub - FelixKratz/SketchyBar: A highly customizable macOS status bar replacement](https://github.com/FelixKratz/SketchyBar)
+- [GitHub - koekeishiya/skhd: Simple hotkey daemon for macOS](https://github.com/koekeishiya/skhd)
+- [GitHub - starship/starship: ☄🌌️ The minimal, blazing-fast, and infinitely customizable prompt for any shell!](https://github.com/starship/starship)
+- [GitHub - nvbn/thefuck: Magnificent app which corrects your previous console command.](https://github.com/nvbn/thefuck)
+- [GitHub - tldr-pages/tldr: 📚 Collaborative cheatsheets for console commands](https://github.com/tldr-pages/tldr)
+- [GitHub - tmux/tmux: tmux source code](https://github.com/tmux/tmux)
+- [GitHub - koekeishiya/yabai: A tiling window manager for macOS based on binary space partitioning](https://github.com/koekeishiya/yabai)
+- [GitHub - sxyazi/yazi: 💥 Blazing fast terminal file manager written in Rust, based on async I/O.](https://github.com/sxyazi/yazi)
+
 ## Cheatsheet
 
-### yabai/skhd keybindings
-
-`hyper` key: `tab`
+### yabai/skhd keybindinga`hyper` key: `tab`
 
 |              Key               | Description                            |
 | :----------------------------: | -------------------------------------- |

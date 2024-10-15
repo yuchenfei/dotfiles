@@ -1,5 +1,8 @@
 abbr reload 'source ~/.config/fish/config.fish'
 
+abbr ff fastfetch
+abbr lg lazygit
+
 if type -q chezmoi
   abbr c 'chezmoi'
   abbr ca 'chezmoi apply'
@@ -18,8 +21,4 @@ if type -q docker-compose
   abbr dclf 'docker-compose logs -f'
   abbr dcp 'docker-compose pull'
 end
-
-abbr lg lazygit
-abbr ps procs
-abbr du ncdu
 

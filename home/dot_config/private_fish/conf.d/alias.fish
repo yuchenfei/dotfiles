@@ -11,7 +11,5 @@ if type -q eza
   alias lt="la --tree --level=2 --git-ignore"
 end
 
-if type -q btm
-  alias top="btm --enable_cache_memory --network_use_binary_prefix --network_use_bytes -b"
-  alias b="btm --enable_cache_memory --network_use_binary_prefix --network_use_bytes --battery"
-end
+alias get_idf=". $HOME/documents/Code/Github/esp-idf/export.fish"
+
