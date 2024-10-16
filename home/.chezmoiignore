@@ -1,7 +1,8 @@
 {{ if ne .chezmoi.os "darwin" }}
 .chezmoiscripts/darwin/**
-.config/yabai
+.config/sketchybar
 .config/skhd
+.config/yabai
 {{ end }}
 
 {{ if ne .chezmoi.os "linux" }}
