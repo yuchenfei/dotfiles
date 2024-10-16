@@ -1,6 +1,7 @@
 packages:
   darwin:
     brews:
+    - 'bat'
     - 'btop'
     - 'eza'
     - 'fastfetch'
