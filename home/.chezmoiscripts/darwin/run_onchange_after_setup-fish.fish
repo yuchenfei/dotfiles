@@ -1,7 +1,10 @@
 #!/opt/homebrew/bin/fish
 
 if not type -q fisher
-  echo -e "\e[0;32m>>>>> Installing Fisher <<<<<\e[0m"
+  set_color green
+  echo ">>>>> Installing Fisher <<<<<"
+  set_color normal
+
   curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 end
 
