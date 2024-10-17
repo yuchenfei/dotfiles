@@ -1,6 +1,10 @@
 set -gx XDG_CONFIG_HOME "$HOME/.config"
 
 {{ if eq .chezmoi.os "darwin" -}}
+if status is-login; and status is-interactive
+    ssh-add -l >/dev/null || ssh-add --apple-load-keychain &>/dev/null
+end
+
 /opt/homebrew/bin/brew shellenv | source
 {{- end }}
 
@@ -21,4 +25,6 @@ if type -q fnm
   fnm env --use-on-cd | source
 end
 
-fastfetch
+if status is-login; and status is-interactive; and type -q fastfetch
+  fastfetch
+end

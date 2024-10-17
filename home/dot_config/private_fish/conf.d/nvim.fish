@@ -1,6 +1,7 @@
 alias nvim-lazy="NVIM_APPNAME=LazyVim nvim"
 alias nvim-astro="NVIM_APPNAME=AstroNvim nvim"
 
+# default nvim
 set -gx NVIM_APPNAME AstroNvim
 
 # nvim

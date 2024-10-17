@@ -28,12 +28,19 @@ chezmoi update
 - [GitHub - neovim/neovim: Vim-fork focused on extensibility and usability](https://github.com/neovim/neovim)
 - [GitHub - FelixKratz/SketchyBar: A highly customizable macOS status bar replacement](https://github.com/FelixKratz/SketchyBar)
 - [GitHub - koekeishiya/skhd: Simple hotkey daemon for macOS](https://github.com/koekeishiya/skhd)
-- [GitHub - starship/starship: ☄🌌️ The minimal, blazing-fast, and infinitely customizable prompt for any shell!](https://github.com/starship/starship)
 - [GitHub - nvbn/thefuck: Magnificent app which corrects your previous console command.](https://github.com/nvbn/thefuck)
 - [GitHub - tldr-pages/tldr: 📚 Collaborative cheatsheets for console commands](https://github.com/tldr-pages/tldr)
 - [GitHub - tmux/tmux: tmux source code](https://github.com/tmux/tmux)
 - [GitHub - koekeishiya/yabai: A tiling window manager for macOS based on binary space partitioning](https://github.com/koekeishiya/yabai)
 - [GitHub - sxyazi/yazi: 💥 Blazing fast terminal file manager written in Rust, based on async I/O.](https://github.com/sxyazi/yazi)
+
+## Fish
+
+[fish shell](https://fishshell.com/) plugins:
+
+- [GitHub - starship/starship: ☄🌌️ The minimal, blazing-fast, and infinitely customizable prompt for any shell!](https://github.com/starship/starship)
+- [GitHub - jorgebucaran/fisher: A plugin manager for Fish](https://github.com/jorgebucaran/fisher)
+- [GitHub - PatrickF1/fzf.fish: 🔍🐟 Fzf plugin for Fish](https://github.com/patrickF1/fzf.fish)
 
 ## Cheatsheet
 
@@ -88,4 +95,15 @@ chezmoi update
 |      `<prefix> b`       | List paste buffers                                         |
 |   `<prefix> ctrl + p`   | Paste from top paste buffer                                |
 |      `<prefix> P`       | Choose which buffer to paste from                          |
+
+### fzf.fish keybindings
+
+|       Key        | Command           |
+| :--------------: | ----------------- |
+|    `ctrl + f`    | Search Directory  |
+|    `ctrl + r`    | Search History    |
+| `ctrl + alt + l` | Search Git Log    |
+| `ctrl + alt + s` | Search Git Status |
+| `ctrl + alt + p` | Search Processes  |
+| `ctrl + alt + v` | Search Variables  |
 
