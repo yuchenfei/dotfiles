@@ -1,3 +1,5 @@
+set -gx XDG_CONFIG_HOME "$HOME/.config"
+
 set -g fish_greeting
 
 if type -q nvim
