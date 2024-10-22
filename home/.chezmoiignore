@@ -12,3 +12,5 @@
 {{ if ne .chezmoi.os "windows" }}
 .chezmoiscripts/windows/**
 {{ end }}
+
+key.txt.age
