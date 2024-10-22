@@ -1,0 +1,31 @@
+[include]
+    path = ~/.config/delta/themes/catppuccin.gitconfig
+
+[user]
+    name = {{ .name }}
+    email = {{ .email }}
+
+[init]
+    defaultBranch = main
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # Use n and N to move between diff sections
+    light = false      # Use default colors appropriate for a light terminal background (e.g. the default macOS terminal)
+    line-numbers = true
+    ; side-by-side = true
+    features = catppuccin-mocha
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
+[log]
+    date = format:%Y-%m-%d %H:%M:%S

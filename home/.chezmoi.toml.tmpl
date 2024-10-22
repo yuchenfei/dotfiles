@@ -1,3 +1,10 @@
+{{- $name := promptStringOnce . "name" "User name" -}}
+{{- $email := promptStringOnce . "email" "Email address" -}}
+
+[data]
+    name = {{ $name | quote }}
+    email = {{ $email | quote }}
+
 [diff]
     pager = "delta"
 
