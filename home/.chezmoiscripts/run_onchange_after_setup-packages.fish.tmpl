@@ -1,4 +1,5 @@
-#!/opt/homebrew/bin/fish
+{{ if eq .chezmoi.os "darwin" "linux" -}}
+#!/usr/bin/env fish
 
 if not type -q fisher
   set_color green
@@ -11,3 +12,12 @@ end
 # auto update when the plugins hash changes
 # fish_plugins hash: {{ include "dot_config/private_fish/fish_plugins" | sha256sum }}
 fisher update
+
+if type -q ya
+  set_color green
+  echo ">>>>> Setup Yazi <<<<<"
+  set_color normal
+
+  ya pack -i
+end
+{{ end -}}

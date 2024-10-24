@@ -1,0 +1,54 @@
+{{ if eq .chezmoi.osRelease.id "debian" "ubuntu" -}}
+#!/bin/bash
+
+set -euo pipefail
+
+{{ $sudo := "sudo " -}}
+{{ if eq .chezmoi.username "root" -}}
+{{   $sudo = "" -}}
+{{ end -}}
+
+function add_repositories() {
+  if ! $(dpkg-query -W -f='installed' software-properties-common &> /dev/null); then
+    {{ $sudo }}apt update
+    {{ $sudo }}apt install -y software-properties-common
+  fi
+
+  repositories=({{ range .packages.linux.apt.repositories }}"{{ . }}" {{ end }})
+  for repository in ${repositories[@]}; do
+    ppa_repo_source=${repository#ppa:}
+    if ! $(apt-cache policy | grep http | awk '{print $2}' | sort -u | grep $ppa_repo_source &> /dev/null); then
+      echo -e "\033[0;32m>>>>> Add Repository:$ppa_repo_source <<<<<\033[0m"
+      {{ $sudo }}add-apt-repository -y ppa:$ppa_repo_source
+    fi
+  done
+}
+
+function install_apt_packages() {
+  echo -e "\033[0;32m>>>>> Installing Packages (apt) <<<<<\033[0m"
+  {{ $sudo }}apt update
+  {{ $sudo }}apt install -y {{ .packages.linux.apt.packages | join " " }}
+}
+
+function check_and_install_homebrew() {
+  if ! $(brew -v &> /dev/null); then
+    echo -e "\033[0;32m>>>>> Installing Homebrew <<<<<\033[0m"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+}
+
+function install_brew_packages() {
+  echo -e "\033[0;32m>>>>> Installing Packages (brew) <<<<<\033[0m"
+  brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ range .packages.linux.brews -}}
+brew {{ . | quote }}
+{{ end -}}
+EOF
+}
+
+add_repositories
+install_apt_packages
+
+check_and_install_homebrew
+install_brew_packages
+{{ end -}}

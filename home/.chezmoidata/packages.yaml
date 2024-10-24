@@ -22,3 +22,24 @@ packages:
     - 'yazi'
     casks:
     - 'font-maple'
+  linux:
+    apt:
+      repositories:
+      - 'fish-shell/release-3'
+      packages:
+      - 'age'
+      - 'bat'
+      - 'btop'
+      - 'fish'
+      - 'fzf'
+      - 'git'
+      - 'neovim'
+      - 'thefuck'
+      - 'tldr'
+      - 'tmux'
+    brews:
+    - 'eza'
+    - 'git-delta'
+    - 'lazygit'
+    - 'starship'
+    - 'yazi'
