@@ -1,17 +1,27 @@
 {{ if eq .chezmoi.os "darwin" "linux" -}}
 #!/usr/bin/env fish
 
-if not type -q fisher
-  set_color green
-  echo ">>>>> Installing Fisher <<<<<"
-  set_color normal
+function install_fisher
+  if not type -q fisher
+    set_color green
+    echo ">>>>> Installing Fisher <<<<<"
+    set_color normal
 
-  curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+  end
 end
 
-# auto update when the plugins hash changes
-# fish_plugins hash: {{ include "dot_config/private_fish/fish_plugins" | sha256sum }}
-fisher update
+function install_fisher_plugin
+  set -l plugin $argv[1]
+ 
+  if not fisher ls | grep -q $plugin
+    fisher install $plugin
+  end
+end
+
+install_fisher
+
+install_fisher_plugin patrickf1/fzf.fish
 
 if type -q ya
   set_color green
