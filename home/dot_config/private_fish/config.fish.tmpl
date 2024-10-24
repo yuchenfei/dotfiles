@@ -26,6 +26,8 @@ if status is-interactive
     fnm env --use-on-cd | source
   end
 
+  fzf_configure_bindings --directory=\cf --variables=\e\cv
+
   if type -q fastfetch
     fastfetch
   end
