@@ -11,11 +11,15 @@ desc = "Paste into the hovered directory or CWD"
 [[manager.prepend_keymap]]
 on  = [ "T" ]
 run = "plugin --sync max-preview"
+desc = "Maximize or restore preview"
 
 [[manager.prepend_keymap]]
-on  = [ "]" ]
-run = "plugin --sync parent-arrow --args=-1"
-
-[[manager.prepend_keymap]]
-on  = [ "[" ]
+on  = "<A-j>"
 run = "plugin --sync parent-arrow --args=1"
+desc = "Move the parent arrow down"
+
+[[manager.prepend_keymap]]
+on  = "<A-k>"
+run = "plugin --sync parent-arrow --args=-1"
+desc = "Move the parent arrow up"
+

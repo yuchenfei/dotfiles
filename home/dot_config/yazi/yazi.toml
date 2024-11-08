@@ -13,3 +13,7 @@ show_hidden = true
 edit = [
   { run = 'export NVIM_APPNAME=AstroNvim; nvim "$@"', desc = "nvim", block = true }
 ]
+
+[preview]
+max_width  = 1000
+max_height = 1000

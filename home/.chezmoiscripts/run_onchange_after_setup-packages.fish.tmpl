@@ -31,6 +31,7 @@ if type -q ya
   echo ">>>>> Setup Yazi <<<<<"
   set_color normal
 
+  # yazi_plugins hash: {{ include "dot_config/yazi/package.toml" | sha256sum }}
   ya pack -i
 end
 {{ end -}}

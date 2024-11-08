@@ -44,7 +44,9 @@ chezmoi update
 
 ## Cheatsheet
 
-### yabai/skhd keybindinga`hyper` key: `tab`
+### yabai/skhd keybindings
+
+`hyper` key: `tab`
 
 |              Key               | Description                            |
 | :----------------------------: | -------------------------------------- |
@@ -106,4 +108,21 @@ chezmoi update
 | `ctrl + alt + s` | Search Git Status |
 | `ctrl + alt + p` | Search Processes  |
 | `ctrl + alt + v` | Search Variables  |
+
+### Yazi keybindings
+
+|     Key     | Action                                                       |
+| :---------: | ------------------------------------------------------------ |
+|     `.`     | Toggle the visibility of hidden files                        |
+|     `z`     | Jump to a directory using zoxide                             |
+|     `Z`     | Jump to a directory or reveal a file using fzf               |
+|     `s`     | Search files by name using [fd](https://github.com/sharkdp/fd) |
+|     `S`     | Search files by content using [ripgrep](https://github.com/BurntSushi/ripgrep) |
+|     `K`     | Seek up 5 units in the preview                               |
+|     `J`     | Seek down 5 units in the preview                             |
+|     `T`     | Maximize or restore preview                                  |
+|     `t`     | Create a new tab with CWD                                    |
+|  `[` / `]`  | Switch to the previous/next tab                              |
+|  `{` / `}`  | Swap current tab with previous/next tab                      |
+| `alt + j/k` | Navigation in the parent directory                           |
 
