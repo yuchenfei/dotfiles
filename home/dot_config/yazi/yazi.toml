@@ -6,7 +6,7 @@
 use = "catppuccin-macchiato"
 
 [manager]
-ratio = [2, 5, 3]
+ratio = [2, 4, 4]
 show_hidden = true
 
 [opener]
@@ -17,3 +17,8 @@ edit = [
 [preview]
 max_width  = 1000
 max_height = 1000
+
+[plugin]
+prepend_previewers = [
+  { name = "*.md", run = "glow" },
+]

@@ -24,6 +24,7 @@ chezmoi update
 - [GitHub - fastfetch-cli/fastfetch: An actively maintained, feature-rich and performance oriented, neofetch like system information tool.](https://github.com/fastfetch-cli/fastfetch)
 - [GitHub - fish-shell/fish-shell: The user-friendly command line shell.](https://github.com/fish-shell/fish-shell)
 - [GitHub - junegunn/fzf: :cherry\_blossom: A command-line fuzzy finder](https://github.com/junegunn/fzf)
+- [GitHub - charmbracelet/glow: Render markdown on the CLI, with pizzazz! 💅🏻](https://github.com/charmbracelet/glow)
 - [GitHub - jesseduffield/lazygit: simple terminal UI for git commands](https://github.com/jesseduffield/lazygit)
 - [GitHub - neovim/neovim: Vim-fork focused on extensibility and usability](https://github.com/neovim/neovim)
 - [GitHub - FelixKratz/SketchyBar: A highly customizable macOS status bar replacement](https://github.com/FelixKratz/SketchyBar)
@@ -33,6 +34,11 @@ chezmoi update
 - [GitHub - tmux/tmux: tmux source code](https://github.com/tmux/tmux)
 - [GitHub - koekeishiya/yabai: A tiling window manager for macOS based on binary space partitioning](https://github.com/koekeishiya/yabai)
 - [GitHub - sxyazi/yazi: 💥 Blazing fast terminal file manager written in Rust, based on async I/O.](https://github.com/sxyazi/yazi)
+  - Plugins
+    - [yazi-rs/plugins:max-preview](https://github.com/yazi-rs/plugins/tree/main/max-preview.yazi)
+    - [Reledia/glow.yazi](https://github.com/Reledia/glow.yazi) - Preview markdown files
+    - [dedukun/bookmarks.yazi](https://github.com/dedukun/bookmarks.yazi)
+
 
 ## Fish
 
@@ -125,4 +131,8 @@ chezmoi update
 |  `[` / `]`  | Switch to the previous/next tab                              |
 |  `{` / `}`  | Swap current tab with previous/next tab                      |
 | `alt + j/k` | Navigation in the parent directory                           |
+|     `m`     | Save current position as a bookmark                          |
+|     `'`     | Jump to a bookmark                                           |
+|  `b`, `d`   | Delete a bookmark                                            |
+|  `b`, `D`   | Delete all bookmarks                                         |
 
