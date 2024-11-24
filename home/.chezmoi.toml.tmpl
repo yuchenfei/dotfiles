@@ -1,6 +1,15 @@
 {{- $name := promptStringOnce . "name" "User name" -}}
 {{- $email := promptStringOnce . "email" "Email address" -}}
 
+{{- $personal := false -}}
+{{- $hostname := .chezmoi.hostname | lower | splitList "-" -}}
+{{- if gt (len $hostname) 1 -}}
+{{-   $user := index $hostname 1 -}}
+{{-   if and (eq $user "ycf") (eq $name "yuchenfei") -}}
+{{-     $personal = true -}}
+{{-   end -}}
+{{- end -}}
+
 encryption = "age"
 
 [age]
@@ -10,6 +19,7 @@ encryption = "age"
 [data]
     name = {{ $name | quote }}
     email = {{ $email | quote }}
+    personal = {{ $personal }}
 
 [diff]
     pager = "delta"
