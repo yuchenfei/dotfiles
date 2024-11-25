@@ -1,11 +1,9 @@
 packages:
-  darwin:
-    brews:
+  common:
     - 'age'
     - 'bat'
     - 'btop'
     - 'eza'
-    - 'fastfetch'
     - 'fish'
     - 'fzf'
     - 'git'
@@ -13,34 +11,19 @@ packages:
     - 'glow'
     - 'lazygit'
     - 'neovim'
-    - 'sketchybar'
-    - 'skhd'
     - 'starship'
-    - 'thefuck'
     - 'tldr'
     - 'tmux'
-    - 'yabai'
     - 'yazi'
-    casks:
-    - 'font-maple'
-  linux:
-    apt:
-      repositories:
-      - 'fish-shell/release-3'
-      packages:
-      - 'git'
+  darwin:
     brews:
-    - 'age'
-    - 'bat'
-    - 'btop'
-    - 'eza'
-    - 'fish'
-    - 'fzf'
-    - 'git-delta'
-    - 'glow'
-    - 'lazygit'
-    - 'neovim'
-    - 'starship'
-    - 'tldr'
-    - 'tmux'
-    - 'yazi'
+      - 'fastfetch'
+      - 'sketchybar'
+      - 'skhd'
+      - 'thefuck'
+      - 'yabai'
+    casks:
+      - 'font-maple'
+  linux:
+    brews:
+      - 'fastfetch'

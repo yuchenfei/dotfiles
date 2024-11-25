@@ -5,6 +5,9 @@ set -euo pipefail
 echo -e "\033[0;32m>>>>> Installing Packages <<<<<\033[0m"
 
 brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ range .packages.common -}}
+brew {{ . | quote }}
+{{ end -}}
 {{ range .packages.darwin.brews -}}
 brew {{ . | quote }}
 {{ end -}}
