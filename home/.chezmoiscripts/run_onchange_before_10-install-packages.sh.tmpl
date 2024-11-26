@@ -19,7 +19,7 @@ fi
 {{ end -}}
 
 echo -e "\033[0;32m>>>>> Installing Packages <<<<<\033[0m"
-brew bundle --no-lock --file=/dev/stdin <<EOF
+brew bundle -v --no-lock --file=/dev/stdin <<EOF
 brew "age"
 brew "bat"
 brew "btop"
