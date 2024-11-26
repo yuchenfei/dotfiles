@@ -1,0 +1,44 @@
+{{ if eq .osid "darwin" "linux-debian" "linux-ubuntu" -}}
+#!/bin/bash
+
+set -euo pipefail
+
+{{ if eq .osid "linux-debian" "linux-ubuntu" -}}
+sudo apt update
+sudo apt install -y \
+  build-essential \
+  git
+
+if ! $(brew -v &> /dev/null); then
+  echo -e "\033[0;32m>>>>> Installing Homebrew <<<<<\033[0m"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+{{ end -}}
+
+echo -e "\033[0;32m>>>>> Installing Packages <<<<<\033[0m"
+brew bundle --no-lock --file=/dev/stdin <<EOF
+brew "age"
+brew "bat"
+brew "btop"
+brew "eza"
+brew "fastfetch"
+brew "fish"
+brew "fzf"
+brew "git" if OS.mac?
+brew "git-delta"
+brew "glow"
+brew "lazygit"
+brew "neovim"
+brew "sketchybar" if OS.mac?
+brew "skhd" if OS.mac?
+brew "starship"
+brew "thefuck"
+brew "tldr"
+brew "tmux"
+brew "yabai" if OS.mac?
+brew "yazi"
+
+cask "font-maple" if OS.mac?
+EOF
+{{ end -}}

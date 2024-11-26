@@ -10,6 +10,11 @@
 {{-   end -}}
 {{- end -}}
 
+{{- $osid := .chezmoi.os -}}
+{{- if and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id") -}}
+{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
 encryption = "age"
 
 [age]
@@ -20,6 +25,7 @@ encryption = "age"
     name = {{ $name | quote }}
     email = {{ $email | quote }}
     personal = {{ $personal }}
+    osid = {{ $osid | quote }}
 
 [diff]
     pager = "delta"

@@ -13,7 +13,7 @@ end
 
 function install_fisher_plugin
   set -l plugin $argv[1]
- 
+
   if not fisher ls | grep $plugin
     set_color green
     echo ">>>>> Installing Fisher Plugin: $plugin <<<<<"
@@ -22,16 +22,20 @@ function install_fisher_plugin
   end
 end
 
-install_fisher
+function install_yazi_plugins
+  if type -q ya
+    set_color green
+    echo ">>>>> Setup Yazi <<<<<"
+    set_color normal
 
+    # yazi_plugins hash: {{ include "dot_config/yazi/package.toml" | sha256sum }}
+    ya pack -i
+  end
+end
+
+install_fisher
 install_fisher_plugin patrickf1/fzf.fish
 
-if type -q ya
-  set_color green
-  echo ">>>>> Setup Yazi <<<<<"
-  set_color normal
+install_yazi_plugins
 
-  # yazi_plugins hash: {{ include "dot_config/yazi/package.toml" | sha256sum }}
-  ya pack -i
-end
 {{ end -}}
