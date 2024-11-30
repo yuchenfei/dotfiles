@@ -2,11 +2,11 @@
 
 #!/bin/bash
 
-set -euo pipefail
+source ${CHEZMOI_WORKING_TREE}/scripts/utils.sh
 
 if command -v fish > /dev/null 2>&1; then
   if [ $SHELL != $(which fish) ]; then
-    echo -e "\033[0;32m>>>>> Changing default shell to fish <<<<<\033[0m"
+    log_task "Changing default shell to fish"
     grep -qxF $(which fish) /etc/shells || echo $(which fish) | sudo tee -a /etc/shells
     chsh -s $(which fish)
   fi

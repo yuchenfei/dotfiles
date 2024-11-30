@@ -1,0 +1,40 @@
+{{- $brews := list
+  "age"
+  "bat"
+  "btop"
+  "eza"
+  "fastfetch"
+  "fish"
+  "fzf"
+  "git"
+  "git-delta"
+  "glow"
+  "lazygit"
+  "neovim"
+  "sketchybar"
+  "skhd"
+  "starship"
+  "thefuck"
+  "tldr"
+  "tmux"
+  "yabai"
+  "yazi"
+-}}
+
+{{- $casks := list
+  "font-maple"
+-}}
+
+#!/bin/bash
+
+source ${CHEZMOI_WORKING_TREE}/scripts/utils.sh
+
+log_task "Installing Homebrew Packages"
+brew bundle -v --no-lock --file=/dev/stdin <<EOF
+{{ range ( $brews | sortAlpha | uniq ) -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range ( $casks | sortAlpha | uniq ) -}}
+cask {{ . | quote }}
+{{ end -}}
+EOF

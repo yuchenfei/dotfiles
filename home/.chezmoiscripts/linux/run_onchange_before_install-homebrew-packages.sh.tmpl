@@ -1,4 +1,4 @@
-{{- if and (eq .osid "darwin" "linux-debian" "linux-ubuntu") .personal -}}
+{{- if and (eq .osid "linux-debian" "linux-ubuntu") .personal -}}
 
 {{- $brews := list
   "age"
@@ -19,25 +19,12 @@
   "yazi"
 -}}
 
-{{- if eq .osid "darwin" -}}
-{{-   $brews = concat $brews (list
-  "git"
-  "sketchybar"
-  "skhd"
-  "yabai"
-) -}}
-{{- end -}}
-
-{{- $casks := list
-  "font-maple"
--}}
-
 #!/bin/bash
 
-set -euo pipefail
+source ${CHEZMOI_WORKING_TREE}/scripts/utils.sh
 
 function install_homebrew() {
-  echo -e "\033[0;32m>>>>> Installing Homebrew <<<<<\033[0m"
+  log_task "Installing Homebrew"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   echo >> ~/.bashrc
   echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
@@ -48,15 +35,10 @@ if ! $(brew -v &> /dev/null); then
   install_homebrew
 fi
 
-echo -e "\033[0;32m>>>>> Installing Homebrew Packages <<<<<\033[0m"
+log_task "Installing Homebrew Packages"
 brew bundle -v --no-lock --file=/dev/stdin <<EOF
 {{ range ( $brews | sortAlpha | uniq ) -}}
 brew {{ . | quote }}
-{{ end -}}
-{{ if eq .osid "darwin" -}}
-{{   range ( $casks | sortAlpha | uniq ) -}}
-cask {{ . | quote }}
-{{   end -}}
 {{ end -}}
 EOF
 
