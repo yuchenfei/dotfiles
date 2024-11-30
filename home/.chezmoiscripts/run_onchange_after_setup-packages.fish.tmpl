@@ -1,4 +1,5 @@
-{{ if eq .chezmoi.os "darwin" "linux" -}}
+{{- if and (eq .chezmoi.os "darwin" "linux") .personal -}}
+
 #!/usr/bin/env fish
 
 function install_fisher
@@ -38,4 +39,4 @@ install_fisher_plugin patrickf1/fzf.fish
 
 install_yazi_plugins
 
-{{ end -}}
+{{- end -}}

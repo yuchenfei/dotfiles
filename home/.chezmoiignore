@@ -1,16 +1,17 @@
-{{ if ne .chezmoi.os "darwin" }}
+{{ if ne .chezmoi.os "darwin" -}}
 .chezmoiscripts/darwin/**
+.config/kitty
 .config/sketchybar
 .config/skhd
 .config/yabai
-{{ end }}
+{{ end -}}
 
-{{ if ne .chezmoi.os "linux" }}
+{{ if ne .chezmoi.os "linux" -}}
 .chezmoiscripts/linux/**
-{{ end }}
+{{ end -}}
 
-{{ if ne .chezmoi.os "windows" }}
+{{ if ne .chezmoi.os "windows" -}}
 .chezmoiscripts/windows/**
-{{ end }}
+{{ end -}}
 
 key.txt.age
