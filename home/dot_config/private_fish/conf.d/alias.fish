@@ -1,15 +1,13 @@
 abbr reload 'source ~/.config/fish/config.fish'
 
-abbr ff fastfetch
-abbr lg lazygit
-
 if type -q chezmoi
-  abbr c 'chezmoi'
-  abbr ca 'chezmoi apply'
-  abbr cu 'chezmoi update'
-  abbr ce 'chezmoi edit'
-  abbr cs 'chezmoi status'
-  abbr cc 'chezmoi cd'
+  abbr cz 'chezmoi'
+  abbr cza 'chezmoi apply'
+  abbr czu 'chezmoi update'
+  abbr cze 'chezmoi edit'
+  abbr czx 'chezmoi execute-template <'
+  abbr czs 'chezmoi status'
+  abbr czc 'chezmoi cd'
 end
 
 if type -q docker-compose
@@ -34,6 +32,10 @@ if type -q eza
   alias lm="la --sort=modified"
   alias lt="la --tree --level=2 --git-ignore"
 end
+
+if type -q fastfetch; abbr ff fastfetch; end
+
+if type -q lazygit; abbr lg lazygit; end
 
 alias get_idf=". $HOME/documents/Code/Github/esp-idf/export.fish"
 
