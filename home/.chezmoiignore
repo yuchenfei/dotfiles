@@ -14,4 +14,8 @@
 .chezmoiscripts/windows/**
 {{ end -}}
 
+{{ if not .personal -}}
+.ssh/**
+{{ end -}}
+
 key.txt.age

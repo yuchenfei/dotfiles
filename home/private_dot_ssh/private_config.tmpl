@@ -1,0 +1,14 @@
+{{ if eq .chezmoi.os "darwin" -}}
+Include ~/.orbstack/ssh/config
+
+# macOS option
+IgnoreUnknown UseKeyChain
+UreKeychain yes
+{{- end }}
+
+# SSH Agent
+AddKeysToAgent yes
+
+# Private Key
+IdentityFile ~/.ssh/id_ed25519
+
