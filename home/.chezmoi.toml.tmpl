@@ -1,6 +1,11 @@
 {{- $name := promptStringOnce . "name" "User name" -}}
 {{- $email := promptStringOnce . "email" "Email address" -}}
 
+{{- $osid := .chezmoi.os -}}
+{{- if and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id") -}}
+{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
 {{- $personal := false -}}
 {{- $hostname := .chezmoi.hostname | lower | splitList "-" -}}
 {{- if gt (len $hostname) 1 -}}
@@ -10,9 +15,11 @@
 {{-   end -}}
 {{- end -}}
 
-{{- $osid := .chezmoi.os -}}
-{{- if and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id") -}}
-{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- $is_home := false -}}
+{{- $script_path := print .chezmoi.workingTree "/scripts/is_home_network.sh" -}}
+{{- $result := trim (output "bash" "-c" $script_path) -}}
+{{- if eq $result "home" -}}
+{{-   $is_home = true -}}
 {{- end -}}
 
 encryption = "age"
@@ -24,8 +31,9 @@ encryption = "age"
 [data]
     name = {{ $name | quote }}
     email = {{ $email | quote }}
-    personal = {{ $personal }}
     osid = {{ $osid | quote }}
+    personal = {{ $personal }}
+    is_home = {{ $is_home }}
 
 [diff]
     pager = "delta"

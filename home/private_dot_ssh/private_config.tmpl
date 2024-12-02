@@ -3,7 +3,7 @@ Include ~/.orbstack/ssh/config
 
 # macOS option
 IgnoreUnknown UseKeyChain
-UreKeychain yes
+UseKeychain yes
 {{- end }}
 
 # SSH Agent
@@ -12,3 +12,9 @@ AddKeysToAgent yes
 # Private Key
 IdentityFile ~/.ssh/id_ed25519
 
+{{ if .is_home -}}
+Host ubuntu
+    HostName 192.168.100.13
+    User yuchenfei
+    IdentityFile ~/.ssh/home
+{{- end }}
