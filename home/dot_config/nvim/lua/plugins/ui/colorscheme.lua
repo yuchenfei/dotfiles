@@ -1,4 +1,5 @@
 -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+
 return {
   {
     'folke/tokyonight.nvim', -- https://github.com/folke/tokyonight.nvim
@@ -16,13 +17,16 @@ return {
         integrations = {
           cmp = true,
           gitsigns = true,
-          nvimtree = true,
-          treesitter = true,
-          notify = true,
+          mason = true,
           mini = {
             enabled = true,
-            indentscope_color = '',
+            indentscope_color = 'sky',
           },
+          neotree = true,
+          notify = true,
+          telescope = true,
+          treesitter = true,
+          which_key = true,
         },
       })
     end,

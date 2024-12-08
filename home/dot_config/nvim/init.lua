@@ -1,5 +1,7 @@
 -- References:
---   - https://github.com/nvim-lua/kickstart.nvim
+-- - https://github.com/nvim-lua/kickstart.nvim
+-- - https://github.com/LazyVim/LazyVim
+-- - https://github.com/AstroNvim/AstroNvim
 
 require('options')
 require('keymaps')
@@ -18,7 +20,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure and install plugins ]]
-require('lazy').setup('plugins')
+require('lazy').setup({
+  { import = 'plugins' },
+  { import = 'plugins.ui' },
+  { import = 'plugins.editor' },
+  { import = 'plugins.tool' },
+})
 
 -- [[ Colorscheme ]]
 -- ttokyonight-day, tokyonight-moon, tokyonight-storm, okyonight-night
