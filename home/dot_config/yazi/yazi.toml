@@ -11,7 +11,7 @@ show_hidden = true
 
 [opener]
 edit = [
-  { run = 'export NVIM_APPNAME=AstroNvim; nvim "$@"', desc = "nvim", block = true }
+  { run = 'tmux new-window; tmux send-keys -t 0 "nvim $@" Enter', desc = "nvim" }
 ]
 
 [preview]
