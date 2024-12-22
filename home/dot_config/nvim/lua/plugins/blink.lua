@@ -7,10 +7,14 @@ return {
   ---@diagnostic disable: missing-fields
   opts = {
     keymap = {
+      preset = "default",
       ["<PageDown>"] = { "scroll_documentation_down" },
       ["<PageUp>"] = { "scroll_documentation_up" },
     },
     completion = {
+      list = {
+        selection = "preselect",
+      },
       menu = {
         border = "rounded",
       },
