@@ -13,6 +13,9 @@ return {
       stylua = {
         prepend_args = { "--indent-type", "Spaces", "--indent-width", "2" },
       },
+      prettier = {
+        prepend_args = { "--single-quote" },
+      },
       sqlfluff = {
         require_cwd = false, -- default enable for injected-lang formatters
       },
