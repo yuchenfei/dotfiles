@@ -7,3 +7,6 @@
 vim.g.lazyvim_prettier_needs_config = false
 
 vim.opt.background = "dark"
+
+vim.opt.wrap = true
+vim.opt.breakindent = true
