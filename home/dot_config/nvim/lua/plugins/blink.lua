@@ -7,9 +7,10 @@ return {
   ---@diagnostic disable: missing-fields
   opts = {
     keymap = {
-      preset = "default",
-      ["<PageDown>"] = { "scroll_documentation_down" },
-      ["<PageUp>"] = { "scroll_documentation_up" },
+      ["<C-space>"] = {},
+      ["<M-space>"] = { "show", "show_documentation", "hide_documentation" },
+      ["<PageDown>"] = { "scroll_documentation_down", "fallback" },
+      ["<PageUp>"] = { "scroll_documentation_up", "fallback" },
     },
     completion = {
       list = {
