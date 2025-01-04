@@ -18,6 +18,7 @@ return {
           path = "~/Documents/Obsidian/Notes/",
         },
       },
+      disable_frontmatter = true,
     },
   },
   {
