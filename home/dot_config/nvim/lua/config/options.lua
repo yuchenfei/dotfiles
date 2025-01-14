@@ -9,6 +9,10 @@ vim.g.lazyvim_prettier_needs_config = false
 -- Set to false to disable auto format
 vim.g.lazyvim_eslint_auto_format = true
 
+-- only for diagnostics. The rest of LSP support will still be
+-- provided by rust-analyzer.
+vim.g.lazyvim_rust_diagnostics = "bacon-ls"
+
 vim.g.lazyvim_picker = "fzf"
 vim.g.lazyvim_cmp = "blink.cmp"
 vim.g.ai_cmp = false
