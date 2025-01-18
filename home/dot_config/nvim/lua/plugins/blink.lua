@@ -13,9 +13,6 @@ return {
       ["<PageUp>"] = { "scroll_documentation_up", "fallback" },
     },
     completion = {
-      list = {
-        selection = "preselect",
-      },
       menu = {
         border = "rounded",
       },
