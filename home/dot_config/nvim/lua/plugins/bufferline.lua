@@ -10,6 +10,10 @@ return {
           text_align = "left",
           separator = true,
         },
+        {
+          filetype = "snacks_layout_box",
+          separator = true,
+        },
       },
     },
   },
