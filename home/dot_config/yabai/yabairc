@@ -12,7 +12,7 @@ sudo yabai --load-sa
 # │                        Status bar                        │
 # ╰──────────────────────────────────────────────────────────╯
 
-yabai -m config external_bar    all:32:0
+yabai -m config external_bar    all:0:0
 yabai -m config menubar_opacity 1.0
 
 # ╭──────────────────────────────────────────────────────────╮
@@ -86,6 +86,6 @@ yabai -m rule --add app="^Moonlight$" manage=off
 yabai -m rule --add app="^OrbStack$" manage=off
 yabai -m rule --add app="^音乐$" manage=off
 yabai -m rule --add app="^微信$" manage=off
-yabai -m rule --add app="^欧路词典$" sticky=on manage=off
+yabai -m rule --add app="^欧路词典$" manage=off
 
 echo "yabai configuration loaded.."
