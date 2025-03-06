@@ -16,37 +16,52 @@ Updating dotfiles on any machine is a single command:
 chezmoi update
 ```
 
-## Packages
-
-- [GitHub - aristocratos/btop: A monitor of resources](https://github.com/aristocratos/btop)
-- [GitHub - dandavison/delta: A syntax-highlighting pager for git, diff, grep, and blame output](https://github.com/dandavison/delta)
-- [GitHub - eza-community/eza: A modern alternative to ls](https://github.com/eza-community/eza)
-- [GitHub - fastfetch-cli/fastfetch: An actively maintained, feature-rich and performance oriented, neofetch like system information tool.](https://github.com/fastfetch-cli/fastfetch)
-- [GitHub - fish-shell/fish-shell: The user-friendly command line shell.](https://github.com/fish-shell/fish-shell)
-- [GitHub - junegunn/fzf: :cherry\_blossom: A command-line fuzzy finder](https://github.com/junegunn/fzf)
-- [GitHub - charmbracelet/glow: Render markdown on the CLI, with pizzazz! 💅🏻](https://github.com/charmbracelet/glow)
-- [GitHub - jesseduffield/lazygit: simple terminal UI for git commands](https://github.com/jesseduffield/lazygit)
-- [GitHub - neovim/neovim: Vim-fork focused on extensibility and usability](https://github.com/neovim/neovim)
-- [GitHub - FelixKratz/SketchyBar: A highly customizable macOS status bar replacement](https://github.com/FelixKratz/SketchyBar)
-- [GitHub - koekeishiya/skhd: Simple hotkey daemon for macOS](https://github.com/koekeishiya/skhd)
-- [GitHub - nvbn/thefuck: Magnificent app which corrects your previous console command.](https://github.com/nvbn/thefuck)
-- [GitHub - tldr-pages/tldr: 📚 Collaborative cheatsheets for console commands](https://github.com/tldr-pages/tldr)
-- [GitHub - tmux/tmux: tmux source code](https://github.com/tmux/tmux)
-- [GitHub - koekeishiya/yabai: A tiling window manager for macOS based on binary space partitioning](https://github.com/koekeishiya/yabai)
-- [GitHub - sxyazi/yazi: 💥 Blazing fast terminal file manager written in Rust, based on async I/O.](https://github.com/sxyazi/yazi)
-  - Plugins
-    - [yazi-rs/plugins:max-preview](https://github.com/yazi-rs/plugins/tree/main/max-preview.yazi)
-    - [Reledia/glow.yazi](https://github.com/Reledia/glow.yazi) - Preview markdown files
-    - [dedukun/bookmarks.yazi](https://github.com/dedukun/bookmarks.yazi)
-
-
 ## Fish
 
-[fish shell](https://fishshell.com/) plugins:
+[fish shell](https://fishshell.com/) - The user-friendly command line shell. [source code](https://github.com/fish-shell/fish-shell)
 
-- [GitHub - starship/starship: ☄🌌️ The minimal, blazing-fast, and infinitely customizable prompt for any shell!](https://github.com/starship/starship)
-- [GitHub - jorgebucaran/fisher: A plugin manager for Fish](https://github.com/jorgebucaran/fisher)
-- [GitHub - PatrickF1/fzf.fish: 🔍🐟 Fzf plugin for Fish](https://github.com/patrickF1/fzf.fish)
+plugins:
+
+- [starship](https://github.com/starship/starship) - The minimal, blazing-fast, and infinitely customizable prompt for any shell!
+- [fisher](https://github.com/jorgebucaran/fisher) - A plugin manager for Fish.
+- [fzf.fish](https://github.com/patrickF1/fzf.fish) - Fzf plugin for Fish.
+
+## CLI Tools
+
+### Development
+
+- [delta](https://github.com/dandavison/delta) - A syntax-highlighting pager for git, diff, grep, and blame output.
+- [lazygit](https://github.com/jesseduffield/lazygit) - Simple TUI for git commands.
+- [neovim](https://github.com/neovim/neovim) - Vim-fork focused on extensibility and usability.
+
+### Utilities
+
+- [btop](https://github.com/aristocratos/btop) - A monitor of resources.
+- [fastfetch](https://github.com/fastfetch-cli/fastfetch) - System information tool.
+- [glow](https://github.com/charmbracelet/glow) - Styled markdown rendering.
+- [tmux](https://github.com/tmux/tmux) - A terminal multiplexer.
+
+### Command Line Learning
+
+- [The Fuck](https://github.com/nvbn/thefuck) - Magnificent app which corrects your previous console command.
+- [tldr](https://github.com/tldr-pages/tldr) - Simplified and community-driven man pages.
+
+### Files and Directories
+
+- [eza](https://github.com/eza-community/eza) - A modern alternative to ls.
+- [fzf](https://github.com/junegunn/fzf) - A command-line fuzzy finder.
+- [fd](https://github.com/sharkdp/fd) - A simple, fast and user-friendly alternative to `find`.
+- [ripgrep](https://github.com/BurntSushi/ripgrep) - A line-oriented search tool that recursively searches your current directory for a regex pattern. Better `grep`
+- [yazi](https://github.com/sxyazi/yazi) - Blazing fast terminal file manager written in Rust, based on async I/O.
+  - [max-preview](https://github.com/yazi-rs/plugins/tree/main/max-preview.yazi)
+  - [glow.yazi](https://github.com/Reledia/glow.yazi) - Preview markdown files.
+  - [bookmarks.yazi](https://github.com/dedukun/bookmarks.yazi)
+
+### macOS
+
+- [SketchyBar](https://github.com/FelixKratz/SketchyBar) - A highly customizable macOS status bar replacement.
+- [skhd](https://github.com/koekeishiya/skhd) - Simple hotkey daemon for macOS.
+- [yabai](https://github.com/koekeishiya/yabai) - A tiling window manager for macOS based on binary space partitioning.
 
 ## Cheatsheet
 
@@ -117,22 +132,22 @@ chezmoi update
 
 ### Yazi keybindings
 
-|     Key     | Action                                                       |
-| :---------: | ------------------------------------------------------------ |
-|     `.`     | Toggle the visibility of hidden files                        |
-|     `z`     | Jump to a directory using zoxide                             |
-|     `Z`     | Jump to a directory or reveal a file using fzf               |
-|     `s`     | Search files by name using [fd](https://github.com/sharkdp/fd) |
-|     `S`     | Search files by content using [ripgrep](https://github.com/BurntSushi/ripgrep) |
-|     `K`     | Seek up 5 units in the preview                               |
-|     `J`     | Seek down 5 units in the preview                             |
-|     `T`     | Maximize or restore preview                                  |
-|     `t`     | Create a new tab with CWD                                    |
-|  `[` / `]`  | Switch to the previous/next tab                              |
-|  `{` / `}`  | Swap current tab with previous/next tab                      |
-| `alt + j/k` | Navigation in the parent directory                           |
-|     `m`     | Save current position as a bookmark                          |
-|     `'`     | Jump to a bookmark                                           |
-|  `b`, `d`   | Delete a bookmark                                            |
-|  `b`, `D`   | Delete all bookmarks                                         |
+|     Key     | Action                                         |
+| :---------: | ---------------------------------------------- |
+|     `.`     | Toggle the visibility of hidden files          |
+|     `z`     | Jump to a directory using zoxide               |
+|     `Z`     | Jump to a directory or reveal a file using fzf |
+|     `s`     | Search files by name using `fd`                |
+|     `S`     | Search files by content using `ripgrep`        |
+|     `K`     | Seek up 5 units in the preview                 |
+|     `J`     | Seek down 5 units in the preview               |
+|     `T`     | Maximize or restore preview                    |
+|     `t`     | Create a new tab with CWD                      |
+|  `[` / `]`  | Switch to the previous/next tab                |
+|  `{` / `}`  | Swap current tab with previous/next tab        |
+| `alt + j/k` | Navigation in the parent directory             |
+|     `m`     | Save current position as a bookmark            |
+|     `'`     | Jump to a bookmark                             |
+|  `b`, `d`   | Delete a bookmark                              |
+|  `b`, `D`   | Delete all bookmarks                           |
 
