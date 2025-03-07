@@ -14,8 +14,7 @@
 .chezmoiscripts/windows/**
 {{ end -}}
 
-{{ if not .personal -}}
-.ssh/**
+{{ if or (not (env "BW_SESSION")) (not .personal) -}}
+!.ssh/config
+.ssh/*
 {{ end -}}
-
-key.txt.age

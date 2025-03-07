@@ -1,20 +1,22 @@
+Host *
+    AddKeysToAgent yes
+    IgnoreUnknown UseKeyChain  # macOS option
+    UseKeychain yes
+
 {{ if eq .chezmoi.os "darwin" -}}
 Include ~/.orbstack/ssh/config
-
-# macOS option
-IgnoreUnknown UseKeyChain
-UseKeychain yes
 {{- end }}
-
-# SSH Agent
-AddKeysToAgent yes
-
-# Private Key
-IdentityFile ~/.ssh/id_ed25519
 
 {{ if .is_home -}}
 Host ubuntu
     HostName 192.168.100.13
     User yuchenfei
     IdentityFile ~/.ssh/home
+{{- end }}
+
+{{ if .personal -}}
+Host github.com
+    User git
+    IdentityFile ~/.ssh/github
+    IdentitiesOnly yes
 {{- end }}

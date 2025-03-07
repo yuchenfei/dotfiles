@@ -1,0 +1,17 @@
+function bw --description "BitWarden CLI wrapper"
+    set -l bitwarden_user {{ .email | quote}}
+
+    if test "$argv[1]" = l; or test "$argv[1]" = lock
+        set -e BW_SESSION
+        set -e argv[1]
+        command bw lock $argv
+    else if test "$argv[1]" = li; or test "$argv[1]" = login
+        set -e argv[1]
+        set -gx BW_SESSION (command bw login $bitwarden_user --raw $argv)
+    else if test "$argv[1]" = u; or test "$argv[1]" = unlock
+        set -e argv[1]
+        set -gx BW_SESSION (command bw unlock --raw $argv)
+    else
+        command bw $argv
+    end
+end
