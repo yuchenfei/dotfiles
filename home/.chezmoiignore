@@ -6,15 +6,18 @@
 .config/yabai
 {{ end -}}
 
-{{ if ne .chezmoi.os "linux" -}}
-.chezmoiscripts/linux/**
+{{ if not .is_ubuntu -}}
+.chezmoiscripts/ubuntu/**
 {{ end -}}
 
 {{ if ne .chezmoi.os "windows" -}}
 .chezmoiscripts/windows/**
+{{ else -}}
+.chezmoiscripts/*.sh.tmpl
+.chezmoiscripts/*.fish.tmpl
 {{ end -}}
 
-{{ if or (not (env "BW_SESSION")) (not .personal) -}}
+{{ if or (not (env "BW_SESSION")) (not .is_personal) -}}
 !.ssh/config
 .ssh/*
 {{ end -}}

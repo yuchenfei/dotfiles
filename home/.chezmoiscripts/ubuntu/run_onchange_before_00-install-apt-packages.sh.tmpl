@@ -1,16 +1,14 @@
-{{- if eq .osid "linux-debian" "linux-ubuntu" -}}
-
 {{- $packages := list
-  "build-essential"
-  "curl"
-  "git"
+"build-essential"
+"curl"
+"git"
 -}}
 
 #!/bin/bash
 
 source ${CHEZMOI_WORKING_TREE}/scripts/utils.sh
 
+log_task "Installing Basic Apt Packages"
+
 sudo apt update
 sudo apt install -y {{ $packages | join " " }}
-
-{{- end -}}

@@ -1,18 +1,13 @@
-{{- $name := promptStringOnce . "name" "User name" -}}
-{{- $email := promptStringOnce . "email" "Email address" -}}
+{{- $name := "yuchenfei" -}}
+{{- $email := "cf.yu@qq.com" -}}
 
-{{- $osid := .chezmoi.os -}}
-{{- if and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id") -}}
-{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
-{{- end -}}
+{{- $is_ubuntu := hasKey .chezmoi.osRelease "ubuntuCodename" -}}
 
-{{- $personal := false -}}
-{{- $hostname := .chezmoi.hostname | lower | splitList "-" -}}
-{{- if gt (len $hostname) 1 -}}
-{{-   $user := index $hostname 1 -}}
-{{-   if and (eq $user "ycf") (eq $name "yuchenfei") -}}
-{{-     $personal = true -}}
-{{-   end -}}
+{{- $is_personal := false -}}{{/* true if this machine should have personal secrets */}}
+{{- $hostname := .chezmoi.hostname | lower -}}
+{{- $username := .chezmoi.username | lower -}}
+{{- if and (eq $hostname "mac-ycf" "ubuntu") (eq $username "yuchenfei") -}}
+{{-   $is_personal = true -}}
 {{- end -}}
 
 {{- $is_home := false -}}
@@ -25,10 +20,14 @@
 [data]
     name = {{ $name | quote }}
     email = {{ $email | quote }}
-    osid = {{ $osid | quote }}
-    personal = {{ $personal }}
+    is_ubuntu = {{ $is_ubuntu }}
+    is_personal = {{ $is_personal }}
     is_home = {{ $is_home }}
 
 [diff]
+    # exclude = ["scripts"]
     pager = "delta"
 
+[merge]
+    command = "nvim"
+    args = ["-d", "{{`{{ .Destination }}`}}", "{{`{{ .Source }}", "{{ .Target }}`}}"]

@@ -14,7 +14,7 @@ Host ubuntu
     IdentityFile ~/.ssh/home
 {{- end }}
 
-{{ if .personal -}}
+{{ if .is_personal -}}
 Host github.com
     User git
     IdentityFile ~/.ssh/github

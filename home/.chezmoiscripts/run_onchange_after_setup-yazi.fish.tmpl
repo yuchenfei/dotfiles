@@ -1,0 +1,14 @@
+#!/usr/bin/env fish
+
+function install_yazi_plugins
+    if type -q ya
+        set_color green
+        echo ">>>>> Setup Yazi <<<<<"
+        set_color normal
+
+        # yazi_plugins hash: {{ include "dot_config/yazi/package.toml" | sha256sum }}
+        ya pack -i
+    end
+end
+
+install_yazi_plugins

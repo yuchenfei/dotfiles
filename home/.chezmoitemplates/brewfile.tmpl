@@ -1,0 +1,44 @@
+{{- $taps := list -}}
+
+{{- $brews := list
+  "bat"
+  "btop"
+  "eza"
+  "fastfetch"
+  "fd"
+  "fish"
+  "fzf"
+  "git"
+  "git-delta"
+  "glow"
+  "lazygit"
+  "neovim"
+  "ripgrep"
+  "starship"
+  "thefuck"
+  "tldr"
+  "tmux"
+  "yazi"
+-}}
+
+{{- $casks := list -}}
+
+{{- if eq .chezmoi.os "darwin" -}}
+{{-   $taps = concat $taps (list "oven-sh/bun") -}}
+{{-   $brews = concat $brews (list "bun" "rust-analyzer" "skhd" "yabai") -}}
+{{-   $casks = concat $casks (list "font-maple-mono-nf-cn" "kitty") -}}
+{{- end -}}
+
+{{- if .is_personal -}}
+{{-   $brews = concat $brews (list "bitwarden-cli") -}}
+{{- end -}}
+
+{{ range ( $taps | sortAlpha | uniq ) -}}
+tap {{ . | quote }}
+{{ end -}}
+{{ range ( $brews | sortAlpha | uniq ) -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range ( $casks | sortAlpha | uniq ) -}}
+cask {{ . | quote }}
+{{ end -}}
