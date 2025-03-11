@@ -4,7 +4,11 @@ source ${CHEZMOI_WORKING_TREE}/scripts/utils.sh
 
 log_task "Installing Homebrew Packages"
 
+if ! command -v brew &>/dev/null; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 # brewfile hash: {{ include ".chezmoitemplates/brewfile.tmpl" | sha256sum }}
-brew bundle -v --no-lock --no-upgrade --file=/dev/stdin <<EOF
+brew bundle -v --no-upgrade --file=/dev/stdin <<EOF
 {{ template "brewfile.tmpl" . }}
 EOF
