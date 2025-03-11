@@ -6,7 +6,7 @@
 {{- $is_personal := false -}}{{/* true if this machine should have personal secrets */}}
 {{- $hostname := .chezmoi.hostname | lower -}}
 {{- $username := .chezmoi.username | lower -}}
-{{- if and (eq $hostname "mac-ycf" "ubuntu") (eq $username "yuchenfei") -}}
+{{- if and (eq $hostname "mac-ycf" "ubuntu-ycf") (eq $username "yuchenfei") -}}
 {{-   $is_personal = true -}}
 {{- end -}}
 
