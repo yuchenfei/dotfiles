@@ -7,6 +7,7 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    catppuccin.url = "github:catppuccin/nix";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
     # Optional: Declarative tap management
@@ -26,6 +27,7 @@
       nix-darwin,
       nixpkgs,
       home-manager,
+      catppuccin,
       nix-homebrew,
       homebrew-core,
       homebrew-cask,
@@ -111,7 +113,12 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.yuchenfei = ./home.nix;
+            home-manager.users.yuchenfei = {
+              imports = [
+                ./home.nix
+                catppuccin.homeModules.catppuccin
+              ];
+            };
 
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix

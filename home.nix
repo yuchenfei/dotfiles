@@ -12,6 +12,8 @@
     pkgs.nixfmt-rfc-style
   ];
 
+  catppuccin.enable = true;
+
   programs.git = {
     enable = true;
     delta.enable = true;
