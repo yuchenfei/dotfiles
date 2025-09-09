@@ -6,6 +6,8 @@
   home.username = "yuchenfei";
   home.homeDirectory = "/Users/yuchenfei";
 
+  xdg.enable = true;
+
   # Packages that should be installed to the user profile.
   home.packages = [
     pkgs.neovim
@@ -24,6 +26,17 @@
       merge.conflictStyle = "zdiff3";
       delta.navigate = true;
       delta.line-numbers = true;
+    };
+  };
+
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      # https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+      git.paging = {
+        colorArg = "always";
+        pager = "delta --dark --paging=never";
+      };
     };
   };
 
