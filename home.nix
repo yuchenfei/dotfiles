@@ -41,7 +41,20 @@
   };
 
   programs.bat.enable = true;
-  programs.fish.enable = true;
+  programs.fd.enable = true;
+  programs.fzf.enable = true;
+  programs.fish = {
+    enable = true;
+    plugins =
+      map
+        (n: {
+          name = n;
+          src = pkgs.fishPlugins.${n}.src;
+        })
+        [
+          "fzf-fish"
+        ];
+  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
