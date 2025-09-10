@@ -43,11 +43,13 @@
           ];
 
           programs.zsh.enable = true;
+          programs.fish.enable = true;
           services.skhd.enable = true;
           services.yabai.enable = true;
 
           fonts.packages = with pkgs; [
             nerd-fonts.jetbrains-mono
+            maple-mono.NF-CN-unhinted
           ];
 
           homebrew = {
