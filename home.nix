@@ -43,6 +43,7 @@
   programs.bat.enable = true;
   programs.fd.enable = true;
   programs.fzf.enable = true;
+  programs.fastfetch.enable = true;
   programs.zsh = {
     enable = true;
     initContent = ''
@@ -56,6 +57,10 @@
     enable = true;
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
+
+      if type -q fastfetch
+        fastfetch
+      end
     '';
     plugins =
       map
@@ -66,6 +71,10 @@
         [
           "fzf-fish"
         ];
+    shellAbbrs = {
+      drs = "sudo darwin-rebuild switch --flake ~/.dotfiles/";
+      ff = "fastfetch";
+    };
   };
 
   catppuccin.starship.enable = false;
