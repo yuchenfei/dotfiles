@@ -68,6 +68,13 @@
         ];
   };
 
+  catppuccin.starship.enable = false;
+  home.file = {
+    ".config/starship.toml".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/starship.toml";
+  };
+  programs.starship.enable = true;
+
   programs.kitty = {
     enable = true;
     shellIntegration.enableZshIntegration = true;
