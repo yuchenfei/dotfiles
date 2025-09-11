@@ -84,6 +84,10 @@
   };
   programs.starship.enable = true;
 
+  programs.yazi = {
+    enable = true;
+  };
+
   programs.kitty = {
     enable = true;
     shellIntegration.enableZshIntegration = true;
