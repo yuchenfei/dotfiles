@@ -1,12 +1,22 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  user,
+  email,
+  ...
+}:
 
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "yuchenfei";
-  home.homeDirectory = "/Users/yuchenfei";
+  home = {
+    username = "${user}";
+    homeDirectory = "/Users/${user}";
+  };
 
   xdg.enable = true;
+
+  catppuccin.enable = true;
 
   # Packages that should be installed to the user profile.
   home.packages = [
@@ -14,13 +24,11 @@
     pkgs.nixfmt-rfc-style
   ];
 
-  catppuccin.enable = true;
-
   programs.git = {
     enable = true;
     delta.enable = true;
-    userName = "yuchenfei";
-    userEmail = "cf.yu@qq.com";
+    userName = "${user}";
+    userEmail = "${email}";
     extraConfig = {
       init.defaultBranch = "main";
       merge.conflictStyle = "zdiff3";
