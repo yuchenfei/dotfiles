@@ -96,6 +96,40 @@
     enable = true;
   };
 
+  programs.tmux = {
+    enable = true;
+    baseIndex = 1;
+    reverseSplit = true;
+    keyMode = "vi";
+    customPaneNavigationAndResize = true;
+    resizeAmount = 2;
+    prefix = "C-space";
+    mouse = true;
+    focusEvents = true;
+    escapeTime = 10;
+    historyLimit = 5000;
+    extraConfig = ''
+      set -g status-position top
+      set -g renumber-windows on
+
+      bind -T copy-mode-vi v   send -X begin-selection
+      bind -T copy-mode-vi C-v send -X rectangle-toggle
+      bind -T copy-mode-vi y   send -X copy-selection-and-cancel
+      bind -T copy-mode-vi H   send -X start-of-line
+      bind -T copy-mode-vi L   send -X end-of-line
+    '';
+    plugins = with pkgs; [
+      tmuxPlugins.vim-tmux-navigator
+    ];
+  };
+  catppuccin.tmux.extraConfig = ''
+    set -g @catppuccin_window_status_style "rounded"
+
+    set -g status-right-length 100
+    set -g status-left ""
+    set -g status-right "#{E:@catppuccin_status_application}#{E:@catppuccin_status_session}"
+  '';
+
   programs.kitty = {
     enable = true;
     shellIntegration.enableZshIntegration = true;
