@@ -112,6 +112,11 @@
       set -g status-position top
       set -g renumber-windows on
 
+      bind r source-file ~/.config/tmux/tmux.conf \; display-message "Reloaded!"
+      bind space last-window
+      bind g choose-window 'join-pane -h -t "%%"'
+      bind G choose-window 'join-pane -t "%%"'
+
       bind -T copy-mode-vi v   send -X begin-selection
       bind -T copy-mode-vi C-v send -X rectangle-toggle
       bind -T copy-mode-vi y   send -X copy-selection-and-cancel
