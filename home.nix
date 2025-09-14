@@ -26,14 +26,18 @@
 
   programs.git = {
     enable = true;
-    delta.enable = true;
+    delta = {
+      enable = true;
+      options = {
+        navigate = true;
+        line-numbers = true;
+      };
+    };
     userName = "${user}";
     userEmail = "${email}";
     extraConfig = {
       init.defaultBranch = "main";
       merge.conflictStyle = "zdiff3";
-      delta.navigate = true;
-      delta.line-numbers = true;
     };
   };
 
