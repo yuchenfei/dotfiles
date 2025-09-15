@@ -55,6 +55,7 @@
 
   programs.bat.enable = true;
   programs.fd.enable = true;
+  programs.ripgrep.enable = true;
   programs.fzf.enable = true;
   programs.fastfetch.enable = true;
   programs.zsh = {
