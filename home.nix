@@ -19,9 +19,10 @@
   catppuccin.enable = true;
 
   # Packages that should be installed to the user profile.
-  home.packages = [
-    pkgs.neovim
-    pkgs.nixfmt-rfc-style
+  home.packages = with pkgs; [
+    gdu
+    neovim
+    nixfmt-rfc-style
   ];
 
   programs.git = {
