@@ -27,8 +27,8 @@
       nixpkgs,
       nix-darwin,
       home-manager,
-      catppuccin,
       nix-homebrew,
+      catppuccin,
       homebrew-core,
       homebrew-cask,
     }@inputs:
