@@ -92,6 +92,13 @@
     shellAbbrs = {
       drs = "sudo darwin-rebuild switch --flake ~/.dotfiles/";
       ff = "fastfetch";
+      nix-system-clean = "nix-wipe && nix-clean && nix-optimise";
+    };
+    shellAliases = {
+      nix-history = "nix profile history --profile /nix/var/nix/profiles/system";
+      nix-wipe = "sudo nix profile wipe-history --older-than 7d --profile /nix/var/nix/profiles/system";
+      nix-clean = "sudo nix-collect-garbage --delete-older-than 7d && nix-collect-garbage --delete-older-than 7d";
+      nix-optimise = "nix-store --optimise";
     };
   };
 

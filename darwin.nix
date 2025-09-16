@@ -8,9 +8,33 @@
 
 {
   nix = {
+    # Automate garbage collection
+    gc = {
+      automatic = true;
+      interval = [
+        {
+          Hour = 5;
+          Minute = 15;
+          Weekday = 7;
+        }
+      ];
+      options = "--delete-older-than 7d";
+    };
+    optimise = {
+      # Automate `nix store --optimise`
+      automatic = true;
+      interval = [
+        {
+          Hour = 6;
+          Minute = 15;
+          Weekday = 7;
+        }
+      ];
+    };
     settings = {
       # Necessary for using flakes on this system.
       experimental-features = "nix-command flakes";
+      warn-dirty = false;
       substitute = true;
       substituters = [
         "https://yazi.cachix.org"
