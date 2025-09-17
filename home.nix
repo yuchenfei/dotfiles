@@ -103,11 +103,9 @@
   };
 
   catppuccin.starship.enable = false;
-  home.file = {
-    ".config/starship.toml".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/starship.toml";
-  };
   programs.starship.enable = true;
+  home.file.".config/starship.toml".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/starship.toml";
 
   programs.eza = {
     enable = true;
@@ -299,6 +297,10 @@
       "cmd+s" = "send_text all \e:w\\r";
     };
   };
+
+  services.skhd.enable = true;
+  home.file.".config/skhd/skhdrc".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/skhd/skhdrc";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

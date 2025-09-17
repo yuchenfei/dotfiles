@@ -73,7 +73,6 @@
   programs.zsh.enable = true;
   programs.fish.enable = true;
 
-  services.skhd.enable = true;
   services.yabai = {
     enable = true;
     enableScriptingAddition = true; # SIP must be disabled
@@ -93,6 +92,8 @@
     };
     # grid=<rows>:<cols>:<start-x>:<start-y>:<width>:<height>
     extraConfig = ''
+      yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
       yabai -m rule --add app="(System Preferences|系统设置)" manage=off grid=4:6:2:0:2:3
       yabai -m rule --add app="(Finder|访达)" manage=off grid=20:20:1:1:18:18
       yabai -m rule --add app="(Preview|预览)" manage=off
