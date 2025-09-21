@@ -7,6 +7,9 @@
 }:
 
 {
+  # fist time need run with --flake ~/.dotfiles
+  environment.etc.nix-darwin.source = "/Users/${user}/.dotfiles";
+
   nix = {
     # Automate garbage collection
     gc = {
@@ -59,6 +62,16 @@
     brews = [
       "mas"
     ];
+    casks = [
+      "font-sf-mono"
+      "font-sf-pro"
+      "font-sketchybar-app-font"
+      "sf-symbols"
+    ];
+    onActivation = {
+      autoUpdate = true;
+      upgrade = true;
+    };
   };
 
   fonts.packages = with pkgs; [
@@ -89,6 +102,8 @@
       window_opacity = "off";
       active_window_opacity = "1.0";
       normal_window_opacity = "0.9";
+      # for sketchybar
+      external_bar = "all:32:0";
     };
     # grid=<rows>:<cols>:<start-x>:<start-y>:<width>:<height>
     extraConfig = ''

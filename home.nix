@@ -303,6 +303,22 @@
   home.file.".config/skhd/skhdrc".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/skhd/skhdrc";
 
+  programs.sketchybar = {
+    enable = true;
+    configType = "lua";
+    extraPackages = [
+      pkgs.yabai
+    ];
+    # config = {
+    #   # config file need execute permissions
+    #   source = ./.config/sketchybar;
+    #   recursive = true;
+    # };
+    service.enable = true;
+  };
+  home.file.".config/sketchybar".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/sketchybar";
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
