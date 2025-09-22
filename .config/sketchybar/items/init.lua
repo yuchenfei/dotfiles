@@ -1,6 +1,7 @@
 require("items.apple")
 require("items.spaces")
 require("items.front_app")
-require("items.calendar")
+require("items.datetime")
+-- require("items.calendar")
 require("items.volume")
 require("items.battery")
