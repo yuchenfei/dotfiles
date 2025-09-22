@@ -26,6 +26,7 @@
     gdu
     glow
     hexyl
+    jless
     neovim
     nixfmt-rfc-style
   ];
