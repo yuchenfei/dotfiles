@@ -29,12 +29,12 @@ Sbar.bar({
 -- For a full list of all available item properties see:
 -- https://felixkratz.github.io/SketchyBar/config/items
 Sbar.default({
-  padding_left = 5,
-  padding_right = 5,
+  padding_left = settings.paddings.item,
+  padding_right = settings.paddings.item,
   icon = {
     color = colors.white,
-    padding_left = settings.paddings,
-    padding_right = settings.paddings,
+    padding_left = settings.paddings.icon,
+    padding_right = settings.paddings.icon,
     font = {
       family = settings.font.text,
       style = "Bold",
@@ -43,8 +43,8 @@ Sbar.default({
   },
   label = {
     color = colors.white,
-    padding_left = settings.paddings,
-    padding_right = settings.paddings,
+    padding_left = settings.paddings.label,
+    padding_right = settings.paddings.label,
     font = {
       family = settings.font.text,
       style = "Semibold",
