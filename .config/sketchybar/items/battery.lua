@@ -6,13 +6,6 @@ local show_normal = settings.battery.style == "Normal"
 local show_aldente = settings.battery.style == "AlDente"
 local show_percentage = settings.battery.show_percentage
 
-Sbar.add("item", {
-  position = "right",
-  width = 5,
-  icon = { drawing = false },
-  label = { drawing = false },
-})
-
 local battery = Sbar.add("item", "battery", {
   position = "right",
   padding_left = show_aldente and 0 or settings.paddings.item,
@@ -96,7 +89,7 @@ if show_aldente then
   })
 end
 
-Sbar.add("bracket", {
+Sbar.add("bracket", "battery.bracket", {
   battery.name,
   aldente and aldente.name or nil,
 }, {
@@ -104,4 +97,9 @@ Sbar.add("bracket", {
     color = colors.transparent,
     border_color = colors.grey,
   },
+})
+
+Sbar.add("item", "battery.space", {
+  position = "right",
+  width = settings.space,
 })

@@ -27,8 +27,10 @@
     glow
     hexyl
     jless
+    monitorcontrol
     neovim
     nixfmt-rfc-style
+    switchaudio-osx
   ];
 
   programs.git = {
@@ -309,6 +311,7 @@
     configType = "lua";
     extraPackages = [
       pkgs.yabai
+      pkgs.switchaudio-osx
     ];
     # config = {
     #   # config file need execute permissions

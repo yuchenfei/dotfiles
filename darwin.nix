@@ -67,6 +67,7 @@
       "font-sf-pro"
       "font-sketchybar-app-font"
       "sf-symbols"
+      "proxy-audio-device"
     ];
     onActivation = {
       autoUpdate = true;

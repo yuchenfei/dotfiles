@@ -3,7 +3,7 @@ local settings = require("settings")
 
 local open_calendar = "open -a Calendar.app"
 
-local date = Sbar.add("item", "date", {
+local date = Sbar.add("item", "datetime.date", {
   position = "right",
   y_offset = 5,
   width = 0,
@@ -24,7 +24,7 @@ date:subscribe({ "forced", "routine", "system_woke" }, function(_)
   date:set({ label = os.date("%a, %b %d") })
 end)
 
-local clock = Sbar.add("item", "clock", {
+local clock = Sbar.add("item", "datetime.clock", {
   position = "right",
   y_offset = -4,
   icon = {
@@ -41,9 +41,14 @@ clock:subscribe({ "forced", "routine", "system_woke" }, function(_)
   clock:set({ label = os.date("%I:%M %p") })
 end)
 
-Sbar.add("bracket", { date.name, clock.name }, {
+Sbar.add("bracket", "datetime.bracket", { date.name, clock.name }, {
   background = {
     color = colors.transparent,
     border_color = colors.grey,
   },
+})
+
+Sbar.add("item", "datetime.space", {
+  position = "right",
+  width = settings.space,
 })

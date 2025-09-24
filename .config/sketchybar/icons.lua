@@ -3,6 +3,9 @@ return {
   apple = "􀣺",
   preferences = "􀺽",
 
+  checkmark = "􀁣 ",
+  circle = "􀀀 ",
+
   volume = {
     _100 = "􀊩",
     _66 = "􀊧",
