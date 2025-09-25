@@ -20,17 +20,29 @@
 
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
+    # Battery management
     aldente
+
+    # Networking
     doggo
+    ifstat-legacy
+
+    # Disk & file utilities
     dust
     gdu
-    glow
     hexyl
     jless
+    glow
+
+    # Display & audio control
     monitorcontrol
+    switchaudio-osx
+
+    # Development tools
     neovim
     nixfmt-rfc-style
-    switchaudio-osx
+    clang
+    gnumake
   ];
 
   programs.git = {

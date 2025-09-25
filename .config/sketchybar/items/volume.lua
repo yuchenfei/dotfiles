@@ -122,7 +122,7 @@ local function volume_toggle_details(env)
           Sbar.add("item", "volume.device." .. counter, {
             position = "popup." .. volume_bracket.name,
             width = popup_width,
-            align = "center",
+            -- align = "center",
             icon = {
               string = device == current_audio_device and icons.checkmark or icons.circle,
               color = color_available,
