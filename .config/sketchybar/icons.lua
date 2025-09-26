@@ -2,6 +2,7 @@ return {
   loading = "􀖇",
   apple = "􀣺",
   preferences = "􀺽",
+  cpu = "􀫥",
 
   checkmark = "􀁣 ",
   circle = "􀀀 ",

@@ -60,7 +60,7 @@ local wifi = Sbar.add("item", "wifi.icon", {
   label = { drawing = false },
 })
 
-local wifi_bracket = Sbar.add("bracket", "widgets.wifi.bracket", {
+local wifi_bracket = Sbar.add("bracket", "wifi.bracket", {
   wifi.name,
   wifi_up.name,
   wifi_down.name,
