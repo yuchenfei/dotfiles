@@ -29,4 +29,9 @@ return {
     disconnected = "􀙈",
     router = "􁓤",
   },
+  media = {
+    back = "􀊊",
+    forward = "􀊌",
+    play_pause = "􀊈",
+  },
 }

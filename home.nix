@@ -32,6 +32,7 @@
     gdu
     hexyl
     jless
+    jq
     glow
 
     # Display & audio control
@@ -235,7 +236,7 @@
     mouse = true;
     focusEvents = true;
     escapeTime = 10;
-    historyLimit = 5000;
+    historyLimit = 10000;
     extraConfig = ''
       set -g status-position top
       set -g renumber-windows on

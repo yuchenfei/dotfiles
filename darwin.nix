@@ -61,6 +61,7 @@
     enable = true;
     brews = [
       "mas"
+      "media-control"
     ];
     casks = [
       "font-sf-mono"
