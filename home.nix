@@ -107,7 +107,7 @@
           "fzf-fish"
         ];
     shellAbbrs = {
-      drs = "sudo darwin-rebuild switch --flake ~/.dotfiles/";
+      drs = "sudo darwin-rebuild switch";
       ff = "fastfetch";
       nix-system-clean = "nix-wipe && nix-clean && nix-optimise";
     };
