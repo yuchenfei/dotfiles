@@ -3,7 +3,7 @@ return {
   apple = "􀣺",
   preferences = "􀺽",
   cpu = "􀫥",
-
+  keyboard = "􀇳 ",
   checkmark = "􀁣 ",
   circle = "􀀀 ",
 
