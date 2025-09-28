@@ -60,6 +60,7 @@
   homebrew = {
     enable = true;
     brews = [
+      "im-select"
       "mas"
       "media-control"
     ];
