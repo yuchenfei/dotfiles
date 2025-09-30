@@ -70,6 +70,7 @@
       "font-sketchybar-app-font"
       "sf-symbols"
       "proxy-audio-device"
+      "lyricsx-mxiris" # homebrew-extras
     ];
     onActivation = {
       autoUpdate = true;

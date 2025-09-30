@@ -19,7 +19,11 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    daipeihust-tap = {
+    homebrew-extras = {
+      url = "github:brewforge/homebrew-extras";
+      flake = false;
+    };
+    im-select = {
       url = "github:daipeihust/homebrew-tap";
       flake = false;
     };
@@ -35,7 +39,8 @@
       catppuccin,
       homebrew-core,
       homebrew-cask,
-      daipeihust-tap,
+      homebrew-extras,
+      im-select,
     }@inputs:
     let
       user = "yuchenfei";
@@ -58,7 +63,8 @@
               taps = {
                 "homebrew/homebrew-core" = homebrew-core;
                 "homebrew/homebrew-cask" = homebrew-cask;
-                "daipeihust/homebrew-tap" = daipeihust-tap;
+                "brewforge/homebrew-extras" = homebrew-extras;
+                "daipeihust/homebrew-tap" = im-select;
               };
               autoMigrate = true;
               mutableTaps = false;

@@ -35,22 +35,6 @@
         "type": "github"
       }
     },
-    "daipeihust-tap": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1682907593,
-        "narHash": "sha256-lfyc4D2Tt6BCmPLqHWFL9I2ZDpAtVYxE10bLuQBMfdQ=",
-        "owner": "daipeihust",
-        "repo": "homebrew-tap",
-        "rev": "bc45a5fba4923578dcdea333b5b795a9d84b9126",
-        "type": "github"
-      },
-      "original": {
-        "owner": "daipeihust",
-        "repo": "homebrew-tap",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -100,6 +84,38 @@
       "original": {
         "owner": "homebrew",
         "repo": "homebrew-core",
+        "type": "github"
+      }
+    },
+    "homebrew-extras": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1758355808,
+        "narHash": "sha256-vE1uiNFURbA36bbeMKk43eo0k7Dzhg4tORdVbZ2Mifk=",
+        "owner": "brewforge",
+        "repo": "homebrew-extras",
+        "rev": "9bc0e441fee16798643acc439a6f0010b004135f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "brewforge",
+        "repo": "homebrew-extras",
+        "type": "github"
+      }
+    },
+    "im-select": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1682907593,
+        "narHash": "sha256-lfyc4D2Tt6BCmPLqHWFL9I2ZDpAtVYxE10bLuQBMfdQ=",
+        "owner": "daipeihust",
+        "repo": "homebrew-tap",
+        "rev": "bc45a5fba4923578dcdea333b5b795a9d84b9126",
+        "type": "github"
+      },
+      "original": {
+        "owner": "daipeihust",
+        "repo": "homebrew-tap",
         "type": "github"
       }
     },
@@ -177,10 +193,11 @@
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
-        "daipeihust-tap": "daipeihust-tap",
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "homebrew-extras": "homebrew-extras",
+        "im-select": "im-select",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_2"
