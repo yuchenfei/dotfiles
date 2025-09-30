@@ -27,6 +27,10 @@
       url = "github:daipeihust/homebrew-tap";
       flake = false;
     };
+    airbattery = {
+      url = "github:lihaoyun6/homebrew-tap";
+      flake = false;
+    };
   };
 
   outputs =
@@ -41,6 +45,7 @@
       homebrew-cask,
       homebrew-extras,
       im-select,
+      airbattery,
     }@inputs:
     let
       user = "yuchenfei";
@@ -65,6 +70,7 @@
                 "homebrew/homebrew-cask" = homebrew-cask;
                 "brewforge/homebrew-extras" = homebrew-extras;
                 "daipeihust/homebrew-tap" = im-select;
+                "lihaoyun6/homebrew-tap" = airbattery;
               };
               autoMigrate = true;
               mutableTaps = false;

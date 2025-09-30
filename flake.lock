@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "airbattery": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1749030627,
+        "narHash": "sha256-69ruIMPrhnhQF9A/xS2sPXWILkcUCqkpy3FPoHfNfgI=",
+        "owner": "lihaoyun6",
+        "repo": "homebrew-tap",
+        "rev": "4d547170e1abcc4375addfcb47bfa45007d57bb3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lihaoyun6",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "brew-src": {
       "flake": false,
       "locked": {
@@ -192,6 +208,7 @@
     },
     "root": {
       "inputs": {
+        "airbattery": "airbattery",
         "catppuccin": "catppuccin",
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",

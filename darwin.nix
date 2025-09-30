@@ -60,17 +60,18 @@
   homebrew = {
     enable = true;
     brews = [
-      "im-select"
+      "im-select" # tap
       "mas"
       "media-control"
     ];
     casks = [
+      "airbattery" # tap
       "font-sf-mono"
       "font-sf-pro"
       "font-sketchybar-app-font"
-      "sf-symbols"
-      "proxy-audio-device"
       "lyricsx-mxiris" # homebrew-extras
+      "proxy-audio-device"
+      "sf-symbols"
     ];
     onActivation = {
       autoUpdate = true;
