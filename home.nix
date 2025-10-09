@@ -44,6 +44,7 @@
     nixfmt-rfc-style
     clang
     gnumake
+    fnm
   ];
 
   programs.git = {
@@ -95,6 +96,10 @@
 
       if type -q fastfetch
         fastfetch
+      end
+
+      if type -q fnm
+        fnm env --use-on-cd --shell fish | source
       end
     '';
     plugins =
