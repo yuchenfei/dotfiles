@@ -1,1 +1,2 @@
 bin/
+.config/nvim/lazy-lock.json
