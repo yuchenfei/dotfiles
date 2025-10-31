@@ -72,38 +72,26 @@ return {
       Snacks.toggle
         .new({
           name = '[G]it Signs',
-          get = function()
-            return require('gitsigns.config').config.signcolumn
-          end,
-          set = function(state)
-            require('gitsigns').toggle_signs(state)
-          end,
+          get = function() return require('gitsigns.config').config.signcolumn end,
+          set = function(state) require('gitsigns').toggle_signs(state) end,
         })
-        :map '<leader>tg'
+        :map('<leader>tg')
 
       Snacks.toggle
         .new({
           name = 'Git [W]ord Diff',
-          get = function()
-            return require('gitsigns.config').config.word_diff
-          end,
-          set = function(state)
-            require('gitsigns').toggle_word_diff(state)
-          end,
+          get = function() return require('gitsigns.config').config.word_diff end,
+          set = function(state) require('gitsigns').toggle_word_diff(state) end,
         })
-        :map '<leader>tw'
+        :map('<leader>tw')
 
       Snacks.toggle
         .new({
           name = 'Git [B]lame',
-          get = function()
-            return require('gitsigns.config').config.current_line_blame
-          end,
-          set = function(state)
-            require('gitsigns').toggle_current_line_blame(state)
-          end,
+          get = function() return require('gitsigns.config').config.current_line_blame end,
+          set = function(state) require('gitsigns').toggle_current_line_blame(state) end,
         })
-        :map '<leader>tb'
+        :map('<leader>tb')
     end,
   },
 }
