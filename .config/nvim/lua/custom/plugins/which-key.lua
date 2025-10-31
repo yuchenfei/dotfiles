@@ -14,9 +14,10 @@ return {
 
     -- Document existing key chains
     spec = {
-      { '<leader>s', group = '[S]earch' },
-      { '<leader>t', group = '[T]oggle' },
-      { '<leader>g', group = '[G]it Hunk', mode = { 'n', 'v' }, icon = '' },
+      { '<leader>f', group = 'Find' },
+      { '<leader>g', group = 'Git', mode = { 'n', 'v' }, icon = '' },
+      { '<leader>s', group = 'Search' },
+      { '<leader>t', group = 'Toggle' },
       { '[', group = 'Previous' },
       { ']', group = 'Next' },
       { 'g', group = 'Go to', icon = '󰿅' },

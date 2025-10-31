@@ -71,7 +71,7 @@ return {
       -- Toggles
       Snacks.toggle
         .new({
-          name = '[G]it Signs',
+          name = 'Git Signs',
           get = function() return require('gitsigns.config').config.signcolumn end,
           set = function(state) require('gitsigns').toggle_signs(state) end,
         })
@@ -79,7 +79,7 @@ return {
 
       Snacks.toggle
         .new({
-          name = 'Git [W]ord Diff',
+          name = 'Git Word Diff',
           get = function() return require('gitsigns.config').config.word_diff end,
           set = function(state) require('gitsigns').toggle_word_diff(state) end,
         })
@@ -87,7 +87,7 @@ return {
 
       Snacks.toggle
         .new({
-          name = 'Git [B]lame',
+          name = 'Git Blame',
           get = function() return require('gitsigns.config').config.current_line_blame end,
           set = function(state) require('gitsigns').toggle_current_line_blame(state) end,
         })
