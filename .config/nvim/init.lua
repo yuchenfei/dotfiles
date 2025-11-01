@@ -5,8 +5,6 @@ require('custom.lazy')
 
 -- [[ Configure and install plugins ]]
 require('lazy').setup({
-  'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
-
   -- local builtin = require('telescope.builtin')
   -- vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
   -- vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
@@ -183,22 +181,22 @@ require('lazy').setup({
           -- code, if the language server you are using supports them
           --
           -- This may be unwanted, since they displace some of your code
-          if
-            client
-            and client_supports_method(
-              client,
-              vim.lsp.protocol.Methods.textDocument_inlayHint,
-              event.buf
-            )
-          then
-            map(
-              '<leader>th',
-              function()
-                vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-              end,
-              '[T]oggle Inlay [H]ints'
-            )
-          end
+          -- if
+          --   client
+          --   and client_supports_method(
+          --     client,
+          --     vim.lsp.protocol.Methods.textDocument_inlayHint,
+          --     event.buf
+          --   )
+          -- then
+          --   map(
+          --     '<leader>th',
+          --     function()
+          --       vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+          --     end,
+          --     '[T]oggle Inlay [H]ints'
+          --   )
+          -- end
         end,
       })
 

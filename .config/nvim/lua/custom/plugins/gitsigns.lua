@@ -75,7 +75,7 @@ return {
           get = function() return require('gitsigns.config').config.signcolumn end,
           set = function(state) require('gitsigns').toggle_signs(state) end,
         })
-        :map('<leader>tg')
+        :map('<leader>tG')
 
       Snacks.toggle
         .new({
