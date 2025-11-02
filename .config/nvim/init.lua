@@ -1,8 +1,8 @@
-require('custom.options')
-require('custom.keymaps')
-require('custom.autocmds')
-require('custom.lazy')
-require('custom.lsp')
+require('config.options')
+require('config.keymaps')
+require('config.autocmds')
+require('config.lazy')
+require('config.lsp')
 
 -- [[ Configure and install plugins ]]
 require('lazy').setup({
@@ -227,7 +227,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  { import = 'custom.plugins' },
+  { import = 'plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
