@@ -7,10 +7,11 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    explorer = {},
-    indent = {},
-    lazygit = {},
-    picker = {},
+    explorer = { enabled = true },
+    indent = { enabled = true },
+    lazygit = { enabled = true },
+    picker = { enabled = true },
+    words = { enabled = true },
   },
   keys = {
     -- Top Pickers & Explorer
@@ -42,6 +43,7 @@ return {
     { '<leader>fr', function() Snacks.picker.recent() end, desc = 'Recent' },
     -- Git
     { '<leader>gg', function() Snacks.lazygit() end, desc = 'Lazygit' },
+    { '<leader>gx', function() Snacks.gitbrowse() end, desc = 'Git Browse', mode = { 'n', 'v' } },
     -- Grep
     { '<leader>sb', function() Snacks.picker.lines() end, desc = 'Grep Current Buffer' },
     { '<leader>sB', function() Snacks.picker.grep_buffers() end, desc = 'Grep Open Buffers' },

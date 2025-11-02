@@ -11,16 +11,17 @@ return {
         BS = '􁂉 ',
       },
     },
-
     -- Document existing key chains
     spec = {
       { '<leader>f', group = 'Find' },
       { '<leader>g', group = 'Git', mode = { 'n', 'v' }, icon = '' },
+      { '<leader>l', group = 'LSP' },
       { '<leader>s', group = 'Search' },
       { '<leader>t', group = 'Toggle' },
       { '[', group = 'Previous' },
       { ']', group = 'Next' },
       { 'g', group = 'Go to', icon = '󰿅' },
+      { 'ga', group = 'LSP: Calls' },
       { 'z', group = 'Fold' },
       -- better descriptions
       { 'gx', desc = 'Open with system app' },
