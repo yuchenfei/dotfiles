@@ -13,3 +13,6 @@ end
 ---@type vim.Option
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
+
+-- [[ Configure and install plugins ]]
+require('lazy').setup({ { import = 'plugins' } }, { ui = {} })

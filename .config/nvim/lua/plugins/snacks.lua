@@ -11,6 +11,7 @@ return {
     indent = { enabled = true },
     lazygit = { enabled = true },
     picker = { enabled = true },
+    scope = { enabled = true }, -- ii, ai, [i, ]i
     words = { enabled = true },
   },
   keys = {
