@@ -10,6 +10,7 @@ return {
     explorer = { enabled = true },
     indent = { enabled = true },
     lazygit = { enabled = true },
+    notifier = { enabled = true },
     picker = { enabled = true },
     scope = { enabled = true }, -- ii, ai, [i, ]i
     words = { enabled = true },
@@ -30,7 +31,7 @@ return {
     { '<leader>:', function() Snacks.picker.command_history() end, desc = 'Command History' },
     { '<leader><space>', function() Snacks.picker.smart() end, desc = 'Smart Find Files' },
     { '<leader>e', function() Snacks.explorer() end, desc = 'File Explorer' },
-    { '<leader>n', function() Snacks.picker.notifications() end, desc = 'Notification History' },
+    -- { '<leader>n', function() Snacks.picker.notifications() end, desc = 'Notification History' },
     -- Find
     { '<leader>fb', function() Snacks.picker.buffers() end, desc = 'Buffers' },
     {
