@@ -16,6 +16,7 @@ return {
       { '<leader>f', group = 'Find' },
       { '<leader>g', group = 'Git', mode = { 'n', 'v' }, icon = '' },
       { '<leader>l', group = 'LSP' },
+      { '<leader>q', group = 'Quit/Session' },
       { '<leader>s', group = 'Search' },
       { '<leader>t', group = 'Toggle' },
       { '[', group = 'Previous' },
@@ -25,6 +26,11 @@ return {
       { 'z', group = 'Fold' },
       -- better descriptions
       { 'gx', desc = 'Open with system app' },
+      {
+        '<leader>b',
+        group = 'Buffer',
+        expand = function() return require('which-key.extras').expand.buf() end,
+      },
     },
   },
   keys = {
