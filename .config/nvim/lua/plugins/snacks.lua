@@ -9,10 +9,12 @@ return {
   opts = {
     explorer = { enabled = true },
     indent = { enabled = true },
+    input = { enabled = true },
     lazygit = { enabled = true },
     notifier = { enabled = true },
     picker = { enabled = true },
     scope = { enabled = true }, -- ii, ai, [i, ]i
+    scroll = { enabled = true },
     words = { enabled = true },
   },
   keys = {
