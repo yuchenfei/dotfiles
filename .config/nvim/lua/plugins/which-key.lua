@@ -13,9 +13,11 @@ return {
     },
     -- Document existing key chains
     spec = {
+      { '<leader>a', group = 'Avante', icon = '󰚩' },
       { '<leader>f', group = 'Find' },
       { '<leader>g', group = 'Git', mode = { 'n', 'v' }, icon = '' },
-      { '<leader>l', group = 'LSP' },
+      { '<leader>l', group = 'LSP', icon = '' },
+      { '<leader>n', group = 'Noice' },
       { '<leader>q', group = 'Quit/Session' },
       { '<leader>s', group = 'Search' },
       { '<leader>t', group = 'Toggle' },
@@ -29,6 +31,7 @@ return {
       {
         '<leader>b',
         group = 'Buffer',
+        icon = '',
         expand = function() return require('which-key.extras').expand.buf() end,
       },
     },
