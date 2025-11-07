@@ -18,7 +18,7 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
     'MunifTanjim/nui.nvim',
-    'echasnovski/mini.icons',
+    'nvim-mini/mini.icons',
     'zbirenbaum/copilot.lua',
     {
       -- support for image pasting
