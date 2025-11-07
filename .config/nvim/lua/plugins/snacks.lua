@@ -11,11 +11,16 @@ return {
     indent = { enabled = true },
     input = { enabled = true },
     lazygit = { enabled = true },
-    notifier = { enabled = true },
+    notifier = { enabled = true, timeout = 5000, style = 'fancy' },
     picker = { enabled = true },
     scope = { enabled = true }, -- ii, ai, [i, ]i
     scroll = { enabled = true },
     words = { enabled = true },
+    styles = {
+      notification = {
+        wo = { wrap = true },
+      },
+    },
   },
   keys = {
     -- Top Pickers & Explorer
