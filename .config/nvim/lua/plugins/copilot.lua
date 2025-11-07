@@ -14,8 +14,8 @@ return {
       hide_during_completion = true,
       keymap = {
         accept = '<M-l>',
-        accept_word = '<M-w>',
-        accept_line = '<M-h>',
+        accept_word = '<M-h>',
+        accept_line = '<M-o>',
         next = '<M-]>',
         prev = '<M-[>',
         dismiss = '<C-]>',
