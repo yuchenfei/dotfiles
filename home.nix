@@ -250,6 +250,7 @@
     escapeTime = 10;
     historyLimit = 10000;
     extraConfig = ''
+      set -g default-terminal 'xterm-kitty'
       set -g status-position top
       set -g renumber-windows on
       set -g allow-passthrough on
