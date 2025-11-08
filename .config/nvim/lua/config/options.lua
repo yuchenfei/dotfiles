@@ -16,6 +16,7 @@ vim.o.confirm = true -- Confirm to save changes before exiting modified buffer
 vim.o.cursorline = true -- Show which line your cursor is on
 vim.o.ignorecase = true -- Case-insensitive searching UNLESS \C
 vim.o.inccommand = 'split' -- Preview substitutions live, as you type!
+vim.o.laststatus = 3 -- Global statusline
 vim.o.mouse = 'a' -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.number = true -- Make line numbers default
 vim.o.relativenumber = true -- You can also add relative line numbers, to help with jumping.
