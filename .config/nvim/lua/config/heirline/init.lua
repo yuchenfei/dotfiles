@@ -5,7 +5,7 @@
 -- Other Plugins:
 --  - https://github.com/linrongbin16/lsp-progress.nvim
 
-local conditions = require('heirline.conditions')
+local conditions = require('config.heirline.conditions')
 local utils = require('heirline.utils')
 
 -- https://github.com/catppuccin/nvim/blob/main/lua/catppuccin/palettes/mocha.lua
@@ -32,28 +32,47 @@ require('heirline').setup({
   },
   ---@diagnostic disable-next-line: missing-fields
   statusline = {
-    { c.Mode(), c.Space() },
-    { c.FileName(), c.Space() },
-    { c.Diagnostics(), c.Space() },
-    { c.Git(), c.Space() },
-    { c.FileSize(), c.Space() },
-    c.SearchCount(),
-    c.Align(),
-    c.MacroRec(),
-    c.Align(),
-    { c.ShowCmd(), c.Space() },
-    { c.LSPActive(), c.Space() },
+    hl = { bg = 'base' },
     {
-      c.FileType(),
-      c.Space(),
-      c.FileEncoding(),
-      c.Space(),
-      c.FileFormat(),
-      c.Space(),
+      c.Mode,
+      {
+        utils.surround({ ' ', ' ' }, nil, c.FileNameBlock),
+        hl = { bg = 'surface1' },
+      },
+      {
+        condition = conditions.is_git_repo,
+        utils.surround({ ' ', ' ' }, nil, {
+          c.GitBranch,
+          c.Space,
+          c.GitDiff,
+        }),
+        hl = { bg = 'surface0' },
+      },
+      c.Diagnostics,
+      c.Space,
+      c.SearchCount,
+    },
+    c.Align,
+    {
+      c.MacroRec,
+      c.ShowCmd,
+    },
+    c.Align,
+    { provider = '%<' }, -- this means that the statusline is cut here when there's not enough space
+    -- { c.LSPActive, c.Space },
+    {
+      c.FileSize,
+      c.Space,
+      c.FileEncoding,
+      c.Space,
+      c.FileFormat,
+      c.Space,
+      c.FileType,
+      c.Space,
     },
     {
-      c.Ruler(),
-      c.ScrollBar(),
+      c.Ruler,
+      c.ScrollBar,
     },
   },
 })
