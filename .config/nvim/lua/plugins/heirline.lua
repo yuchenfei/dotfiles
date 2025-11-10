@@ -5,6 +5,7 @@ return {
   dependencies = {
     'nvim-mini/mini.icons',
   },
+  enabled = false,
   event = { 'BufReadPre', 'BufNewFile' },
   config = function() require('config.heirline') end,
 }
