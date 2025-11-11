@@ -16,6 +16,9 @@ require('lualine').setup({
     globalstatus = vim.o.laststatus == 3,
     section_separators = '',
     component_separators = '',
+    disabled_filetypes = {
+      statusline = { 'snacks_dashboard' },
+    },
   },
   sections = {
     lualine_a = { 'mode' },

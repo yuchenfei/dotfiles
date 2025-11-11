@@ -1,5 +1,6 @@
--- https://github.com/folke/snacks.nvim
--- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/editor/snacks_picker.lua
+-- References:
+-- - https://github.com/folke/snacks.nvim
+-- - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/editor/snacks_picker.lua
 
 return {
   'folke/snacks.nvim',
@@ -19,6 +20,27 @@ return {
     styles = {
       notification = {
         wo = { wrap = true },
+      },
+    },
+    dashboard = {
+      enabled = true,
+      preset = {
+        -- stylua: ignore
+        keys = {
+          { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
+          { icon = '󰈞 ', key = 'f', desc = 'Find Files', action = ":lua Snacks.dashboard.pick('files')" },
+          { icon = ' ', key = 'r', desc = 'Recent Files', action = ":lua Snacks.dashboard.pick('oldfiles')" },
+          { icon = ' ', key = 's', desc = 'Restore Session', section = 'session' },
+          { icon = ' ', key = 'c', desc = 'Config', action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+          { icon = '󰒲 ', key = 'L', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
+          { icon = ' ', key = 'M', desc = 'Mason', action = ':Mason', enabled = package.loaded.lazy ~= nil },
+          { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
+        },
+      },
+      sections = {
+        { section = 'header' },
+        { section = 'keys', gap = 1, padding = 1 },
+        { section = 'startup' },
       },
     },
   },
