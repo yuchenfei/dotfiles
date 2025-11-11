@@ -1,5 +1,7 @@
 -- References:
+-- - https://github.com/nvim-lualine/lualine.nvim
 -- - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/ui.lua
+-- - https://github.com/AndreM222/copilot-lualine
 
 -- PERF: we don't need this lualine require madness 🤷
 local lualine_require = require('lualine_require')
@@ -57,7 +59,23 @@ require('lualine').setup({
         end,
         color = function() return { fg = palette.mauve } end,
       },
-      { 'copilot', show_colors = true },
+      {
+        'copilot',
+        symbols = {
+          status = {
+            hl = {
+              enabled = palette.green, -- #50FA7B
+              sleep = palette.sapphire, -- #AEB7D0
+              disabled = palette.overlay0, -- #6272A4
+              warning = palette.peach, -- #FFB86C
+              unknown = palette.red, -- #FF5555
+            },
+          },
+          spinners = 'dots_pulse',
+          spinner_color = palette.sapphire, -- #6272A4
+        },
+        show_colors = true,
+      },
       -- Conform formatter status
       -- - https://github.com/nvim-lualine/lualine.nvim/discussions/1153
       {
