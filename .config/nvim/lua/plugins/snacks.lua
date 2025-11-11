@@ -8,12 +8,14 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
+    bigfile = { enabled = true },
     explorer = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true },
     lazygit = { enabled = true },
     notifier = { enabled = true, timeout = 5000, style = 'fancy' },
     picker = { enabled = true },
+    quickfile = { enabled = true },
     scope = { enabled = true }, -- ii, ai, [i, ]i
     scroll = { enabled = true },
     words = { enabled = true },
@@ -61,6 +63,10 @@ return {
     { '<leader><space>', function() Snacks.picker.smart() end, desc = 'Smart Find Files' },
     { '<leader>e', function() Snacks.explorer() end, desc = 'File Explorer' },
     -- { '<leader>n', function() Snacks.picker.notifications() end, desc = 'Notification History' },
+    { '<leader>.', function() Snacks.scratch() end, desc = 'Toggle Scratch Buffer' },
+    { '<leader>S', function() Snacks.scratch.select() end, desc = 'Select Scratch Buffer' },
+    -- Terminal
+    { '<c-\\>', function() Snacks.terminal() end, desc = 'Terminal', mode = { 'n', 't' } },
     -- Find
     { '<leader>fb', function() Snacks.picker.buffers() end, desc = 'Buffers' },
     {

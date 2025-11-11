@@ -269,7 +269,12 @@
       bind -T copy-mode-vi L   send -X end-of-line
     '';
     plugins = with pkgs; [
-      tmuxPlugins.vim-tmux-navigator
+      {
+        plugin = tmuxPlugins.vim-tmux-navigator;
+        extraConfig = ''
+          set -g @vim_navigator_mapping_prev ""  # removes the C-\ binding
+        '';
+      }
     ];
   };
   catppuccin.tmux.extraConfig = ''
