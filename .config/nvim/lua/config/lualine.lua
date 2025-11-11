@@ -28,11 +28,15 @@ require('lualine').setup({
       },
     },
     lualine_c = {
-      { 'branch', color = { fg = palette.peach, gui = 'bold' } },
+      {
+        'branch',
+        color = { fg = palette.peach, bg = palette.surface1, gui = 'bold' },
+      },
       {
         'diff',
         padding = { left = 0, right = 1 },
         symbols = { added = ' ', modified = ' ', removed = ' ' },
+        color = { bg = palette.surface1 },
         source = function()
           local gitsigns = vim.b.gitsigns_status_dict
           if gitsigns then
