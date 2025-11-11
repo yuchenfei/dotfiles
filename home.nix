@@ -40,11 +40,12 @@
     switchaudio-osx
 
     # Development tools
+    # clang  # This will cause cargo install errors
+    fnm
+    gnumake
     neovim
     nixfmt-rfc-style
-    clang
-    gnumake
-    fnm
+    statix
   ];
 
   home.file.".config/nvim".source =

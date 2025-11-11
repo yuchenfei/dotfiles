@@ -5,5 +5,7 @@ require('mason-tool-installer').setup({
     -- Lua
     'lua_ls',
     'stylua',
+    -- Nix
+    'nil_ls',
   },
 })

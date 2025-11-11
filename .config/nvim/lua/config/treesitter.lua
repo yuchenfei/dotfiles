@@ -12,6 +12,7 @@ require('nvim-treesitter').setup({
     'luadoc',
     'markdown',
     'markdown_inline',
+    'nix',
     'query',
     'vim',
     'vimdoc',

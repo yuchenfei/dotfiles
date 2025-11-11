@@ -1,6 +1,7 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/lua_ls.lua
 -- https://github.com/LuaLS/lua-language-server/wiki/Settings
 
+---@type vim.lsp.Config
 return {
   cmd = { 'lua-language-server' },
   filetypes = { 'lua' },

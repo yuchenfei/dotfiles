@@ -5,6 +5,7 @@
 require('conform').setup({
   formatters_by_ft = {
     lua = { 'stylua' },
+    nix = { 'nixfmt' }, -- Installed via nixpkgs
     -- Conform will run multiple formatters sequentially
     -- python = { 'isort', 'black' },
     -- You can customize some of the format options for the filetype (:help conform.format)
