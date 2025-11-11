@@ -4,24 +4,19 @@
 
 return {
   {
+    'mason-org/mason.nvim',
+    build = ':MasonUpdate',
+    cmd = 'Mason',
+    keys = { { '<leader>lm', '<cmd>Mason<cr>', desc = 'Mason' } },
+    opts = {},
+  },
+  {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     dependencies = {
-      {
-        'mason-org/mason.nvim',
-        keys = {
-          { '<leader>lm', function() require('mason.ui').open() end, desc = 'Mason' },
-        },
-        opts = {},
-      },
+      'mason-org/mason.nvim',
       -- can be installed for the option to use lspconfig names instead of Mason names.
       'mason-org/mason-lspconfig.nvim',
     },
-    opts = {
-      ensure_installed = {
-        -- Lua
-        'lua_ls',
-        'stylua',
-      },
-    },
+    config = function() require('config.mason') end,
   },
 }
