@@ -14,7 +14,6 @@ return {
     input = { enabled = true },
     lazygit = { enabled = true },
     notifier = { enabled = true, timeout = 5000, style = 'fancy' },
-    picker = { enabled = true },
     quickfile = { enabled = true },
     scope = { enabled = true }, -- ii, ai, [i, ]i
     scroll = { enabled = true },
@@ -22,6 +21,14 @@ return {
     styles = {
       notification = {
         wo = { wrap = true },
+      },
+    },
+    picker = {
+      enabled = true,
+      sources = {
+        explorer = {
+          hidden = true,
+        },
       },
     },
     dashboard = {
