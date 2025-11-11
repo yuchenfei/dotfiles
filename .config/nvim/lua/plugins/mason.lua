@@ -6,7 +6,13 @@ return {
   {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     dependencies = {
-      { 'mason-org/mason.nvim', opts = {} },
+      {
+        'mason-org/mason.nvim',
+        keys = {
+          { '<leader>lm', function() require('mason.ui').open() end, desc = 'Mason' },
+        },
+        opts = {},
+      },
       -- can be installed for the option to use lspconfig names instead of Mason names.
       'mason-org/mason-lspconfig.nvim',
     },

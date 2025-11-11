@@ -39,7 +39,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     map('<leader>la', vim.lsp.buf.code_action, 'Code Action', { 'n', 'x' })
     map('<leader>lc', vim.lsp.codelens.run, 'Run Codelens', { 'n', 'x' })
     map('<leader>lC', vim.lsp.codelens.refresh, 'Refresh & Display Codelens')
-    map('<leader>ll', function() Snacks.picker.lsp_config() end, 'Lsp Info')
+    map('<leader>li', function() Snacks.picker.lsp_config() end, 'Lsp Info')
     map('<leader>lr', vim.lsp.buf.rename, 'Rename')
     map('<leader>lR', function() Snacks.rename.rename_file() end, 'Rename File')
     map('<leader>ls', function() Snacks.picker.lsp_symbols() end, 'LSP Symbols')
