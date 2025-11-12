@@ -116,6 +116,8 @@
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
 
+      fish_add_path ~/.local/bin
+
       if type -q fastfetch
         fastfetch
       end
