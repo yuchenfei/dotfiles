@@ -1,6 +1,7 @@
 -- References:
 -- - https://github.com/folke/snacks.nvim
 -- - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/editor/snacks_picker.lua
+-- - https://linkarzu.com/posts/neovim/snacks-picker/
 
 return {
   'folke/snacks.nvim',
@@ -23,9 +24,20 @@ return {
         wo = { wrap = true },
       },
     },
+    -- https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
     picker = {
       enabled = true,
       sources = {
+        buffers = {
+          win = {
+            input = {
+              keys = {
+                ['d'] = 'bufdelete',
+              },
+            },
+            list = { keys = { ['d'] = 'bufdelete' } },
+          },
+        },
         explorer = {
           hidden = true,
         },
