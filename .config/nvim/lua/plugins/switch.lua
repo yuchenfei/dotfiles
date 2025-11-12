@@ -2,6 +2,7 @@
 -- - https://github.com/AndrewRadev/switch.vim
 -- - https://github.com/AndrewRadev/switch.vim/wiki
 
+--- @type LazySpec
 return {
   'AndrewRadev/switch.vim',
   cmd = { 'Switch' },

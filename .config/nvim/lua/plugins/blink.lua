@@ -3,6 +3,7 @@
 -- - https://github.com/rafamadriz/friendly-snippets
 -- - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/coding/blink.lua
 
+--- @type LazySpec
 return {
   'saghen/blink.cmp',
   version = '1.*',
@@ -81,7 +82,7 @@ return {
       },
     },
     sources = {
-      default = { 'lsp', 'buffer', 'snippets', 'path', 'copilot' },
+      default = { 'lsp', 'buffer', 'snippets', 'path', 'copilot', 'lazydev' },
       per_filetype = {
         lua = { inherit_defaults = true, 'lazydev' },
       },

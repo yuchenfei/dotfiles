@@ -4,6 +4,7 @@
 --  - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/treesitter.lua
 --  - https://github.com/nvim-treesitter/nvim-treesitter-context
 
+--- @type LazySpec
 return {
   {
     'nvim-treesitter/nvim-treesitter',
