@@ -46,6 +46,7 @@
     neovim
     nixfmt-rfc-style
     statix
+    uv
   ];
 
   home.file.".config/nvim".source =
@@ -74,12 +75,14 @@
 
   programs.lazygit = {
     enable = true;
+    # https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+    # https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md
     settings = {
-      # https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
-      git.paging = {
-        colorArg = "always";
-        pager = "delta --dark --paging=never";
-      };
+      git.pagers = [
+        {
+          pager = "delta --dark --paging=never";
+        }
+      ];
     };
   };
 
@@ -99,26 +102,6 @@
   };
   programs.fish = {
     enable = true;
-    interactiveShellInit = ''
-      set fish_greeting # Disable greeting
-
-      if type -q fastfetch
-        fastfetch
-      end
-
-      if type -q fnm
-        fnm env --use-on-cd --shell fish | source
-      end
-    '';
-    plugins =
-      map
-        (n: {
-          name = n;
-          src = pkgs.fishPlugins.${n}.src;
-        })
-        [
-          "fzf-fish"
-        ];
     shellAbbrs = {
       drs = "sudo darwin-rebuild switch";
       ff = "fastfetch";
@@ -130,6 +113,30 @@
       nix-clean = "sudo nix-collect-garbage --delete-older-than 7d && nix-collect-garbage --delete-older-than 7d";
       nix-optimise = "nix-store --optimise";
     };
+    interactiveShellInit = ''
+      set fish_greeting # Disable greeting
+
+      if type -q fastfetch
+        fastfetch
+      end
+
+      if type -q fnm
+        fnm env --use-on-cd --shell fish | source
+      end
+    '';
+    completions = {
+      uv = "uv generate-shell-completion fish | source";
+      uvx = "uvx --generate-shell-completion fish | source";
+    };
+    plugins =
+      map
+        (n: {
+          name = n;
+          src = pkgs.fishPlugins.${n}.src;
+        })
+        [
+          "fzf-fish"
+        ];
   };
 
   catppuccin.starship.enable = false;
