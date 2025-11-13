@@ -1,29 +1,45 @@
--- See `:help nvim-treesitter`
--- Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
+-- https://github.com/nvim-treesitter/nvim-treesitter/blob/main/README.md
 
----@diagnostic disable-next-line: redundant-parameter
-require('nvim-treesitter').setup({
-  ensure_installed = {
-    'bash',
-    'c',
-    'diff',
-    'html',
-    'lua',
-    'luadoc',
-    'markdown',
-    'markdown_inline',
-    'nix',
-    'query',
-    'vim',
-    'vimdoc',
-  },
-  auto_install = true,
-  highlight = {
-    enable = true,
-    -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-    --  If you are experiencing weird indenting issues, add the language to
-    --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-    additional_vim_regex_highlighting = { 'ruby' },
-  },
-  indent = { enable = true, disable = { 'ruby' } },
+local TS = require('nvim-treesitter')
+
+TS.setup({
+  -- Directory to install parsers and queries to
+  install_dir = vim.fn.stdpath('data') .. '/site',
+})
+
+local ensure_installed = {
+  'bash',
+  'c',
+  'diff',
+  'html',
+  'latex',
+  'lua',
+  'luadoc',
+  'markdown',
+  'markdown_inline',
+  'nix',
+  'query',
+  'vim',
+  'vimdoc',
+  'yaml',
+}
+
+local installed = TS.get_installed()
+local install = vim.tbl_filter(
+  function(lang) return not vim.tbl_contains(installed, lang) end,
+  ensure_installed
+)
+if #install > 0 then TS.install(install, { summary = true }) end
+
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('treesitter', { clear = true }),
+  callback = function(args)
+    local filetype = args.match
+
+    if filetype == '' then return end
+
+    local lang = vim.treesitter.language.get_lang(filetype)
+
+    if vim.tbl_contains(TS.get_installed(), lang) then pcall(vim.treesitter.start, args.buf) end
+  end,
 })
