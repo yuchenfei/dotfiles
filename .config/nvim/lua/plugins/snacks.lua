@@ -11,6 +11,7 @@ return {
   opts = {
     bigfile = { enabled = true },
     explorer = { enabled = true },
+    image = { enabled = true, doc = { inline = false, max_width = 80, max_height = 20 } },
     indent = { enabled = true },
     input = { enabled = true },
     lazygit = { enabled = true },

@@ -1,7 +1,7 @@
 require('config.options')
+require('config.lazy')
 require('config.keymaps')
 require('config.autocmds')
-require('config.lazy')
 require('config.lsp')
 
 -- The line beneath this is called `modeline`. See `:help modeline`

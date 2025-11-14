@@ -4,14 +4,29 @@
 
 require('conform').setup({
   formatters_by_ft = {
+    json = { 'prettierd' },
+    jsonc = { 'prettierd' },
     lua = { 'stylua' },
     nix = { 'nixfmt' }, -- Installed via nixpkgs
+    ['markdown'] = { 'prettier', 'markdownlint-cli2' },
+    ['markdown.mdx'] = { 'prettier', 'markdownlint-cli2' },
     -- Conform will run multiple formatters sequentially
     -- python = { 'isort', 'black' },
     -- You can customize some of the format options for the filetype (:help conform.format)
     -- rust = { 'rustfmt', lsp_format = 'fallback' },
     -- Conform will run the first available formatter
     -- javascript = { 'prettierd', 'prettier', stop_after_first = true },
+  },
+  formatters = {
+    ['markdownlint-cli2'] = {
+      condition = function(_, ctx)
+        local diag = vim.tbl_filter(
+          function(d) return d.source == 'markdownlint' end,
+          vim.diagnostic.get(ctx.buf)
+        )
+        return #diag > 0
+      end,
+    },
   },
   -- There is a similar affordance for format_after_save, which uses BufWritePost.
   -- This is good for formatters that are too slow to run synchronously.

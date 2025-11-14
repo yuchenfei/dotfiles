@@ -1,6 +1,7 @@
 -- References:
---  - https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
---  - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- - https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
+-- - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- - https://github.com/folke/snacks.nvim/blob/main/docs/keymap.md
 
 -- [[ Basic Keymaps ]]
 
@@ -29,9 +30,12 @@ vim.keymap.set('v', '<A-j>', ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=g
 vim.keymap.set('v', '<A-k>', ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = 'Move Up' })
 
 -- Lua
-vim.keymap.set('n', '<space>X', '<cmd>source %<cr>', { desc = 'Run this lua file' })
-vim.keymap.set('n', '<space>x', ':.lua<cr>', { desc = 'Run this line' })
-vim.keymap.set('v', '<space>x', ':lua<cr>', { desc = 'Run selection' })
+Snacks.keymap.set(
+  'n',
+  '<localleader>r',
+  function() vim.cmd.source() end,
+  { ft = 'lua', desc = 'Run Lua File' }
+)
 
 -- [[ Buffers Keymaps ]]
 

@@ -91,7 +91,7 @@ return {
       default = { 'lsp', 'buffer', 'snippets', 'path', 'copilot' },
       per_filetype = {
         text = { 'dictionary' },
-        markdown = { 'thesaurus' },
+        markdown = { inherit_defaults = true, 'thesaurus' },
         lua = { inherit_defaults = true, 'lazydev' },
       },
       providers = {
