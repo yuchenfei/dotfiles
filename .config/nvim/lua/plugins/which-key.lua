@@ -5,7 +5,7 @@ return {
   'folke/which-key.nvim',
   event = 'VimEnter',
   opts = {
-    preset = 'modern',
+    preset = 'helix',
     icons = {
       keys = {
         BS = '􁂉 ',
@@ -17,6 +17,7 @@ return {
       { '<leader>f', group = 'Find' },
       { '<leader>g', group = 'Git', mode = { 'n', 'v' }, icon = '' },
       { '<leader>l', group = 'LSP', icon = '' },
+      { '<leader>m', group = 'Markdown', icon = '󰍔' },
       { '<leader>n', group = 'Noice' },
       { '<leader>q', group = 'Quit/Session' },
       { '<leader>s', group = 'Search' },

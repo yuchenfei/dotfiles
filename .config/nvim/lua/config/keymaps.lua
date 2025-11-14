@@ -37,6 +37,14 @@ Snacks.keymap.set(
   { ft = 'lua', desc = 'Run Lua File' }
 )
 
+-- Markdown
+Snacks.keymap.set(
+  'n',
+  '<localleader>mp',
+  function() require('util.auto-link-title').insert_markdown_url() end,
+  { ft = 'markdown', desc = 'Paste URL with Title' }
+)
+
 -- [[ Buffers Keymaps ]]
 
 vim.keymap.set('n', '<S-h>', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
