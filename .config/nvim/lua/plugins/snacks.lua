@@ -84,7 +84,7 @@ return {
     { '<leader>/', function() Snacks.picker.grep() end, desc = 'Grep' },
     { '<leader>:', function() Snacks.picker.command_history() end, desc = 'Command History' },
     { '<leader><space>', function() Snacks.picker.smart() end, desc = 'Smart Find Files' },
-    { '<leader>e', function() Snacks.explorer() end, desc = 'File Explorer' },
+    { '<leader>E', function() Snacks.explorer() end, desc = 'File Explorer' },
     -- { '<leader>n', function() Snacks.picker.notifications() end, desc = 'Notification History' },
     { '<leader>.', function() Snacks.scratch() end, desc = 'Toggle Scratch Buffer' },
     { '<leader>S', function() Snacks.scratch.select() end, desc = 'Select Scratch Buffer' },
