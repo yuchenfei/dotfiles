@@ -4,8 +4,8 @@
 
 require('conform').setup({
   formatters_by_ft = {
-    json = { 'prettierd' },
-    jsonc = { 'prettierd' },
+    json = { 'prettier' },
+    jsonc = { 'prettier' },
     lua = { 'stylua' },
     nix = { 'nixfmt' }, -- Installed via nixpkgs
     ['markdown'] = { 'prettier', 'markdownlint-cli2' },
@@ -18,6 +18,14 @@ require('conform').setup({
     -- javascript = { 'prettierd', 'prettier', stop_after_first = true },
   },
   formatters = {
+    prettier = {
+      -- https://prettier.io/docs/options
+      prepend_args = {
+        '--single-quote',
+        '--prose-wrap',
+        'always',
+      },
+    },
     ['markdownlint-cli2'] = {
       condition = function(_, ctx)
         local diag = vim.tbl_filter(

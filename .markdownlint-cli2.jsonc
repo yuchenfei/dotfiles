@@ -1,5 +1,6 @@
 // https://github.com/DavidAnson/markdownlint/blob/v0.39.0/README.md#configuration
 // https://github.com/DavidAnson/markdownlint-cli2/blob/main/test/markdownlint-cli2-jsonc-example/.markdownlint-cli2.jsonc
+// https://github.com/DavidAnson/markdownlint/blob/v0.39.0/schema/.markdownlint.jsonc
 {
   "config": {
     "MD013": false, // Line length
