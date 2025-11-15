@@ -87,6 +87,7 @@ require('render-markdown').setup({
       scope_highlight = 'RenderMarkdownWikiLink',
     },
     custom = {
+      web = { pattern = '^http', icon = '󰾔 ' },
       github = { pattern = 'github', icon = '󰊤 ' },
       gitlab = { pattern = 'gitlab', icon = '󰮠 ' },
       youtube = { pattern = 'youtube', icon = '󰗃 ' },
