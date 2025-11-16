@@ -1,4 +1,4 @@
--- [[ LSP language specific settings ]]
+-- [[ LSP language specific config ]]
 -- - https://github.com/neovim/nvim-lspconfig
 
 -- Lua LSP
@@ -65,7 +65,7 @@ vim.lsp.enable('marksman')
 -- - https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#basedpyright
 vim.lsp.enable('basedpyright')
 
--- [[ Common LSP settings ]]
+-- [[ Common LSP config ]]
 --
 -- References:
 -- - https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
@@ -146,33 +146,67 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
--- Diagnostic Config
+-- [[ Diagnostics config ]]
+local diagnostic_signs = {
+  [vim.diagnostic.severity.ERROR] = '󰅚 ',
+  [vim.diagnostic.severity.WARN] = '󰀪 ',
+  [vim.diagnostic.severity.HINT] = '󰌶 ',
+  [vim.diagnostic.severity.INFO] = '󰋽 ',
+}
+
+local shorter_source_names = {
+  ['Lua Diagnostics.'] = 'Lua',
+  ['Lua Syntax Check.'] = 'Lua',
+}
+
+local function diagnostic_format(diagnostic)
+  return string.format(
+    '%s %s: %s [%s]',
+    diagnostic_signs[diagnostic.severity],
+    shorter_source_names[diagnostic.source] or diagnostic.source,
+    diagnostic.message,
+    diagnostic.code
+  )
+end
+
+local virtual_text_config = {
+  -- severity = { min = 'INFO', max = 'WARN' },
+  -- source = 'if_many',
+  spacing = 2,
+  prefix = '◍',
+}
+
+local virtual_lines_config = {
+  -- severity = { min = 'ERROR' },
+  current_line = true,
+  format = diagnostic_format,
+}
+
+vim.keymap.set('n', '<leader>lk', function()
+  vim.diagnostic.config({ virtual_lines = virtual_lines_config, virtual_text = false })
+  vim.api.nvim_create_autocmd('CursorMoved', {
+    group = vim.api.nvim_create_augroup('line-diagnostics', { clear = true }),
+    callback = function()
+      vim.diagnostic.config({ virtual_lines = false, virtual_text = virtual_text_config })
+    end,
+  })
+end)
+
 -- See :help vim.diagnostic.Opts
 vim.diagnostic.config({
-  severity_sort = true,
-  float = { border = 'rounded', source = 'if_many' },
-  underline = { severity = vim.diagnostic.severity.ERROR },
-  signs = vim.g.have_nerd_font and {
-    text = {
-      [vim.diagnostic.severity.ERROR] = '󰅚 ',
-      [vim.diagnostic.severity.WARN] = '󰀪 ',
-      [vim.diagnostic.severity.INFO] = '󰋽 ',
-      [vim.diagnostic.severity.HINT] = '󰌶 ',
-    },
-  } or {},
-  virtual_text = {
-    source = 'if_many',
-    spacing = 2,
-    format = function(diagnostic)
-      local diagnostic_message = {
-        [vim.diagnostic.severity.ERROR] = diagnostic.message,
-        [vim.diagnostic.severity.WARN] = diagnostic.message,
-        [vim.diagnostic.severity.INFO] = diagnostic.message,
-        [vim.diagnostic.severity.HINT] = diagnostic.message,
-      }
-      return diagnostic_message[diagnostic.severity]
-    end,
+  -- underline = { severity = vim.diagnostic.severity.ERROR },
+  virtual_text = virtual_text_config,
+  virtual_lines = false,
+  signs = { text = diagnostic_signs },
+  float = {
+    header = '',
+    -- source = true,
+    format = diagnostic_format,
+    suffix = '',
+    border = 'rounded',
   },
+  -- update_in_insert = true,
+  severity_sort = true,
 })
 
 -- Commands
