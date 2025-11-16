@@ -61,6 +61,10 @@ vim.lsp.enable('nil_ls')
 -- - https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#marksman
 vim.lsp.enable('marksman')
 
+-- Python LSP
+-- - https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#basedpyright
+vim.lsp.enable('basedpyright')
+
 -- [[ Common LSP settings ]]
 --
 -- References:

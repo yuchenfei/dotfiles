@@ -5,9 +5,9 @@
 local lint = require('lint')
 
 lint.linters_by_ft = {
-  nix = { 'statix' }, -- Installed via nixpkgs
-  -- https://github.com/DavidAnson/markdownlint-cli2
   markdown = { 'markdownlint-cli2' },
+  nix = { 'statix' }, -- Installed via nixpkgs
+  python = { 'ruff' },
 }
 
 local linters = {}

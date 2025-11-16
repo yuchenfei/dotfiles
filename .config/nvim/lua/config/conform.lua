@@ -1,30 +1,37 @@
--- https://github.com/stevearc/conform.nvim
--- https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md
--- https://www.reddit.com/r/neovim/comments/1j55o9c/share_your_custom_toggles_using_snacks_toggle/
+-- References:
+-- - https://github.com/stevearc/conform.nvim
+-- - https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md
+-- - https://www.reddit.com/r/neovim/comments/1j55o9c/share_your_custom_toggles_using_snacks_toggle/
 
 require('conform').setup({
   formatters_by_ft = {
     json = { 'prettier' },
     jsonc = { 'prettier' },
     lua = { 'stylua' },
+    markdown = { 'prettier', 'markdownlint-cli2', 'injected' },
     nix = { 'nixfmt' }, -- Installed via nixpkgs
-    ['markdown'] = { 'prettier', 'markdownlint-cli2' },
-    ['markdown.mdx'] = { 'prettier', 'markdownlint-cli2' },
-    -- Conform will run multiple formatters sequentially
-    -- python = { 'isort', 'black' },
-    -- You can customize some of the format options for the filetype (:help conform.format)
-    -- rust = { 'rustfmt', lsp_format = 'fallback' },
-    -- Conform will run the first available formatter
-    -- javascript = { 'prettierd', 'prettier', stop_after_first = true },
+    python = {
+      -- To fix auto-fixable lint errors.
+      'ruff_fix',
+      -- To run the Ruff formatter.
+      'ruff_format',
+      -- To organize the imports.
+      'ruff_organize_imports',
+    },
+    -- Use the "*" filetype to run formatters on all filetypes.
+    -- ['*'] = { 'codespell' },
+    -- Use the "_" filetype to run formatters on filetypes that don't
+    -- have other formatters configured.
+    -- ['_'] = { 'trim_whitespace' },
+  },
+  default_format_opts = {
+    lsp_format = 'fallback',
   },
   formatters = {
+    injected = { options = { ignore_errors = true } },
     prettier = {
       -- https://prettier.io/docs/options
-      prepend_args = {
-        '--single-quote',
-        '--prose-wrap',
-        'always',
-      },
+      prepend_args = { '--prose-wrap', 'always' },
     },
     ['markdownlint-cli2'] = {
       condition = function(_, ctx)
@@ -46,8 +53,8 @@ require('conform').setup({
     if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then return end
     -- Disable autoformat for files in a certain path
     local bufname = vim.api.nvim_buf_get_name(bufnr)
-    -- ...additional logic...
     if bufname:match('/node_modules/') then return end
+    -- ...additional logic...
     return { lsp_format = 'fallback' }
   end,
   notify_on_error = false,

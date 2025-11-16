@@ -11,6 +11,9 @@ require('mason-tool-installer').setup({
     'nil_ls',
     -- Markdown
     'marksman',
-    'markdownlint-cli2',
+    'markdownlint-cli2', -- https://github.com/DavidAnson/markdownlint-cli2
+    -- Python
+    'basedpyright',
+    'ruff', -- https://docs.astral.sh/ruff/editors/setup/
   },
 })
