@@ -96,9 +96,17 @@ require('lualine').setup({
           local formatters = conform.list_formatters_for_buffer()
           if formatters and #formatters > 0 then
             local formatterNames = {}
+            local uniqueFormatters = {}
 
             for _, formatter in ipairs(formatters) do
-              table.insert(formatterNames, formatter)
+              -- simplify formatter names
+              if vim.startswith(formatter, 'ruff_') then formatter = 'ruff' end
+              if formatter == 'injected' then break end
+
+              if not uniqueFormatters[formatter] then
+                uniqueFormatters[formatter] = true
+                table.insert(formatterNames, formatter)
+              end
             end
 
             return '󰷈 ' .. table.concat(formatterNames, ' ')
