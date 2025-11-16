@@ -1,9 +1,11 @@
 -- References:
 -- - https://github.com/stevearc/conform.nvim
 -- - https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md
+-- - https://github.com/stevearc/conform.nvim/blob/master/doc/formatter_options.md
 -- - https://www.reddit.com/r/neovim/comments/1j55o9c/share_your_custom_toggles_using_snacks_toggle/
 
 require('conform').setup({
+  -- log_level = vim.log.levels.DEBUG,
   formatters_by_ft = {
     json = { 'prettier' },
     jsonc = { 'prettier' },
@@ -28,7 +30,19 @@ require('conform').setup({
     lsp_format = 'fallback',
   },
   formatters = {
-    injected = { options = { ignore_errors = true } },
+    injected = {
+      options = {
+        ignore_errors = true,
+        -- injected format always raise a lsp error: _changetracking.lua:154: Invalid buffer id:
+        -- I thinks it's caused by making temp buffer for injected formatter.
+        lang_to_ext = {
+          python = '', -- HACK: this will not activate python lsp
+        },
+        lang_to_formatters = {
+          python = { 'ruff_format', 'ruff_organize_imports' },
+        },
+      },
+    },
     prettier = {
       -- https://prettier.io/docs/options
       prepend_args = { '--prose-wrap', 'always' },
@@ -55,7 +69,7 @@ require('conform').setup({
     local bufname = vim.api.nvim_buf_get_name(bufnr)
     if bufname:match('/node_modules/') then return end
     -- ...additional logic...
-    return { lsp_format = 'fallback' }
+    return {}
   end,
   notify_on_error = false,
 })

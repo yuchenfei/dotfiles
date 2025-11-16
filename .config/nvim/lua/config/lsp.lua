@@ -1,8 +1,9 @@
 -- [[ LSP language specific config ]]
 -- - https://github.com/neovim/nvim-lspconfig
 
--- Lua LSP
--- - https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
+-- vim.lsp.set_log_level('debug')
+
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
 vim.lsp.config('lua_ls', {
   on_init = function(client)
     if client.workspace_folders then
@@ -51,19 +52,28 @@ vim.lsp.config('lua_ls', {
     Lua = {},
   },
 })
-vim.lsp.enable('lua_ls')
 
--- Nix LSP
--- - https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#nil_ls
-vim.lsp.enable('nil_ls')
+-- - https://docs.basedpyright.com/latest/configuration/language-server-settings/
+vim.lsp.config('basedpyright', {
+  settings = {
+    basedpyright = {
+      -- Using Ruff's import organizer
+      disableOrganizeImports = false,
+    },
+  },
+})
 
--- Markdown LSP
--- - https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#marksman
-vim.lsp.enable('marksman')
+local lsp_servers = {
+  'basedpyright', -- Python https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#basedpyright
+  'lua_ls', -- Lua https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
+  'marksman', -- Markdown https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#marksman
+  'nil_ls', -- Nix https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#nil_ls
+  -- 'pyrefly', -- Python https://github.com/neovim/nvim-lspconfig/blob/master/lsp/pyrefly.lua
+}
 
--- Python LSP
--- - https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#basedpyright
-vim.lsp.enable('basedpyright')
+for _, server in ipairs(lsp_servers) do
+  vim.lsp.enable(server)
+end
 
 -- [[ Common LSP config ]]
 --
