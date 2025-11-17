@@ -1,11 +1,42 @@
 -- References:
 -- - https://github.com/nvim-mini/mini.files
+-- - https://github.com/nvim-mini/mini.files/blob/main/lua/mini/files.lua
 -- - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/editor/mini-files.lua
 
 local function is_file(buf_name)
   if buf_name == '' then return false end
   if vim.fn.filereadable(buf_name) == 0 then return false end
   return true
+end
+
+local compare_fs_entries = function(a, b)
+  -- Put directory first
+  if a.is_dir and not b.is_dir then return true end
+  if not a.is_dir and b.is_dir then return false end
+
+  -- Otherwise order alphabetically with case
+  return a.name < b.name
+end
+
+local sort = function(fs_entries)
+  local res = vim.tbl_map(
+    function(x)
+      return {
+        fs_type = x.fs_type,
+        name = x.name,
+        path = x.path,
+        is_dir = x.fs_type == 'directory',
+      }
+    end,
+    fs_entries
+  )
+
+  table.sort(res, compare_fs_entries)
+
+  return vim.tbl_map(
+    function(x) return { name = x.name, fs_type = x.fs_type, path = x.path } end,
+    res
+  )
 end
 
 ---@type LazySpec
@@ -24,6 +55,9 @@ return {
     },
   },
   opts = {
+    content = {
+      sort = sort,
+    },
     mappings = {
       close = 'q',
       go_in_plus = 'l',
