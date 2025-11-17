@@ -343,7 +343,7 @@
       macos_option_as_alt = "both";
     };
     keybindings = {
-      "cmd+s" = "send_text all \e:w\\r";
+      # "cmd+s" = "send_text all \e:w\\r";
     };
   };
 

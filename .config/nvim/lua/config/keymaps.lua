@@ -5,6 +5,10 @@
 
 -- [[ Basic Keymaps ]]
 
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<cr>') -- Clear highlights on search when <Esc>
+vim.keymap.set('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit All' })
+vim.keymap.set('n', '<leader>w', '<cmd>w<cr>', { desc = 'Write' })
+
 -- Better up/down
 -- stylua: ignore start
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { desc = 'Down', expr = true, silent = true })
@@ -12,12 +16,6 @@ vim.keymap.set('x', 'j', "v:count == 0 ? 'gj' : 'j'", { desc = 'Down', expr = tr
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { desc = 'Up', expr = true, silent = true })
 vim.keymap.set('x', 'k', "v:count == 0 ? 'gk' : 'k'", { desc = 'Up', expr = true, silent = true })
 -- stylua: ignore end
-
--- Clear highlights on search when <Esc>
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-
--- Quit
-vim.keymap.set('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit All' })
 
 -- Move Lines
 vim.keymap.set('n', '<A-j>', "<cmd>execute 'move .+' . v:count1<cr>==", { desc = 'Move Down' })
@@ -65,8 +63,8 @@ Snacks.keymap.set(
 
 -- [[ Buffers Keymaps ]]
 
-vim.keymap.set('n', '<S-h>', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
-vim.keymap.set('n', '<S-l>', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
+-- vim.keymap.set('n', '<S-h>', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
+-- vim.keymap.set('n', '<S-l>', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
 vim.keymap.set('n', '[b', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
 vim.keymap.set('n', ']b', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
 vim.keymap.set('n', '<leader>bb', '<cmd>e #<cr>', { desc = 'Switch to Other Buffer' })
@@ -90,3 +88,8 @@ vim.keymap.set('n', '<C-Up>', '<cmd>resize +2<cr>', { desc = 'Increase Window He
 vim.keymap.set('n', '<C-Down>', '<cmd>resize -2<cr>', { desc = 'Decrease Window Height' })
 vim.keymap.set('n', '<C-Left>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease Window Width' })
 vim.keymap.set('n', '<C-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increase Window Width' })
+
+-- [[ Tab Keymaps ]]
+vim.keymap.set('n', 'L', 'gt', { noremap = true, desc = 'Go to next tab' })
+vim.keymap.set('n', 'H', 'gT', { noremap = true, desc = 'Go to prev tab' })
+vim.keymap.set('n', '<C-w><C-t>', '<cmd>tab split<cr>', { desc = 'Open current buffer in new tab' })

@@ -2,13 +2,50 @@
 -- - https://github.com/nvim-mini/mini.files
 -- - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/editor/mini-files.lua
 
+local function is_file(buf_name)
+  if buf_name == '' then return false end
+  if vim.fn.filereadable(buf_name) == 0 then return false end
+  return true
+end
+
 ---@type LazySpec
 return {
   'nvim-mini/mini.files',
   keys = {
-    { '<leader>e', function() require('mini.files').open() end, desc = 'Explorer MiniFiles' },
+    {
+      '<leader>e',
+      function()
+        if not require('mini.files').get_explorer_state() then
+          local buf_name = vim.api.nvim_buf_get_name(0)
+          require('mini.files').open(is_file(buf_name) and buf_name or nil)
+        end
+      end,
+      desc = 'Explorer MiniFiles',
+    },
   },
   opts = {
+    mappings = {
+      close = 'q',
+      go_in_plus = 'l',
+      go_in = 'L',
+      go_out_plus = 'h',
+      go_out = 'H',
+      go_in_horizontal = '<C-s>', -- custom
+      go_in_vertical = '<C-v>', -- custom
+      go_in_tab = '<C-t>', -- custom
+      mark_goto = "'",
+      mark_set = 'm',
+      reset = '<BS>',
+      reveal_cwd = '@',
+      change_cwd = 'g~', -- custom
+      toggle_hidden = 'g.', -- custom
+      system_open = 'gx', -- custom
+      yank_path = 'gy', -- custom
+      show_help = 'g?',
+      synchronize = '=',
+      trim_left = '<',
+      trim_right = '>',
+    },
     windows = {
       preview = true,
       width_focus = 30,
@@ -17,6 +54,28 @@ return {
   },
   config = function(_, opts)
     require('mini.files').setup(opts)
+
+    local map_split = function(buf_id, lhs, direction)
+      local rhs = function()
+        local new_target_window
+        local cur_target_window = require('mini.files').get_explorer_state().target_window
+        if cur_target_window ~= nil then
+          vim.api.nvim_win_call(cur_target_window, function()
+            if direction == 'tab' then
+              vim.cmd(direction .. ' split')
+            else
+              vim.cmd('belowright ' .. direction .. ' split')
+            end
+            new_target_window = vim.api.nvim_get_current_win()
+          end)
+
+          require('mini.files').set_target_window(new_target_window)
+          require('mini.files').go_in({ close_on_file = true })
+        end
+      end
+      local desc = 'Open in ' .. direction .. ' split'
+      vim.keymap.set('n', lhs, rhs, { buffer = buf_id, desc = desc })
+    end
 
     local show_dotfiles = true
     local filter_show = function(fs_entry) return true end
@@ -28,75 +87,48 @@ return {
       require('mini.files').refresh({ content = { filter = new_filter } })
     end
 
-    local map_split = function(buf_id, lhs, direction, close_on_file)
-      local rhs = function()
-        local new_target_window
-        local cur_target_window = require('mini.files').get_explorer_state().target_window
-        if cur_target_window ~= nil then
-          vim.api.nvim_win_call(cur_target_window, function()
-            vim.cmd('belowright ' .. direction .. ' split')
-            new_target_window = vim.api.nvim_get_current_win()
-          end)
-
-          require('mini.files').set_target_window(new_target_window)
-          require('mini.files').go_in({ close_on_file = close_on_file })
-        end
-      end
-
-      local desc = 'Open in ' .. direction .. ' split'
-      if close_on_file then desc = desc .. ' and close' end
-      vim.keymap.set('n', lhs, rhs, { buffer = buf_id, desc = desc })
-    end
-
     local files_set_cwd = function()
       local cur_entry_path = MiniFiles.get_fs_entry().path
       local cur_directory = vim.fs.dirname(cur_entry_path)
       if cur_directory ~= nil then vim.fn.chdir(cur_directory) end
     end
 
+    local yank_path = function()
+      local path = (MiniFiles.get_fs_entry() or {}).path
+      if path == nil then return vim.notify('Cursor is not on valid entry') end
+      vim.fn.setreg(vim.v.register, path)
+      vim.notify('Yanked path: ' .. path)
+    end
+
+    local system_open = function() vim.ui.open(MiniFiles.get_fs_entry().path) end
+
     vim.api.nvim_create_autocmd('User', {
       pattern = 'MiniFilesBufferCreate',
       callback = function(args)
         local buf_id = args.data.buf_id
 
-        vim.keymap.set(
-          'n',
-          opts.mappings and opts.mappings.toggle_hidden or 'g.',
-          toggle_dotfiles,
-          { buffer = buf_id, desc = 'Toggle hidden files' }
-        )
+        local map = function(lhs, rhs, desc)
+          vim.keymap.set('n', lhs, rhs, { buffer = buf_id, desc = desc })
+        end
 
-        vim.keymap.set(
-          'n',
-          opts.mappings and opts.mappings.change_cwd or 'gc',
-          files_set_cwd,
-          { buffer = args.data.buf_id, desc = 'Set cwd' }
-        )
+        map_split(buf_id, opts.mappings.go_in_horizontal, 'horizontal')
+        map_split(buf_id, opts.mappings.go_in_vertical, 'vertical')
+        map_split(buf_id, opts.mappings.go_in_tab, 'tab')
 
-        map_split(
-          buf_id,
-          opts.mappings and opts.mappings.go_in_horizontal or '<C-w>s',
-          'horizontal',
-          false
-        )
-        map_split(
-          buf_id,
-          opts.mappings and opts.mappings.go_in_vertical or '<C-w>v',
-          'vertical',
-          false
-        )
-        map_split(
-          buf_id,
-          opts.mappings and opts.mappings.go_in_horizontal_plus or '<C-w>S',
-          'horizontal',
-          true
-        )
-        map_split(
-          buf_id,
-          opts.mappings and opts.mappings.go_in_vertical_plus or '<C-w>V',
-          'vertical',
-          true
-        )
+        map(opts.mappings.toggle_hidden, toggle_dotfiles, 'Toggle hidden files')
+        map(opts.mappings.change_cwd, files_set_cwd, 'Set cwd')
+        map(opts.mappings.system_open, system_open, 'System open')
+        map(opts.mappings.yank_path, yank_path, 'Yank path')
+      end,
+    })
+
+    local set_mark = function(id, path, desc) MiniFiles.set_bookmark(id, path, { desc = desc }) end
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'MiniFilesExplorerOpen',
+      callback = function()
+        set_mark('c', vim.fn.stdpath('config'), 'Config') -- path
+        set_mark('w', vim.fn.getcwd, 'Working directory') -- callable
+        set_mark('~', '~', 'Home directory')
       end,
     })
 
