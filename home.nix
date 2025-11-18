@@ -265,8 +265,9 @@
     historyLimit = 10000;
     extraConfig = ''
       set -g default-terminal 'xterm-kitty'
-      set -g status-position top
       set -g renumber-windows on
+
+      # yazi
       set -g allow-passthrough on
       set -ga update-environment TERM
       set -ga update-environment TERM_PROGRAM
@@ -292,11 +293,33 @@
     ];
   };
   catppuccin.tmux.extraConfig = ''
-    set -g @catppuccin_window_status_style "rounded"
+    # https://github.com/catppuccin/tmux/blob/main/catppuccin_options_tmux.conf
 
+    set -g status-position top
+    set -g status-justify absolute-centre
+
+    set -g @catppuccin_status_background "none"
+
+    #set -g @catppuccin_window_status_style "rounded"
+    # https://github.com/catppuccin/tmux/issues/409#issuecomment-2894937794
+    set -g @catppuccin_window_status_style "custom"
+    set -g @catppuccin_window_left_separator "#[bg=default,fg=#{@thm_surface_0}]#[bg=#{@thm_surface_0},fg=#{@thm_fg}]"
+    set -g @catppuccin_window_right_separator "#[bg=default,fg=#{@thm_surface_0}]"
+    set -g @catppuccin_window_current_left_separator "#[bg=default,fg=#{@thm_mauve}]#[bg=#{@thm_mauve},fg=#{@thm_bg}]"
+    set -g @catppuccin_window_current_middle_separator "#[fg=#{@thm_mauve}]█"
+    set -g @catppuccin_window_current_right_separator "#[bg=default,fg=#{@thm_surface_1}]"
+
+    set -g @catppuccin_window_text " #W"
+    set -g @catppuccin_window_current_text " #W"
+    set -g @catppuccin_window_flags "icon"
+
+    set -g @catppuccin_directory_text " #{b:pane_current_path}"
+    set -g status-left "#{E:@catppuccin_status_directory}"
+    set -g status-left-length 100
+
+    set -g @catppuccin_session_icon " "
+    set -g status-right "#{E:@catppuccin_status_session}#{E:@catppuccin_status_host}"
     set -g status-right-length 100
-    set -g status-left ""
-    set -g status-right "#{E:@catppuccin_status_application}#{E:@catppuccin_status_session}"
   '';
 
   programs.kitty = {
