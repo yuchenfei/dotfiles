@@ -6,6 +6,6 @@ return {
   dependencies = {
     'mason-org/mason.nvim',
   },
-  event = { 'BufReadPost', 'BufNewFile' },
-  config = function() require('config.lsp') end,
+  event = 'VeryLazy',
+  config = function() require('config.LSP') end,
 }

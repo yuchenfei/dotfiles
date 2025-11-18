@@ -12,5 +12,5 @@ return {
       desc = 'Format buffer',
     },
   },
-  config = function() require('config.conform') end,
+  config = function() require('config.Formatting') end,
 }

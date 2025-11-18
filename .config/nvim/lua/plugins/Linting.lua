@@ -6,5 +6,5 @@ return {
   keys = {
     { '<leader>ll', function() require('lint').try_lint() end, desc = 'Lint buffer' },
   },
-  config = function() require('config.nvim-lint') end,
+  config = function() require('config.Linting') end,
 }
