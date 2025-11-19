@@ -38,14 +38,7 @@
       self,
       nixpkgs,
       nix-darwin,
-      home-manager,
-      nix-homebrew,
-      catppuccin,
-      homebrew-core,
-      homebrew-cask,
-      homebrew-extras,
-      im-select,
-      airbattery,
+      ...
     }@inputs:
     let
       user = "yuchenfei";
@@ -56,42 +49,20 @@
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#MAC-YCF
       darwinConfigurations."MAC-YCF" = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit inputs outputs user; };
+        specialArgs = {
+          inherit
+            inputs
+            outputs
+            user
+            email
+            ;
+        };
         modules = [
-          ./darwin.nix
-          nix-homebrew.darwinModules.nix-homebrew
-          {
-            nix-homebrew = {
-              inherit user;
-              enable = true;
-              enableRosetta = true; # Apple Silicon Only
-              taps = {
-                "homebrew/homebrew-core" = homebrew-core;
-                "homebrew/homebrew-cask" = homebrew-cask;
-                "brewforge/homebrew-extras" = homebrew-extras;
-                "daipeihust/homebrew-tap" = im-select;
-                "lihaoyun6/homebrew-tap" = airbattery;
-              };
-              autoMigrate = true;
-              mutableTaps = false;
-            };
-          }
-          home-manager.darwinModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "backup";
-              extraSpecialArgs = { inherit user email; };
-              users.${user} = {
-                imports = [
-                  ./home.nix
-                  catppuccin.homeModules.catppuccin
-                ];
-              };
-            };
-          }
+          ./hosts/mac-ycf/configuration.nix
+          ./darwinModules
         ];
       };
+
+      homeManagerModules.default = ./homeManagerModules;
     };
 }

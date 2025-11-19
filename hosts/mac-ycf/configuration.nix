@@ -1,12 +1,18 @@
 {
+  inputs,
   outputs,
   pkgs,
   config,
   user,
+  email,
   ...
 }:
 
 {
+  imports = [
+    inputs.home-manager.darwinModules.home-manager
+  ];
+
   # fist time need run with --flake ~/.dotfiles
   environment.etc.nix-darwin.source = "/Users/${user}/.dotfiles";
 
@@ -158,6 +164,20 @@
         ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
       done
     '';
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    backupFileExtension = "backup";
+    extraSpecialArgs = { inherit inputs user email; };
+    users.${user} = {
+      imports = [
+        # inputs.catppuccin.homeModules.catppuccin
+        ./home.nix
+        outputs.homeManagerModules.default
+      ];
+    };
+  };
 
   # Set Git commit hash for darwin-version.
   system.configurationRevision = outputs.rev or outputs.dirtyRev or null;
