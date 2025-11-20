@@ -4,22 +4,31 @@
 -- - https://github.com/stevearc/conform.nvim/blob/master/doc/formatter_options.md
 -- - https://www.reddit.com/r/neovim/comments/1j55o9c/share_your_custom_toggles_using_snacks_toggle/
 
+local biome_cond = function()
+  -- In biome project, prefer biome lsp than biome cli.
+  if next(vim.lsp.get_clients({ name = 'biome' })) then return false end
+  return true
+end
+
 require('conform').setup({
-  -- log_level = vim.log.levels.DEBUG,
+  log_level = vim.log.levels.DEBUG,
   formatters_by_ft = {
-    json = { 'prettier' },
-    jsonc = { 'prettier' },
-    lua = { 'stylua' },
+    -- Text formats
     markdown = { 'prettier', 'markdownlint-cli2', 'injected' },
+    yaml = { 'prettier' },
+    -- Programming languages
+    lua = { 'stylua' },
     nix = { 'nixfmt' }, -- Installed via nixpkgs
-    python = {
-      -- To fix auto-fixable lint errors.
-      'ruff_fix',
-      -- To run the Ruff formatter.
-      'ruff_format',
-      -- To organize the imports.
-      'ruff_organize_imports',
-    },
+    python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
+    -- Web
+    html = { 'prettier' },
+    css = { 'biome-check' },
+    json = { 'biome-check' },
+    jsonc = { 'biome-check' },
+    javascript = { 'biome-check' },
+    javascriptreact = { 'biome-check' },
+    typescript = { 'biome-check' },
+    typescriptreact = { 'biome-check' },
     -- Use the "*" filetype to run formatters on all filetypes.
     -- ['*'] = { 'codespell' },
     -- Use the "_" filetype to run formatters on filetypes that don't
@@ -45,7 +54,34 @@ require('conform').setup({
     },
     prettier = {
       -- https://prettier.io/docs/options
-      prepend_args = { '--prose-wrap', 'always' },
+      prepend_args = { '--no-semi', '--single-quote', '--prose-wrap', 'always' },
+    },
+    biome = {
+      -- https://biomejs.dev/reference/cli/#biome-format
+      append_args = { '--semicolons', 'as-needed', '--javascript-formatter-quote-style', 'single' },
+      condition = biome_cond,
+    },
+    ['biome-check'] = {
+      -- This config runs formatting, linting and import sorting.
+      args = function(self, ctx)
+        if self:cwd(ctx) then return { 'check', '--write', '--stdin-file-path', '$FILENAME' } end
+        -- only when biome.json{,c} don't exist
+        return {
+          'check',
+          '--write',
+          '--stdin-file-path',
+          '$FILENAME',
+          '--indent-style',
+          vim.bo[ctx.buf].expandtab and 'space' or 'tab',
+          '--indent-width',
+          ctx.shiftwidth,
+          '--semicolons',
+          'as-needed',
+          '--javascript-formatter-quote-style',
+          'single',
+        }
+      end,
+      condition = biome_cond,
     },
     ['markdownlint-cli2'] = {
       condition = function(_, ctx)

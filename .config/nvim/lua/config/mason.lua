@@ -16,5 +16,8 @@ require('mason-tool-installer').setup({
     'basedpyright',
     'pyrefly',
     'ruff', -- https://docs.astral.sh/ruff/editors/setup/
+    -- TypeScript/JavaScript
+    'vtsls',
+    'biome',
   },
 })

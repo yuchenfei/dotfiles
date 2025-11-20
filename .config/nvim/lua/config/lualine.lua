@@ -90,33 +90,41 @@ require('lualine').setup({
           local status, conform = pcall(require, 'conform')
           if not status then return 'Conform not installed' end
 
-          local lsp_format = require('conform.lsp_format')
-
-          -- Get formatters for the current buffer
-          local formatters = conform.list_formatters_for_buffer()
+          -- Get formatters will run for the current buffer
+          local formatters, lsp = conform.list_formatters_to_run()
           if formatters and #formatters > 0 then
-            local formatterNames = {}
-            local uniqueFormatters = {}
+            local formatter_names = {}
+            local seen = {}
 
             for _, formatter in ipairs(formatters) do
-              -- simplify formatter names
-              if vim.startswith(formatter, 'ruff_') then formatter = 'ruff' end
-              if formatter == 'injected' then break end
+              local name = formatter.name
 
-              if not uniqueFormatters[formatter] then
-                uniqueFormatters[formatter] = true
-                table.insert(formatterNames, formatter)
+              -- simplify formatter names
+              if vim.startswith(name, 'ruff_') then name = 'ruff' end
+              if name == 'injected' then break end
+
+              if not seen[name] then
+                table.insert(formatter_names, name)
+                seen[name] = true
               end
             end
 
-            return '󰷈 ' .. table.concat(formatterNames, ' ')
+            return '󰷈 ' .. table.concat(formatter_names, ' ')
           end
+          if not lsp then return '' end
 
-          -- Check if there's an LSP formatter
+          -- Get LSP with formatter capability
           local bufnr = vim.api.nvim_get_current_buf()
-          local lsp_clients = lsp_format.get_format_clients({ bufnr = bufnr })
+          local lsp_clients = require('conform.lsp_format').get_format_clients({ bufnr = bufnr })
 
-          if not vim.tbl_isempty(lsp_clients) then return '󰷈 LSP Formatter' end
+          if not vim.tbl_isempty(lsp_clients) then
+            local lsp_names = {}
+
+            for _, client in ipairs(lsp_clients) do
+              table.insert(lsp_names, client.name)
+            end
+            return '󰷈 LSP[' .. table.concat(lsp_names, ' ') .. ']'
+          end
 
           return ''
         end,

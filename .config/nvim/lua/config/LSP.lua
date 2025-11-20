@@ -69,6 +69,9 @@ local lsp_servers = {
   'marksman', -- Markdown https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#marksman
   'nil_ls', -- Nix https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#nil_ls
   -- 'pyrefly', -- Python https://github.com/neovim/nvim-lspconfig/blob/master/lsp/pyrefly.lua
+  'vtsls', -- TypeScript https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#vtsls
+  -- biome lsp is slower. https://github.com/LazyVim/LazyVim/issues/6496#issuecomment-3329781858
+  -- 'biome', -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#biome
 }
 
 for _, server in ipairs(lsp_servers) do
