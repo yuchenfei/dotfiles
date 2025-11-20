@@ -2,6 +2,7 @@
 
 return {
   'christoomey/vim-tmux-navigator',
+  event = 'VeryLazy',
   cmd = {
     'TmuxNavigateLeft',
     'TmuxNavigateDown',
@@ -17,5 +18,10 @@ return {
     { '<c-l>', '<cmd>TmuxNavigateRight<cr>' },
     -- { '<c-\\>', '<cmd><C-U>TmuxNavigatePrevious<cr>' },
   },
-  init = function() vim.g.tmux_navigator_no_mappings = 1 end,
+  init = function()
+    vim.g.tmux_navigator_no_mappings = 1
+    vim.g.tmux_navigator_save_on_switch = 2 -- 1: current buffer 2: all buffers
+    vim.g.tmux_navigator_disable_when_zoomed = 1
+    -- vim.g.tmux_navigator_preserve_zoom = 1
+  end,
 }
