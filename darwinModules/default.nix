@@ -1,21 +1,22 @@
-{ inputs, user, ... }:
+{ user, ... }:
 {
   imports = [
-    inputs.nix-homebrew.darwinModules.nix-homebrew
+    ./home-manager.nix
+    ./homebrew.nix
+    ./fix-nix-apps-link.nix
   ];
 
-  nix-homebrew = {
-    inherit user;
-    enable = true;
-    enableRosetta = true; # Apple Silicon Only
-    taps = {
-      "homebrew/homebrew-core" = inputs.homebrew-core;
-      "homebrew/homebrew-cask" = inputs.homebrew-cask;
-      "brewforge/homebrew-extras" = inputs.homebrew-extras;
-      "daipeihust/homebrew-tap" = inputs.im-select;
-      "lihaoyun6/homebrew-tap" = inputs.airbattery;
-    };
-    autoMigrate = true;
-    mutableTaps = false;
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
+  users.users.${user} = {
+    home = "/Users/${user}";
   };
+
+  system = {
+    primaryUser = "${user}";
+  };
+
+  programs.zsh.enable = true;
+  programs.fish.enable = true;
 }
