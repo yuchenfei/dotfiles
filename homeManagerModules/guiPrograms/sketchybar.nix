@@ -1,5 +1,9 @@
 { pkgs, config, ... }:
 {
+  home.packages = with pkgs; [
+    switchaudio-osx
+  ];
+
   programs.sketchybar = {
     enable = true;
     configType = "lua";

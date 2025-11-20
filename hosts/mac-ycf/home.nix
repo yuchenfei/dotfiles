@@ -26,13 +26,10 @@ let
 
     # Display & audio control
     monitorcontrol
-    switchaudio-osx
 
     # Development tools
     # clang  # This will cause cargo install errors
     gnumake
-    nixfmt-rfc-style
-    statix
   ];
 in
 {

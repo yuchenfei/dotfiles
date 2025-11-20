@@ -5,6 +5,7 @@
     ./cliPrograms/fastfetch.nix
     ./cliPrograms/fnm.nix
     ./cliPrograms/git.nix
+    ./cliPrograms/nix.nix
     ./cliPrograms/nvim.nix
     ./cliPrograms/shell.nix
     ./cliPrograms/tmux.nix
