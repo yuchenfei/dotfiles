@@ -1,6 +1,7 @@
 { inputs, ... }:
 {
   imports = [
+    ./cliPrograms/bun.nix
     ./cliPrograms/common.nix
     ./cliPrograms/fastfetch.nix
     ./cliPrograms/fnm.nix
