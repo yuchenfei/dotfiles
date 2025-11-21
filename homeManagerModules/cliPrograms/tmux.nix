@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
+  # https://github.com/nix-community/home-manager/blob/master/modules/programs/tmux.nix
   programs.tmux = {
     enable = true;
     baseIndex = 1;
-    reverseSplit = true;
     keyMode = "vi";
     customPaneNavigationAndResize = true;
     resizeAmount = 2;
@@ -22,10 +22,21 @@
       set -ga update-environment TERM_PROGRAM
 
       bind r source-file ~/.config/tmux/tmux.conf \; display-message "Reloaded!"
-      bind space last-window
-      bind g choose-window 'join-pane -h -t "%%"'
-      bind G choose-window 'join-pane -t "%%"'
 
+      bind -N "Choose a session from a list" e choose-tree -swZ
+
+      # Open panes in current directory
+      bind -N "Split the pane into two, left and right" v split-window -h -c "#{pane_current_path}"
+      bind -N "Split the pane into two, top and bottom" s split-window -v -c "#{pane_current_path}"
+
+      bind -N "Join a pane to choised window horizontally" g choose-window 'join-pane -h -t "%%"'
+      bind -N "Join a pane to choised window vertically" G choose-window 'join-pane -t "%%"'
+
+      bind -N "Switch to last active window" space last-window
+      bind -N "Move current window to left" [ swap-window -t -1\; select-window -t -1
+      bind -N "Move current window to right" ] swap-window -t +1\; select-window -t +1
+
+      bind enter copy-mode
       bind -T copy-mode-vi v   send -X begin-selection
       bind -T copy-mode-vi C-v send -X rectangle-toggle
       bind -T copy-mode-vi y   send -X copy-selection-and-cancel
