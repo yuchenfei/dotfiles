@@ -17,6 +17,7 @@ return {
       -- can be installed for the option to use lspconfig names instead of Mason names.
       'mason-org/mason-lspconfig.nvim',
     },
+    event = { 'BufReadPre', 'BufNewFile' },
     config = function() require('config.mason') end,
   },
 }

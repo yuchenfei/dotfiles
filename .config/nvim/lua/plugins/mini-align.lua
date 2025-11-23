@@ -3,7 +3,7 @@
 
 return {
   'nvim-mini/mini.align',
-  event = 'VeryLazy',
+  event = { 'BufReadPre', 'BufNewFile' },
   opts = {
     mappings = {
       start = 'gl',

@@ -3,7 +3,7 @@
 
 return {
   'nvim-mini/mini.splitjoin',
-  event = 'VeryLazy',
+  event = { 'BufReadPre', 'BufNewFile' },
   opts = {
     mappings = {
       toggle = 'gS',

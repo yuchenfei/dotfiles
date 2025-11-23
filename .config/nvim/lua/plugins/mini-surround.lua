@@ -10,7 +10,7 @@
 
 return {
   'nvim-mini/mini.surround',
-  event = 'VeryLazy',
+  event = { 'BufReadPre', 'BufNewFile' },
   opts = {
     -- Module mappings. Use `''` (empty string) to disable one.
     mappings = {
