@@ -19,6 +19,7 @@ return {
       { '<leader>l', group = 'LSP', icon = '' },
       { '<leader>m', group = 'Markdown', icon = '󰍔' },
       { '<leader>n', group = 'Noice' },
+      { '<leader>o', group = 'Overseer', icon = '󰑮' },
       { '<leader>p', icon = '' },
       { '<leader>q', group = 'Quit/Session' },
       { '<leader>s', group = 'Search' },

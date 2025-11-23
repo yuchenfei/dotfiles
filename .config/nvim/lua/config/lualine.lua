@@ -66,6 +66,8 @@ require('lualine').setup({
         end,
         color = function() return { fg = palette.mauve } end,
       },
+      -- HACK: https://github.com/stevearc/overseer.nvim/issues/457#issuecomment-3547557005
+      { 'overseer', colored = false },
       {
         'copilot',
         symbols = {
