@@ -84,19 +84,6 @@ end
 -- - https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
 -- - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/lsp/init.lua
 
--- Disable default LSP keymaps
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'VeryLazy',
-  callback = function()
-    vim.keymap.del('n', 'gra')
-    vim.keymap.del('n', 'grr')
-    vim.keymap.del('n', 'grn')
-    vim.keymap.del('n', 'gri')
-    vim.keymap.del('n', 'grt')
-    vim.keymap.del('n', 'gO')
-  end,
-})
-
 -- See :help lsp-attach
 -- :lua =vim.lsp.get_clients()[1].server_capabilities
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -106,6 +93,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
       mode = mode or 'n'
       vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = desc })
     end
+
+    -- Disable default LSP keymaps
+    pcall(vim.keymap.del, 'n', 'gra')
+    pcall(vim.keymap.del, 'n', 'gri')
+    pcall(vim.keymap.del, 'n', 'grn')
+    pcall(vim.keymap.del, 'n', 'grr')
+    pcall(vim.keymap.del, 'n', 'grt')
+    pcall(vim.keymap.del, 'n', 'grt')
+    pcall(vim.keymap.del, 'n', 'gO')
 
     -- Keymaps
     map('gd', function() Snacks.picker.lsp_definitions() end, 'LSP: Goto Definition')
