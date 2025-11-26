@@ -77,6 +77,8 @@ require('conform').setup({
           'as-needed',
           '--javascript-formatter-quote-style',
           'single',
+          '--json-formatter-trailing-commas',
+          'all',
         }
       end,
       condition = biome_cond,
