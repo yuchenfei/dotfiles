@@ -5,6 +5,6 @@
   "config": {
     "MD013": false, // Line length
     "MD028": false, // Blank line inside blockquote
-    "MD032": false, // Lists should be surrounded by blank lines
-  },
+    "MD032": false // Lists should be surrounded by blank lines
+  }
 }

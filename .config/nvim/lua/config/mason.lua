@@ -3,6 +3,7 @@
 require('mason-tool-installer').setup({
   ensure_installed = {
     'tree-sitter-cli',
+    'jsonls',
     'prettier',
     -- Lua
     'lua_ls',

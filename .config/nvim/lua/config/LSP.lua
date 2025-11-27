@@ -3,6 +3,17 @@
 
 -- vim.lsp.set_log_level('debug')
 
+-- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/jsonls.lua
+-- https://github.com/b0o/SchemaStore.nvim
+vim.lsp.config('jsonls', {
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
+      validate = { enable = true },
+    },
+  },
+})
+
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
 vim.lsp.config('lua_ls', {
   on_init = function(client)
@@ -64,14 +75,17 @@ vim.lsp.config('basedpyright', {
 })
 
 local lsp_servers = {
-  'basedpyright', -- Python https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#basedpyright
-  'lua_ls', -- Lua https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
+  -- Basic
+  'jsonls', -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#jsonls
   'marksman', -- Markdown https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#marksman
-  'nil_ls', -- Nix https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#nil_ls
-  -- 'pyrefly', -- Python https://github.com/neovim/nvim-lspconfig/blob/master/lsp/pyrefly.lua
-  'vtsls', -- TypeScript https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#vtsls
   -- biome lsp is slower. https://github.com/LazyVim/LazyVim/issues/6496#issuecomment-3329781858
   -- 'biome', -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#biome
+  -- Programming languages
+  'lua_ls', -- Lua https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
+  'nil_ls', -- Nix https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#nil_ls
+  'basedpyright', -- Python https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#basedpyright
+  -- 'pyrefly', -- Python https://github.com/neovim/nvim-lspconfig/blob/master/lsp/pyrefly.lua
+  'vtsls', -- TypeScript https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#vtsls
 }
 
 for _, server in ipairs(lsp_servers) do

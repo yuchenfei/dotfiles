@@ -54,7 +54,7 @@ require('conform').setup({
     },
     prettier = {
       -- https://prettier.io/docs/options
-      prepend_args = { '--no-semi', '--single-quote', '--prose-wrap', 'always' },
+      prepend_args = { '--no-semi', '--single-quote' },
     },
     biome = {
       -- https://biomejs.dev/reference/cli/#biome-format
@@ -77,8 +77,6 @@ require('conform').setup({
           'as-needed',
           '--javascript-formatter-quote-style',
           'single',
-          '--json-formatter-trailing-commas',
-          'all',
         }
       end,
       condition = biome_cond,
