@@ -76,6 +76,7 @@ vim.lsp.config('basedpyright', {
 
 local lsp_servers = {
   -- Basic
+  'html', -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#html
   'jsonls', -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#jsonls
   'marksman', -- Markdown https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#marksman
   -- biome lsp is slower. https://github.com/LazyVim/LazyVim/issues/6496#issuecomment-3329781858

@@ -1,8 +1,10 @@
 -- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim
 
 require('mason-tool-installer').setup({
+  run_on_start = true,
   ensure_installed = {
     'tree-sitter-cli',
+    'html',
     'jsonls',
     'prettier',
     -- Lua
