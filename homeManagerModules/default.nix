@@ -12,6 +12,7 @@
     ./cliPrograms/tmux.nix
     ./cliPrograms/uv.nix
     ./cliPrograms/yazi.nix
+    ./guiPrograms/chrome.nix
     ./guiPrograms/kitty.nix
     ./guiPrograms/sketchybar.nix
   ];
