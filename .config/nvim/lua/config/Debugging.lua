@@ -35,3 +35,108 @@ dap.listeners.before.event_terminated.dapui_config = function() dapui.close() en
 dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
 
 require('overseer').enable_dap()
+
+-- References:
+-- - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/lang/typescript.lua
+-- - https://github.com/microsoft/vscode-js-debug
+for _, adapterType in ipairs({ 'node', 'chrome', 'msedge' }) do
+  local pwaType = 'pwa-' .. adapterType
+
+  if not dap.adapters[pwaType] then
+    dap.adapters[pwaType] = {
+      type = 'server',
+      host = 'localhost',
+      port = '${port}',
+      executable = {
+        command = 'js-debug-adapter',
+        args = { '${port}' },
+      },
+    }
+  end
+
+  -- Define adapters without the "pwa-" prefix for VSCode compatibility
+  if not dap.adapters[adapterType] then
+    dap.adapters[adapterType] = function(cb, config)
+      local nativeAdapter = dap.adapters[pwaType]
+
+      config.type = pwaType
+
+      if type(nativeAdapter) == 'function' then
+        nativeAdapter(cb, config)
+      else
+        cb(nativeAdapter)
+      end
+    end
+  end
+end
+
+local js_filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' }
+
+local vscode = require('dap.ext.vscode')
+vscode.type_to_filetypes['node'] = js_filetypes
+vscode.type_to_filetypes['pwa-node'] = js_filetypes
+
+for _, language in ipairs(js_filetypes) do
+  if not dap.configurations[language] then
+    local runtimeExecutable = nil
+    if language:find('typescript') then
+      runtimeExecutable = vim.fn.executable('tsx') == 1 and 'tsx' or 'ts-node'
+    end
+    dap.configurations[language] = {
+      {
+        type = 'pwa-node',
+        request = 'launch',
+        name = 'Launch file',
+        program = '${file}',
+        cwd = '${workspaceFolder}',
+        sourceMaps = true,
+        runtimeExecutable = runtimeExecutable,
+        skipFiles = {
+          '<node_internals>/**',
+          'node_modules/**',
+        },
+        resolveSourceMapLocations = {
+          '${workspaceFolder}/**',
+          '!**/node_modules/**',
+        },
+      },
+      {
+        type = 'pwa-node',
+        request = 'attach',
+        name = 'Attach',
+        processId = require('dap.utils').pick_process,
+        cwd = '${workspaceFolder}',
+        sourceMaps = true,
+        runtimeExecutable = runtimeExecutable,
+        skipFiles = {
+          '<node_internals>/**',
+          'node_modules/**',
+        },
+        resolveSourceMapLocations = {
+          '${workspaceFolder}/**',
+          '!**/node_modules/**',
+        },
+      },
+      {
+        type = 'pwa-chrome',
+        request = 'launch',
+        name = 'Launch Chrome (nvim-dap)',
+        url = 'http://localhost:5173',
+        webRoot = '${workspaceFolder}',
+        sourceMaps = true,
+        skipFiles = { '**/node_modules/**' },
+        -- https://stackoverflow.com/a/79468088
+        -- preLaunchTask = 'vite dev',
+      },
+      {
+        type = 'pwa-msedge',
+        request = 'launch',
+        name = 'Launch Edge (nvim-dap)',
+        url = 'http://localhost:5173',
+        webRoot = '${workspaceFolder}',
+        sourceMaps = true,
+        skipFiles = { '**/node_modules/**' },
+      },
+    }
+  end
+end
