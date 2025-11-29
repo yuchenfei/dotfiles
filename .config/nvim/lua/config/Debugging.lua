@@ -125,8 +125,7 @@ for _, language in ipairs(js_filetypes) do
         webRoot = '${workspaceFolder}',
         sourceMaps = true,
         skipFiles = { '**/node_modules/**' },
-        -- https://stackoverflow.com/a/79468088
-        -- preLaunchTask = 'vite dev',
+        preLaunchTask = 'bun dev',
       },
       {
         type = 'pwa-msedge',
@@ -136,6 +135,7 @@ for _, language in ipairs(js_filetypes) do
         webRoot = '${workspaceFolder}',
         sourceMaps = true,
         skipFiles = { '**/node_modules/**' },
+        preLaunchTask = 'bun dev',
       },
     }
   end

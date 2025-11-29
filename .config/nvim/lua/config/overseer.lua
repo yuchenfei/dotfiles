@@ -26,3 +26,20 @@ require('overseer').setup({
     },
   },
 })
+
+local overseer = require('overseer')
+
+-- Mask task background
+-- https://stackoverflow.com/a/79468088
+-- https://github.com/stevearc/overseer.nvim/blob/master/lua/overseer/vscode/init.lua#L219
+overseer.add_template_hook({ name = 'bun dev' }, function(task_defn, util)
+  util.add_component(task_defn, {
+    'on_output_parse',
+    problem_matcher = {
+      pattern = { regexp = '.', file = 1, location = 2, message = 3 },
+      background = { activeOnStart = true, beginsPattern = '.', endsPattern = '.' },
+    },
+  })
+  util.add_component(task_defn, { 'on_complete_restart' })
+  util.add_component(task_defn, { 'unique' })
+end)
