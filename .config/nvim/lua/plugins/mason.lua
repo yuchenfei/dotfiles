@@ -1,6 +1,4 @@
 -- https://github.com/mason-org/mason.nvim
--- https://github.com/mason-org/mason-lspconfig.nvim
--- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim
 
 return {
   {
@@ -8,7 +6,15 @@ return {
     build = ':MasonUpdate',
     cmd = 'Mason',
     keys = { { '<leader>lm', '<cmd>Mason<cr>', desc = 'Mason' } },
-    opts = {},
+    opts_extend = { 'ensure_installed' },
+    opts = {
+      ensure_installed = {
+        'tree-sitter-cli',
+        'markdownlint-cli2', -- https://github.com/DavidAnson/markdownlint-cli2
+        'ruff', -- https://docs.astral.sh/ruff/editors/setup/
+        'js-debug-adapter',
+      },
+    },
     config = function(_, opts)
       require('mason').setup(opts)
 
@@ -23,41 +29,12 @@ return {
         end, 100)
       end)
 
-      -- https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim/issues/39#issue-2080773359
-      vim.api.nvim_command('MasonToolsInstall')
+      mr.refresh(function()
+        for _, tool in ipairs(opts.ensure_installed) do
+          local p = mr.get_package(tool)
+          if not p:is_installed() then p:install() end
+        end
+      end)
     end,
-  },
-  {
-    'WhoIsSethDaniel/mason-tool-installer.nvim',
-    dependencies = {
-      'mason-org/mason.nvim',
-      -- can be installed for the option to use lspconfig names instead of Mason names.
-      { 'mason-org/mason-lspconfig.nvim', config = function() end },
-    },
-    cmd = 'MasonToolsInstall',
-    opts = {
-      ensure_installed = {
-        'tree-sitter-cli',
-        'html',
-        'jsonls',
-        'prettier',
-        -- Lua
-        'lua_ls',
-        'stylua',
-        -- Nix
-        'nil_ls',
-        -- Markdown
-        'marksman',
-        'markdownlint-cli2', -- https://github.com/DavidAnson/markdownlint-cli2
-        -- Python
-        'basedpyright',
-        'pyrefly',
-        'ruff', -- https://docs.astral.sh/ruff/editors/setup/
-        -- TypeScript/JavaScript
-        'vtsls',
-        'biome',
-        'js-debug-adapter',
-      },
-    },
   },
 }
