@@ -9,57 +9,41 @@ return {
   dependencies = {
     'mason-org/mason.nvim',
     { 'mason-org/mason-lspconfig.nvim', config = function() end },
-    'b0o/SchemaStore.nvim',
   },
   event = 'VeryLazy',
   opts_extend = { 'servers.*.keys' },
-  opts = function()
-    local ret = {
-      -- LSP Server Settings
-      ---@alias lazyvim.lsp.Config vim.lsp.Config|{mason?:boolean, enabled?:boolean }
-      ---@type table<string, lazyvim.lsp.Config|boolean>
-      servers = {
-        lua_ls = { -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
-          -- mason = false, -- set to false if you don't want this server to be installed with mason
-          -- enabled = false, -- set to false if you don't want this server lsp to be enabled
-          settings = {
-            Lua = {
-              workspace = {
-                checkThirdParty = false,
-              },
+  opts = {
+    -- LSP Server Settings
+    ---@alias lazyvim.lsp.Config vim.lsp.Config|{mason?:boolean, enabled?:boolean }
+    ---@type table<string, lazyvim.lsp.Config|boolean>
+    servers = {
+      lua_ls = { -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
+        -- mason = false, -- set to false if you don't want this server to be installed with mason
+        -- enabled = false, -- set to false if you don't want this server lsp to be enabled
+        settings = {
+          Lua = {
+            workspace = {
+              checkThirdParty = false,
             },
           },
         },
-        jsonls = { -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#jsonls
-          settings = { -- https://github.com/b0o/SchemaStore.nvim
-            json = {
-              schemas = require('schemastore').json.schemas(),
-              validate = { enable = true },
-            },
-          },
-        },
-        html = {}, -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#html
-        marksman = {}, -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#marksman
-        nil_ls = {}, -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#nil_ls
-        -- biome lsp is slower. https://github.com/LazyVim/LazyVim/issues/6496#issuecomment-3329781858
-        -- 'biome', -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#biome
-        vtsls = {}, -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#vtsls
       },
-      -- you can do any additional lsp server setup here
-      -- return true if you don't want this server to be setup with lspconfig
-      ---@type table<string, fun(server:string, opts: vim.lsp.Config):boolean?>
-      setup = {
-        -- example to setup with typescript.nvim
-        -- tsserver = function(_, opts)
-        --   require("typescript").setup({ server = opts })
-        --   return true
-        -- end,
-        -- Specify * to use this function as a fallback for any server
-        -- ["*"] = function(server, opts) end,
-      },
-    }
-    return ret
-  end,
+      marksman = {}, -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#marksman
+      nil_ls = {}, -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#nil_ls
+    },
+    -- you can do any additional lsp server setup here
+    -- return true if you don't want this server to be setup with lspconfig
+    ---@type table<string, fun(server:string, opts: vim.lsp.Config):boolean?>
+    setup = {
+      -- example to setup with typescript.nvim
+      -- tsserver = function(_, opts)
+      --   require("typescript").setup({ server = opts })
+      --   return true
+      -- end,
+      -- Specify * to use this function as a fallback for any server
+      -- ["*"] = function(server, opts) end,
+    },
+  },
   config = vim.schedule_wrap(function(_, opts)
     -- get all the servers that are available through mason-lspconfig
     local mason_all =

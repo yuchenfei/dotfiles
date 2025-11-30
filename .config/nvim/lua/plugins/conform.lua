@@ -11,7 +11,6 @@ return {
       'mason-org/mason.nvim',
       opts = {
         ensure_installed = {
-          'biome',
           'prettier',
           'stylua',
         },
@@ -29,7 +28,7 @@ return {
     },
   },
   opts = {
-    -- log_level = vim.log.levels.DEBUG,
+    log_level = vim.log.levels.DEBUG,
     default_format_opts = {
       lsp_format = 'fallback',
     },
@@ -40,15 +39,6 @@ return {
       -- Programming languages
       lua = { 'stylua' },
       nix = { 'nixfmt' }, -- Installed via nixpkgs
-      -- Web
-      html = { 'prettier' },
-      css = { 'biome-check' },
-      json = { 'biome-check' },
-      jsonc = { 'biome-check' },
-      javascript = { 'biome-check' },
-      javascriptreact = { 'biome-check' },
-      typescript = { 'biome-check' },
-      typescriptreact = { 'biome-check' },
       -- Use the "*" filetype to run formatters on all filetypes.
       -- ['*'] = { 'codespell' },
       -- Use the "_" filetype to run formatters on filetypes that don't
@@ -72,31 +62,6 @@ return {
       prettier = {
         -- https://prettier.io/docs/options
         prepend_args = { '--no-semi', '--single-quote' },
-      },
-      ['biome-check'] = {
-        -- This config runs formatting, linting and import sorting.
-        -- https://biomejs.dev/reference/cli/#biome-format
-        args = function(self, ctx)
-          if self:cwd(ctx) then return { 'check', '--write', '--stdin-file-path', '$FILENAME' } end
-          -- only when biome.json{,c} don't exist
-          return {
-            'check',
-            '--write',
-            '--stdin-file-path',
-            '$FILENAME',
-            '--indent-style',
-            'space',
-            '--semicolons',
-            'as-needed',
-            '--javascript-formatter-quote-style',
-            'single',
-          }
-        end,
-        condition = function()
-          -- In biome project, prefer biome lsp than biome cli.
-          if next(vim.lsp.get_clients({ name = 'biome' })) then return false end
-          return true
-        end,
       },
       ['markdownlint-cli2'] = {
         condition = function(_, ctx)

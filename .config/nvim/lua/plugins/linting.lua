@@ -12,13 +12,6 @@ return {
     linters_by_ft = {
       markdown = { 'markdownlint-cli2' },
       nix = { 'statix' }, -- Installed via nixpkgs
-      css = { 'biomejs' },
-      json = { 'biomejs' },
-      jsonc = { 'biomejs' },
-      javascript = { 'biomejs' },
-      javascriptreact = { 'biomejs' },
-      typescript = { 'biomejs' },
-      typescriptreact = { 'biomejs' },
     },
     ---@type table<string,table>
     linters = {},
