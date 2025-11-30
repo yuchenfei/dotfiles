@@ -12,7 +12,6 @@ return {
         'tree-sitter-cli',
         'markdownlint-cli2', -- https://github.com/DavidAnson/markdownlint-cli2
         'ruff', -- https://docs.astral.sh/ruff/editors/setup/
-        'js-debug-adapter',
       },
     },
     config = function(_, opts)

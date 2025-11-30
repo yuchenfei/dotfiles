@@ -3,7 +3,8 @@
 
 return {
   'folke/which-key.nvim',
-  event = 'VimEnter',
+  event = 'VeryLazy',
+  opts_extend = { 'spec' },
   opts = {
     preset = 'helix',
     icons = {
