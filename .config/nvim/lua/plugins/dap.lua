@@ -6,8 +6,6 @@
 -- - https://github.com/mfussenegger/nvim-dap
 -- - https://github.com/rcarriga/nvim-dap-ui
 -- - https://github.com/theHamsta/nvim-dap-virtual-text
--- - https://github.com/jay-babu/mason-nvim-dap.nvim
--- - https://github.com/mfussenegger/nvim-dap-python
 
 ---@type LazySpec
 return {
@@ -30,11 +28,6 @@ return {
             'js-debug-adapter',
           },
         },
-      },
-      {
-        'mfussenegger/nvim-dap-python',
-        ft = { 'python' },
-        config = function() require('dap-python').setup('uv') end,
       },
       {
         'folke/which-key.nvim',

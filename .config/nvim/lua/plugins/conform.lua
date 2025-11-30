@@ -40,7 +40,6 @@ return {
       -- Programming languages
       lua = { 'stylua' },
       nix = { 'nixfmt' }, -- Installed via nixpkgs
-      python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
       -- Web
       html = { 'prettier' },
       css = { 'biome-check' },

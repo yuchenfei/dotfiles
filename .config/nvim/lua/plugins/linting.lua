@@ -8,11 +8,10 @@ return {
   },
   opts = {
     -- Event to trigger linters
-    events = { 'BufWritePost', 'BufReadPost', 'InsertLeave' },
+    events = { 'BufWritePost', 'BufReadPost', 'InsertLeave' }, -- TextChanged
     linters_by_ft = {
       markdown = { 'markdownlint-cli2' },
       nix = { 'statix' }, -- Installed via nixpkgs
-      python = { 'ruff' },
       css = { 'biomejs' },
       json = { 'biomejs' },
       jsonc = { 'biomejs' },

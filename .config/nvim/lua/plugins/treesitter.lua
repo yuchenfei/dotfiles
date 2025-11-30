@@ -30,7 +30,6 @@ return {
         'markdown',
         'markdown_inline',
         'nix',
-        'python',
         'query',
         'toml',
         'tsx',

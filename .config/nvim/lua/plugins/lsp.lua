@@ -12,6 +12,7 @@ return {
     'b0o/SchemaStore.nvim',
   },
   event = 'VeryLazy',
+  opts_extend = { 'servers.*.keys' },
   opts = function()
     local ret = {
       -- LSP Server Settings
@@ -26,15 +27,6 @@ return {
               workspace = {
                 checkThirdParty = false,
               },
-            },
-          },
-        },
-        -- pyrefly = {}, -- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/pyrefly.lua
-        basedpyright = { -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#basedpyright
-          settings = { -- https://docs.basedpyright.com/latest/configuration/language-server-settings
-            basedpyright = {
-              -- Using Ruff's import organizer
-              disableOrganizeImports = false,
             },
           },
         },
@@ -209,12 +201,11 @@ return {
 
     local function diagnostic_format(diagnostic)
       return string.format(
-        '%s %s: %s [%s]',
+        '%s %s: %s',
         diagnostic_signs[diagnostic.severity],
         shorter_source_names[diagnostic.source] or diagnostic.source,
-        diagnostic.message,
-        diagnostic.code
-      )
+        diagnostic.message
+      ) .. (diagnostic.code and string.format(' [%s]', diagnostic.code) or '')
     end
 
     local virtual_text_config = {
