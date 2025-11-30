@@ -11,7 +11,61 @@ return {
     lazy = false,
     branch = 'main',
     build = ':TSUpdate',
-    config = function() require('config.treesitter') end,
+    opts_extend = { 'ensure_installed' },
+    opts = {
+      -- Directory to install parsers and queries to
+      install_dir = vim.fn.stdpath('data') .. '/site',
+      ensure_installed = {
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'javascript',
+        'jsdoc',
+        'json',
+        'jsonc',
+        'latex',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'nix',
+        'python',
+        'query',
+        'toml',
+        'tsx',
+        'typescript',
+        'vim',
+        'vimdoc',
+        'xml',
+        'yaml',
+      },
+    },
+    config = function(_, opts)
+      local TS = require('nvim-treesitter')
+      TS.setup(opts)
+
+      local installed = TS.get_installed()
+      local install = vim.tbl_filter(
+        function(lang) return not vim.tbl_contains(installed, lang) end,
+        opts.ensure_installed or {}
+      )
+      if #install > 0 then TS.install(install, { summary = true }) end
+
+      vim.api.nvim_create_autocmd('FileType', {
+        group = vim.api.nvim_create_augroup('treesitter', { clear = true }),
+        callback = function(args)
+          local filetype = args.match
+          if filetype == '' then return end
+
+          local lang = vim.treesitter.language.get_lang(filetype)
+
+          if vim.tbl_contains(TS.get_installed(), lang) then
+            pcall(vim.treesitter.start, args.buf)
+          end
+        end,
+      })
+    end,
   },
   {
     -- Support @function.outer, @class.outer, etc. textobjects
