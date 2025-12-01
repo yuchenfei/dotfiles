@@ -28,7 +28,6 @@ return {
           },
         },
       },
-      nil_ls = {}, -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#nil_ls
     },
     -- you can do any additional lsp server setup here
     -- return true if you don't want this server to be setup with lspconfig

@@ -37,7 +37,6 @@ return {
       yaml = { 'prettier' },
       -- Programming languages
       lua = { 'stylua' },
-      nix = { 'nixfmt' }, -- Installed via nixpkgs
       -- Use the "*" filetype to run formatters on all filetypes.
       -- ['*'] = { 'codespell' },
       -- Use the "_" filetype to run formatters on filetypes that don't

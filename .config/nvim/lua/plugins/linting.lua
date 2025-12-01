@@ -9,9 +9,7 @@ return {
   opts = {
     -- Event to trigger linters
     events = { 'BufWritePost', 'BufReadPost', 'InsertLeave' }, -- TextChanged
-    linters_by_ft = {
-      nix = { 'statix' }, -- Installed via nixpkgs
-    },
+    linters_by_ft = {},
     ---@type table<string,table>
     linters = {},
   },

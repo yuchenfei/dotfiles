@@ -22,7 +22,6 @@ return {
         'latex',
         'lua',
         'luadoc',
-        'nix',
         'query',
         'toml',
         'vim',
