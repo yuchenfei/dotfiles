@@ -9,12 +9,7 @@ return {
   dependencies = {
     {
       'mason-org/mason.nvim',
-      opts = {
-        ensure_installed = {
-          'prettier',
-          'stylua',
-        },
-      },
+      opts = { ensure_installed = { 'prettier' } },
     },
   },
   event = { 'BufWritePre' },
@@ -35,8 +30,6 @@ return {
     formatters_by_ft = {
       -- Text formats
       yaml = { 'prettier' },
-      -- Programming languages
-      lua = { 'stylua' },
       -- Use the "*" filetype to run formatters on all filetypes.
       -- ['*'] = { 'codespell' },
       -- Use the "_" filetype to run formatters on filetypes that don't

@@ -20,8 +20,6 @@ return {
         'c',
         'diff',
         'latex',
-        'lua',
-        'luadoc',
         'query',
         'toml',
         'vim',

@@ -14,21 +14,11 @@ return {
   opts_extend = { 'servers.*.keys' },
   opts = {
     -- LSP Server Settings
+    -- mason = false, -- set to false if you don't want this server to be installed with mason
+    -- enabled = false, -- set to false if you don't want this server lsp to be enabled
     ---@alias lazyvim.lsp.Config vim.lsp.Config|{mason?:boolean, enabled?:boolean }
     ---@type table<string, lazyvim.lsp.Config|boolean>
-    servers = {
-      lua_ls = { -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
-        -- mason = false, -- set to false if you don't want this server to be installed with mason
-        -- enabled = false, -- set to false if you don't want this server lsp to be enabled
-        settings = {
-          Lua = {
-            workspace = {
-              checkThirdParty = false,
-            },
-          },
-        },
-      },
-    },
+    servers = {},
     -- you can do any additional lsp server setup here
     -- return true if you don't want this server to be setup with lspconfig
     ---@type table<string, fun(server:string, opts: vim.lsp.Config):boolean?>
