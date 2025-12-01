@@ -28,7 +28,6 @@ return {
           },
         },
       },
-      marksman = {}, -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#marksman
       nil_ls = {}, -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#nil_ls
     },
     -- you can do any additional lsp server setup here

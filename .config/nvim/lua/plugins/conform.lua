@@ -34,7 +34,6 @@ return {
     },
     formatters_by_ft = {
       -- Text formats
-      markdown = { 'prettier', 'markdownlint-cli2', 'injected' },
       yaml = { 'prettier' },
       -- Programming languages
       lua = { 'stylua' },
@@ -62,15 +61,6 @@ return {
       prettier = {
         -- https://prettier.io/docs/options
         prepend_args = { '--no-semi', '--single-quote' },
-      },
-      ['markdownlint-cli2'] = {
-        condition = function(_, ctx)
-          local diag = vim.tbl_filter(
-            function(d) return d.source == 'markdownlint' end,
-            vim.diagnostic.get(ctx.buf)
-          )
-          return #diag > 0
-        end,
       },
     },
     -- There is a similar affordance for format_after_save, which uses BufWritePost.

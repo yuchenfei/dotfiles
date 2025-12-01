@@ -1,7 +1,54 @@
 ---@type LazySpec
 return {
-  -- https://github.com/MeanderingProgrammer/render-markdown.nvim
   {
+    'nvim-treesitter/nvim-treesitter',
+    opts = { ensure_installed = { 'markdown', 'markdown_inline' } },
+  },
+  {
+    'neovim/nvim-lspconfig',
+    opts = {
+      servers = {
+        marksman = {}, -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#marksman
+      },
+    },
+  },
+  {
+    'mason-org/mason.nvim',
+    opts = {
+      ensure_installed = {
+        'markdownlint-cli2', -- https://github.com/DavidAnson/markdownlint-cli2
+      },
+    },
+  },
+  {
+    'mfussenegger/nvim-lint',
+    opts = {
+      linters_by_ft = {
+        markdown = { 'markdownlint-cli2' },
+      },
+    },
+  },
+  {
+    'stevearc/conform.nvim',
+    opts = {
+      formatters_by_ft = {
+        markdown = { 'prettier', 'markdownlint-cli2', 'injected' },
+      },
+      formatters = {
+        ['markdownlint-cli2'] = {
+          condition = function(_, ctx)
+            local diag = vim.tbl_filter(
+              function(d) return d.source == 'markdownlint' end,
+              vim.diagnostic.get(ctx.buf)
+            )
+            return #diag > 0
+          end,
+        },
+      },
+    },
+  },
+  {
+    -- https://github.com/MeanderingProgrammer/render-markdown.nvim
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
@@ -18,8 +65,8 @@ return {
       }):map('<leader>tm')
     end,
   },
-  -- https://github.com/bullets-vim/bullets.vim
   {
+    -- https://github.com/bullets-vim/bullets.vim
     'bullets-vim/bullets.vim',
     ft = { 'markdown' },
     init = function()
@@ -43,8 +90,8 @@ return {
       vim.g.bullets_outline_levels = { 'num' }
     end,
   },
-  -- https://github.com/roodolv/markdown-toggle.nvim
   {
+    -- https://github.com/roodolv/markdown-toggle.nvim
     'roodolv/markdown-toggle.nvim',
     ft = { 'markdown' },
     opts = {

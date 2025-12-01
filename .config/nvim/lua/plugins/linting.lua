@@ -10,7 +10,6 @@ return {
     -- Event to trigger linters
     events = { 'BufWritePost', 'BufReadPost', 'InsertLeave' }, -- TextChanged
     linters_by_ft = {
-      markdown = { 'markdownlint-cli2' },
       nix = { 'statix' }, -- Installed via nixpkgs
     },
     ---@type table<string,table>
