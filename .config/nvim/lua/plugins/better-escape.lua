@@ -11,6 +11,11 @@ return {
           k = false,
         },
       },
+      v = {
+        j = {
+          k = false,
+        },
+      },
     },
   },
 }
