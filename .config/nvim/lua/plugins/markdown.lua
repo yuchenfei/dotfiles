@@ -10,6 +10,20 @@ return {
       servers = {
         marksman = {}, -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#marksman
       },
+      setup = {
+        marksman = function()
+          Snacks.util.lsp.on({ name = 'marksman' }, function(_, client)
+            if require('zk.util').notebook_root(vim.fn.expand('%:p')) ~= nil then
+              -- client.stop()
+              -- vim.lsp.stop_client(client, true)
+              -- vim.cmd(':LspStop ' .. client.name)
+              client.server_capabilities.completionProvider = false
+              client.server_capabilities.definitionProvider = false
+              client.server_capabilities.hoverProvider = false
+            end
+          end)
+        end,
+      },
     },
   },
   {
@@ -26,6 +40,14 @@ return {
       linters_by_ft = {
         markdown = { 'markdownlint-cli2' },
       },
+      linters = {
+        ['markdownlint-cli2'] = {
+          prepend_args = {
+            '--config',
+            vim.fn.expand('~') .. '/.config/.markdownlint-cli2.jsonc',
+          },
+        },
+      },
     },
   },
   {
@@ -36,6 +58,10 @@ return {
       },
       formatters = {
         ['markdownlint-cli2'] = {
+          prepend_args = {
+            '--config',
+            vim.fn.expand('~') .. '/.config/.markdownlint-cli2.jsonc',
+          },
           condition = function(_, ctx)
             local diag = vim.tbl_filter(
               function(d) return d.source == 'markdownlint' end,
@@ -45,6 +71,61 @@ return {
           end,
         },
       },
+    },
+  },
+  {
+    -- https://github.com/zk-org/zk-nvim
+    'zk-org/zk-nvim',
+    main = 'zk',
+    ft = 'markdown',
+    dependencies = {
+      {
+        'folke/which-key.nvim',
+        opts = {
+          spec = {
+            { '<leader>z', group = 'Zk' },
+          },
+        },
+      },
+    },
+    keys = {
+      {
+        '<leader>zo',
+        function()
+          local zk = require('zk')
+          ---@type snacks.picker.Config
+          local snacks_picker = {
+            win = {
+              input = {
+                keys = {
+                  ['<C-e>'] = 'create',
+                },
+              },
+            },
+            actions = {
+              create = function(picker)
+                local title = picker.input:get()
+                picker:close()
+                vim.notify('Creating note: ' .. title)
+                zk.new({ title = title })
+              end,
+            },
+          }
+          zk.edit({ sort = { 'modified' } }, { snacks_picker = snacks_picker })
+        end,
+        desc = 'Open/Create Note',
+      },
+    },
+    opts = {
+      picker = 'snacks_picker',
+      -- lsp = {
+      --   config = {
+      --     on_attach = function(client, _)
+      --       -- use marksman for hover
+      --       -- client.server_capabilities.hoverProvider = false
+      --     end,
+      --   },
+      -- },
     },
   },
   {

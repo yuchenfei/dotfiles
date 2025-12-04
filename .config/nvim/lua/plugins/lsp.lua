@@ -33,6 +33,15 @@ return {
     },
   },
   config = vim.schedule_wrap(function(_, opts)
+    -- code lens
+    Snacks.util.lsp.on({ method = 'textDocument/codeLens' }, function(buffer)
+      vim.lsp.codelens.refresh()
+      vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'InsertLeave' }, {
+        buffer = buffer,
+        callback = vim.lsp.codelens.refresh,
+      })
+    end)
+
     -- get all the servers that are available through mason-lspconfig
     local mason_all =
       vim.tbl_keys(require('mason-lspconfig.mappings').get_mason_map().lspconfig_to_package)

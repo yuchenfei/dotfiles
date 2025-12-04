@@ -42,8 +42,10 @@ return {
           ignore_errors = true,
           -- injected format always raise a lsp error: _changetracking.lua:154: Invalid buffer id:
           -- I thinks it's caused by making temp buffer for injected formatter.
+          -- HACK: this will not activate lsp
           lang_to_ext = {
-            python = '', -- HACK: this will not activate python lsp
+            python = '',
+            lua = '',
           },
           lang_to_formatters = {
             python = { 'ruff_format', 'ruff_organize_imports' },
