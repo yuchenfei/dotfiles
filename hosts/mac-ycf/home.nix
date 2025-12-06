@@ -40,6 +40,11 @@ in
     stateVersion = "25.05";
   };
 
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    ZK_NOTEBOOK_DIR = "Notes";
+  };
+
   xdg.enable = true;
 
   services.skhd.enable = true;
