@@ -42,7 +42,7 @@ in
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    ZK_NOTEBOOK_DIR = "Notes";
+    ZK_NOTEBOOK_DIR = "${config.home.homeDirectory}/Notes";
   };
 
   xdg.enable = true;
