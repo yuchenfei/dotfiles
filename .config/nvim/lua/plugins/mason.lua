@@ -11,6 +11,7 @@ return {
       ensure_installed = {
         'tree-sitter-cli',
         'ruff', -- https://docs.astral.sh/ruff/editors/setup/
+        'shfmt', -- https://github.com/patrickvane/shfmt
       },
     },
     config = function(_, opts)

@@ -30,6 +30,7 @@ return {
     formatters_by_ft = {
       -- Text formats
       yaml = { 'prettier' },
+      sh = { 'shfmt' },
       -- Use the "*" filetype to run formatters on all filetypes.
       -- ['*'] = { 'codespell' },
       -- Use the "_" filetype to run formatters on filetypes that don't
@@ -55,6 +56,9 @@ return {
       prettier = {
         -- https://prettier.io/docs/options
         prepend_args = { '--no-semi', '--single-quote' },
+      },
+      shfmt = {
+        prepend_args = { '-i', '2', '-ci' },
       },
     },
     -- There is a similar affordance for format_after_save, which uses BufWritePost.
