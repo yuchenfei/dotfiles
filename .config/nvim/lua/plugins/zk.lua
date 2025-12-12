@@ -19,6 +19,7 @@ return {
   keys = {
     { '<leader>zo', '<Cmd>ZkNote<CR>', desc = 'Open/Create Note' },
     { '<leader>zd', '<Cmd>ZkDaily<CR>', desc = 'Daily Note' },
+    { '<leader>zD', '<Cmd>ZkDailyNotes<CR>', desc = 'Daily Notes' },
     {
       '<leader>znt',
       ":'<,'>ZkNewFromTitleSelection { dir = vim.fn.expand('%:p:h') }<CR>",
@@ -33,10 +34,10 @@ return {
     },
     -- Filters
     { '<leader>zi', '<Cmd>ZkInbox<CR>', desc = 'Inbox Notes' },
+    { '<leader>zR', '<Cmd>ZkResources<CR>', desc = 'Resource Notes' },
+    { '<leader>zO', '<Cmd>ZkOrphans<CR>', desc = 'Orphaned Notes' },
     { '<leader>zr', '<Cmd>ZkRecents<CR>', desc = 'Recent Notes' },
     { '<leader>zt', '<Cmd>ZkTags<CR>', desc = 'Tags' },
-    { '<leader>zD', '<Cmd>ZkDailyNotes<CR>', desc = 'Daily Notes' },
-    { '<leader>zO', '<Cmd>ZkOrphans<CR>', desc = 'Orphaned Notes' },
     -- Links
     { '<leader>zb', '<Cmd>ZkBacklinks<CR>', desc = 'Back Links' },
     { '<leader>zl', '<Cmd>ZkLinks<CR>', desc = 'Links' },
@@ -49,7 +50,7 @@ return {
           on_attach = function(client, _)
             -- use marksman lsp
             -- marksman lsp reference provider has column position
-            client.server_capabilities.referencesProvider = false
+            -- client.server_capabilities.referencesProvider = false
           end,
         },
       },
@@ -86,26 +87,27 @@ return {
     commands.add(
       'ZkNote',
       make_edit_fn(
-        { excludeHrefs = { 'journal' }, sort = { 'modified' } },
+        { excludeHrefs = { 'daily' }, sort = { 'created' } },
         { snacks_picker = snacks_picker }
       )
     )
     commands.add('ZkDaily', function(options)
-      options = vim.tbl_extend(
-        'force',
-        { dir = vim.env.ZK_NOTEBOOK_DIR .. '/journal/daily' },
-        options or {}
-      )
+      options =
+        vim.tbl_extend('force', { dir = vim.env.ZK_NOTEBOOK_DIR .. '/daily' }, options or {})
       zk.new(options)
     end)
-
-    -- Filters
     commands.add(
       'ZkDailyNotes',
-      make_edit_fn({ hrefs = { 'journal' }, sort = { 'title' } }, { title = 'Zk Daily Notes' })
+      make_edit_fn({ hrefs = { 'daily' }, sort = { 'title' } }, { title = 'Zk Daily Notes' })
     )
+
+    -- Filters
     commands.add('ZkInbox', make_edit_fn({ tags = { 'inbox' } }, { title = 'Zk Inbox Notes' }))
-    commands.add('ZkOrphans', make_edit_fn({ orphan = true }, { title = 'Zk Orphans' }))
+    commands.add('ZkResources', make_edit_fn({ tags = { 'resource' } }, { title = 'Zk Resources' }))
+    commands.add(
+      'ZkOrphans',
+      make_edit_fn({ excludeHrefs = { 'daily' }, orphan = true }, { title = 'Zk Orphans' })
+    )
     commands.add(
       'ZkRecents',
       make_edit_fn({ createdAfter = '2 weeks ago', sort = { 'created' } }, { title = 'Zk Recents' })
