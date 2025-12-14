@@ -1,14 +1,14 @@
 -- Better Around/Inside textobjects
 -- See `:help MiniAi-builtin-textobjects`
 --
--- Examples:
---  - va)  - [V]isually select [A]round [)]paren
---  - yinq - [Y]ank [I]nside [N]ext [Q]uote
---  - ci'  - [C]hange [I]nside [']quote
+-- ── Examples ────────────────────────────────────────────────────────
+-- - va)  - [V]isually select [A]round [)]paren
+-- - yinq - [Y]ank [I]nside [N]ext [Q]uote
+-- - ci'  - [C]hange [I]nside [']quote
 --
--- References:
---  - https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-ai.md
---  - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/coding.lua
+-- ── References ──────────────────────────────────────────────────────
+-- - https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-ai.md
+-- - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/coding.lua
 
 return {
   'nvim-mini/mini.ai',
@@ -22,8 +22,9 @@ return {
           a = { '@block.outer', '@conditional.outer', '@loop.outer' },
           i = { '@block.inner', '@conditional.inner', '@loop.inner' },
         }),
-        f = ai.gen_spec.treesitter({ a = '@function.outer', i = '@function.inner' }), -- function
-        c = ai.gen_spec.treesitter({ a = '@class.outer', i = '@class.inner' }), -- class
+        f = ai.gen_spec.treesitter({ a = '@function.outer', i = '@function.inner' }),
+        c = ai.gen_spec.treesitter({ a = '@comment.outer', i = '@comment.inner' }),
+        C = ai.gen_spec.treesitter({ a = '@class.outer', i = '@class.inner' }),
         t = { '<([%p%w]-)%f[^<%w][^<>]->.-</%1>', '^<.->().*()</[^/]->$' }, -- tags
         d = { '%f[%d]%d+' }, -- digits
         e = { -- Word with case
@@ -35,7 +36,7 @@ return {
           },
           '^().*()$',
         },
-        g = require('util.mini').ai_buffer, -- buffer
+        G = require('util.mini').ai_buffer, -- buffer
         u = ai.gen_spec.function_call(), -- u for "Usage"
         U = ai.gen_spec.function_call({ name_pattern = '[%w_]' }), -- without dot in function name
       },

@@ -1,8 +1,10 @@
--- References:
---  - https://github.com/nvim-treesitter/nvim-treesitter/blob/main/README.md
---  - https://github.com/nvim-treesitter/nvim-treesitter-textobjects
---  - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/treesitter.lua
---  - https://github.com/nvim-treesitter/nvim-treesitter-context
+-- ── Plugins ─────────────────────────────────────────────────────────
+-- - https://github.com/nvim-treesitter/nvim-treesitter/blob/main/README.md
+-- - https://github.com/nvim-treesitter/nvim-treesitter-textobjects/tree/main
+-- - https://github.com/nvim-treesitter/nvim-treesitter-context
+--
+-- ── References ──────────────────────────────────────────────────────
+-- - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/treesitter.lua
 
 --- @type LazySpec
 return {

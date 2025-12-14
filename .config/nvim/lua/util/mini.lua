@@ -1,8 +1,11 @@
--- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/util/mini.lua
+-- ── References ──────────────────────────────────────────────────────
+-- - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/util/mini.lua
 
 local M = {}
 
--- taken from MiniExtra.gen_ai_spec.buffer
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                 Get all lines in buffer                 │
+--          ╰─────────────────────────────────────────────────────────╯
 function M.ai_buffer(ai_type)
   local start_line, end_line = 1, vim.fn.line('$')
   if ai_type == 'i' then
@@ -20,7 +23,9 @@ function M.ai_buffer(ai_type)
   return { from = { line = start_line, col = 1 }, to = { line = end_line, col = to_col } }
 end
 
--- register all text objects with which-key
+--          ╭─────────────────────────────────────────────────────────╮
+--          │        Register all text objects with which-key         │
+--          ╰─────────────────────────────────────────────────────────╯
 ---@param opts table
 function M.ai_whichkey(opts)
   local objects = {
@@ -45,11 +50,12 @@ function M.ai_whichkey(opts)
     { '?', desc = 'user prompt' },
     -- Code
     { 'a', desc = 'argument' },
-    { 'c', desc = 'class' },
+    { 'c', desc = 'comment' },
+    { 'C', desc = 'class' },
     { 'd', desc = 'digit(s)' },
     { 'e', desc = 'CamelCase / snake_case' },
     { 'f', desc = 'function' },
-    { 'g', desc = 'entire file' },
+    { 'G', desc = 'entire file' },
     { 'i', desc = 'indent' }, -- snacks.scope
     { 'o', desc = 'block, conditional, loop' },
     { 't', desc = 'tag' },
