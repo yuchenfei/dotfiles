@@ -18,8 +18,6 @@ return {
               -- vim.lsp.stop_client(client, true)
               -- vim.cmd(':LspStop ' .. client.name)
               client.server_capabilities.completionProvider = false
-              -- client.server_capabilities.definitionProvider = false
-              client.server_capabilities.hoverProvider = false
             end
           end)
         end,
