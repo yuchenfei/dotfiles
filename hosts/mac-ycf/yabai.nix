@@ -23,14 +23,17 @@ _: {
       yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
       yabai -m rule --add app="(System Preferences|系统设置)" manage=off grid=4:6:2:0:2:3
-      yabai -m rule --add app="(Finder|访达)" manage=off grid=20:20:1:1:18:18
+      yabai -m rule --add app="(Finder|访达)" manage=off sticky=on grid=20:20:1:1:18:18
       yabai -m rule --add app="(Preview|预览)" manage=off
       yabai -m rule --add app="(Music|音乐)" manage=off grid=10:10:1:1:8:8
       yabai -m rule --add app="(Calendar|日历)" manage=off grid=10:10:1:1:8:8
 
-      yabai -m rule --add app="(Eudic|欧路词典)" manage=off grid=10:10:1:1:8:8
+      yabai -m rule --add app="(Eudic|欧路词典)" manage=off sticky=on grid=10:10:1:1:8:8
       yabai -m rule --add app="微信" manage=off grid=8:5:1:1:3:6
       yabai -m rule --add app="微信" title="^(视频通话.*)$" manage=off
+      yabai -m rule --add app="Raycast" manage=off
+
+      yabai -m rule --add app="kitty" title="yazi" manage=off
     '';
   };
 }

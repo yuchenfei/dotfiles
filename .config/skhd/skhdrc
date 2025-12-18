@@ -97,5 +97,19 @@ ctrl + alt + shift - l : yabai -m window --resize right:100:0 \
 
 # ── Other ─────────────────────────────────────────────────────────────
 
+ctrl + alt + cmd - r : skhd --reload
 # Toggle sketchybar
 ctrl + alt + cmd - space : sketchybar --bar hidden=toggle
+
+#          ╭──────────────────────────────────────────────────────────╮
+#          │                           APP                            │
+#          ╰──────────────────────────────────────────────────────────╯
+
+# switch-app.sh app [app_name]
+alt - a : ~/.dotfiles/scripts/macOS/switch-app.sh Arc
+alt - c : ~/.dotfiles/scripts/macOS/switch-app.sh "Visual Studio Code" Code
+alt - x : ~/.dotfiles/scripts/macOS/switch-app.sh kitty
+alt - m : ~/.dotfiles/scripts/macOS/switch-app.sh Music 音乐
+alt - o : ~/.dotfiles/scripts/macOS/switch-app.sh Obsidian
+
+alt - y : ~/.dotfiles/scripts/macOS/open-yazi.sh

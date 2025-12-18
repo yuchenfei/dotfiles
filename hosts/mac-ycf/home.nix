@@ -48,8 +48,8 @@ in
   xdg.enable = true;
 
   services.skhd.enable = true;
-  home.file.".config/skhd/skhdrc".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/skhd/skhdrc";
+  home.file.".config/skhd".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/skhd";
 
   home.file.".config/.markdownlint-cli2.jsonc".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/.markdownlint-cli2.jsonc";
