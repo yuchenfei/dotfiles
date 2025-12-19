@@ -108,8 +108,9 @@ ctrl + alt + cmd - space : sketchybar --bar hidden=toggle
 # switch-app.sh app [app_name]
 alt - a : ~/.dotfiles/scripts/macOS/switch-app.sh Arc
 alt - c : ~/.dotfiles/scripts/macOS/switch-app.sh "Visual Studio Code" Code
-alt - x : ~/.dotfiles/scripts/macOS/switch-app.sh kitty
 alt - m : ~/.dotfiles/scripts/macOS/switch-app.sh Music 音乐
 alt - o : ~/.dotfiles/scripts/macOS/switch-app.sh Obsidian
 
-alt - y : ~/.dotfiles/scripts/macOS/open-yazi.sh
+alt - x : ~/.dotfiles/scripts/macOS/kitty-session.sh
+alt - y : ~/.dotfiles/scripts/macOS/kitty-session.sh yazi
+alt - n : ~/.dotfiles/scripts/macOS/kitty-session.sh notes

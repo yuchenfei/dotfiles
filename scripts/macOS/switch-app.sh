@@ -9,10 +9,8 @@ ID_CURRENT="$(yabai -m query --windows --window | jq -r '.id')"
 # echo "$APP_NAME ID: $ID"
 # echo "Current ID: $ID_CURRENT"
 
-if [[ -n "$ID" && "$ID" != null ]]; then
-  if [[ "$ID_CURRENT" == "$ID" ]]; then
-    skhd -k "cmd - h"
-    exit 0
-  fi
+if [[ -n "$ID" && "$ID" == "$ID_CURRENT" ]]; then
+  skhd -k "cmd - h"
+  exit 0
 fi
 open -a "$APP"
