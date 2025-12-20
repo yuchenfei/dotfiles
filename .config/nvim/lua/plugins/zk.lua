@@ -120,7 +120,7 @@ return {
       end)
       commands.add(
         'ZkDailyNotes',
-        make_edit_fn({ hrefs = { 'daily' }, sort = { 'title' } }, { title = 'Zk Daily Notes' })
+        make_edit_fn({ hrefs = { 'daily' }, sort = { 'title-' } }, { title = 'Zk Daily Notes' })
       )
 
       -- Filters
