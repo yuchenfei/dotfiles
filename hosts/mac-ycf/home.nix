@@ -31,6 +31,10 @@ let
     # clang  # This will cause cargo install errors
     gnumake
   ];
+
+  skhdPath = "${config.home.homeDirectory}/.dotfiles/.config/skhd";
+  yabaiPath = "${config.home.homeDirectory}/.dotfiles/.config/yabai";
+  markdownlintPath = "${config.home.homeDirectory}/.dotfiles/.config/.markdownlint-cli2.jsonc";
 in
 {
   home = {
@@ -45,12 +49,14 @@ in
     ZK_NOTEBOOK_DIR = "${config.home.homeDirectory}/Notes";
   };
 
-  xdg.enable = true;
+  xdg = {
+    enable = true;
+    configFile = {
+      "skhd".source = config.lib.file.mkOutOfStoreSymlink skhdPath;
+      "yabai".source = config.lib.file.mkOutOfStoreSymlink yabaiPath;
+      ".markdownlint-cli2.jsonc".source = config.lib.file.mkOutOfStoreSymlink markdownlintPath;
+    };
+  };
 
   services.skhd.enable = true;
-  home.file.".config/skhd".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/skhd";
-
-  home.file.".config/.markdownlint-cli2.jsonc".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/.config/.markdownlint-cli2.jsonc";
 }
