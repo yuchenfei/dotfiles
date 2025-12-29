@@ -35,7 +35,7 @@ kitty \
   -d ~/Notes \
   -T $TITLE \
   -- \
-  fish -i -c "nvim" &
+  fish -i -c "NEOVIM_MODE=\"sticky\" nvim" &
 
 for _ in {1..10}; do
   ID="$(yabai -m query --windows | jq -r --arg title "$TITLE" '[.[] | select(.app=="kitty" and .title==$title)][0].id')"

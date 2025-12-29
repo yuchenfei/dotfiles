@@ -1,7 +1,7 @@
 -- References:
--- - https://github.com/nvim-lualine/lualine.nvim
--- - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/ui.lua
--- - https://github.com/AndreM222/copilot-lualine
+--  - https://github.com/nvim-lualine/lualine.nvim
+--  - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/ui.lua
+--  - https://github.com/AndreM222/copilot-lualine
 
 -- PERF: we don't need this lualine require madness 🤷
 local lualine_require = require('lualine_require')
@@ -11,15 +11,20 @@ vim.o.laststatus = vim.g.lualine_laststatus
 
 local palette = require('catppuccin.palettes').get_palette('mocha')
 
-require('lualine').setup({
-  options = {
-    globalstatus = vim.o.laststatus == 3,
-    section_separators = '',
-    component_separators = '',
-    disabled_filetypes = {
-      statusline = { 'snacks_dashboard' },
+local sections = {}
+if vim.g.neovim_mode == 'sticky' then
+  sections = {
+    lualine_a = { 'mode' },
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {
+      { 'location', separator = ' ', padding = { left = 1, right = 0 } },
+      { 'progress', padding = { left = 0, right = 1 } },
     },
-  },
+  }
+else
   sections = {
     lualine_a = { 'mode' },
     lualine_b = {
@@ -146,6 +151,18 @@ require('lualine').setup({
       { 'location', separator = ' ', padding = { left = 1, right = 0 } },
       { 'progress', padding = { left = 0, right = 1 } },
     },
+  }
+end
+
+require('lualine').setup({
+  options = {
+    globalstatus = vim.o.laststatus == 3,
+    section_separators = '',
+    component_separators = '',
+    disabled_filetypes = {
+      statusline = { 'snacks_dashboard' },
+    },
   },
+  sections = sections,
   extensions = { 'avante', 'lazy', 'mason' },
 })

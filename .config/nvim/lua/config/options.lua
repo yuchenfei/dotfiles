@@ -45,3 +45,12 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
+
+--          ╭─────────────────────────────────────────────────────────╮
+--          │                      Sticky notes                       │
+--          ╰─────────────────────────────────────────────────────────╯
+if vim.g.neovim_mode == 'sticky' then
+  vim.opt.number = false
+  vim.opt.relativenumber = false
+  vim.opt.signcolumn = 'no'
+end
