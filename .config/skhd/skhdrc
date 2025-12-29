@@ -128,3 +128,4 @@ alt - o : ~/.dotfiles/scripts/macOS/switch-app.sh Obsidian
 alt - x : ~/.dotfiles/scripts/macOS/kitty-session.sh
 alt - y : ~/.dotfiles/scripts/macOS/kitty-session.sh yazi
 alt - n : ~/.dotfiles/scripts/macOS/kitty-session.sh notes
+alt - z : ~/.dotfiles/scripts/macOS/sticky-notes.sh
