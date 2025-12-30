@@ -43,7 +43,16 @@ _: {
       macos_option_as_alt = "both";
     };
     keybindings = {
-      # "cmd+s" = "send_text all \e:w\\r";
+      "cmd+1" = "combine : send_key ctrl+space : send_key 1";
+      "cmd+2" = "combine : send_key ctrl+space : send_key 2";
+      "cmd+3" = "combine : send_key ctrl+space : send_key 3";
+      "cmd+4" = "combine : send_key ctrl+space : send_key 4";
+      "cmd+5" = "combine : send_key ctrl+space : send_key 5";
+      "cmd+6" = "combine : send_key ctrl+space : send_key 6";
+      "cmd+7" = "combine : send_key ctrl+space : send_key 7";
+      "cmd+8" = "combine : send_key ctrl+space : send_key 8";
+      "cmd+9" = "combine : send_key ctrl+space : send_key 9";
+      "cmd+z" = "combine : send_key ctrl+space : send_key z";
     };
   };
 }
