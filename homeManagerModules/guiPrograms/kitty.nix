@@ -5,7 +5,7 @@ _: {
     shellIntegration.enableFishIntegration = true;
     darwinLaunchOptions = [
       "--single-instance"
-      "--listen-on=unix:/tmp/my-kitty-socket"
+      "--listen-on=unix:/tmp/kitty-socket"
     ];
     font = {
       name = "Maple Mono NF CN";

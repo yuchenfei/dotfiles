@@ -26,5 +26,5 @@ if [[ -z "$SESSION" ]]; then
 else
   kitty \
     -o macos_quit_when_last_window_closed=yes \
-    --session "~/.dotfiles/kitty/$SESSION.kitty-session"
+    --session "~/.dotfiles/kitty/$SESSION.kitty-session" &
 fi

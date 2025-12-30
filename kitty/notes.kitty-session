@@ -1,5 +1,0 @@
-layout tall
-
-cd ~/Notes
-
-launch --title "S:notes" fish -i -c "nvim"
