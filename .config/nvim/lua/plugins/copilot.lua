@@ -7,15 +7,15 @@ return {
   build = ':Copilot auth',
   event = 'InsertEnter',
   opts = {
-    panel = { enabled = false },
+    panel = { enabled = false, keymap = { open = false } },
     suggestion = {
       enabled = true,
       auto_trigger = false,
       hide_during_completion = true,
       keymap = {
-        accept = '<M-l>',
+        accept = '<M-CR>',
         accept_word = '<M-h>',
-        accept_line = '<M-o>',
+        accept_line = '<M-l>',
         next = '<M-]>',
         prev = '<M-[>',
         dismiss = '<C-]>',

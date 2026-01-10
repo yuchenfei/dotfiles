@@ -1,7 +1,6 @@
 -- Plugins:
 --  - https://github.com/saghen/blink.cmp
 --  - https://github.com/archie-judd/blink-cmp-words
---  - https://github.com/fang2hou/blink-copilot
 --  - https://github.com/folke/lazydev.nvim
 --
 -- References:
@@ -14,7 +13,6 @@ return {
   version = '1.*',
   dependencies = {
     'archie-judd/blink-cmp-words',
-    'fang2hou/blink-copilot',
     'folke/lazydev.nvim',
   },
   event = { 'InsertEnter', 'CmdlineEnter' },
@@ -92,7 +90,7 @@ return {
       },
     },
     sources = {
-      default = { 'lsp', 'path', 'buffer', 'snippets', 'copilot' },
+      default = { 'lsp', 'path', 'buffer', 'snippets' },
       per_filetype = {
         text = { 'thesaurus', 'dictionary' },
         markdown = { inherit_defaults = true, 'thesaurus', 'dictionary' },
@@ -119,12 +117,6 @@ return {
             return ctx.trigger.initial_kind ~= 'trigger_character'
           end,
           score_offset = 20,
-        },
-        copilot = {
-          name = 'Copilot',
-          module = 'blink-copilot',
-          score_offset = 10,
-          async = true,
         },
         lazydev = {
           name = 'LazyDev',
