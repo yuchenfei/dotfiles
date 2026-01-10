@@ -22,7 +22,9 @@ let
     gdu
     hexyl
     jless
+    fx
     glow
+    most
 
     # Display & audio control
     monitorcontrol
