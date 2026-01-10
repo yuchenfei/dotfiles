@@ -78,8 +78,6 @@ return {
       'nvim-treesitter/nvim-treesitter',
       'nvim-mini/mini.icons',
     },
-    -- Also config in opts.file_types
-    ft = { 'markdown', 'Avante' },
     config = function()
       require('config.markdown')
       Snacks.toggle({
@@ -135,6 +133,20 @@ return {
           ['<Leader>mU'] = 'switch_unmarked_only',
           ['<Leader>mX'] = 'switch_cycle_box_table',
         },
+      },
+    },
+  },
+  {
+    -- https://github.com/chenxin-yan/footnote.nvim
+    'chenxin-yan/footnote.nvim',
+    enabled = false,
+    ft = { 'markdown' },
+    opts = {
+      keys = {
+        new_footnote = '<C-f>',
+        organize_footnotes = '<leader>mF',
+        next_footnote = ']f',
+        prev_footnote = '[f',
       },
     },
   },

@@ -1,25 +1,25 @@
--- References:
--- - https://cmp.saghen.dev/installation
--- - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/coding/blink.lua
---
 -- Plugins:
--- - https://github.com/saghen/blink.cmp
--- - https://github.com/rafamadriz/friendly-snippets
--- - https://github.com/archie-judd/blink-cmp-words
--- - https://github.com/fang2hou/blink-copilot
--- - https://github.com/folke/lazydev.nvim
+--  - https://github.com/saghen/blink.cmp
+--  - https://github.com/archie-judd/blink-cmp-words
+--  - https://github.com/fang2hou/blink-copilot
+--  - https://github.com/folke/lazydev.nvim
+--
+-- References:
+--  - https://cmp.saghen.dev/installation
+--  - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/coding/blink.lua
 
---- @type LazySpec
+---@type LazySpec
 return {
   'saghen/blink.cmp',
   version = '1.*',
   dependencies = {
-    'rafamadriz/friendly-snippets',
     'archie-judd/blink-cmp-words',
     'fang2hou/blink-copilot',
     'folke/lazydev.nvim',
   },
   event = { 'InsertEnter', 'CmdlineEnter' },
+  ---@module 'blink.cmp'
+  ---@type blink.cmp.Config
   opts = {
     -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
     -- 'super-tab' for mappings similar to vscode (tab to accept)
@@ -92,10 +92,10 @@ return {
       },
     },
     sources = {
-      default = { 'lsp', 'buffer', 'snippets', 'path', 'copilot' },
+      default = { 'lsp', 'path', 'buffer', 'snippets', 'copilot' },
       per_filetype = {
-        text = { 'dictionary' },
-        markdown = { inherit_defaults = true, 'thesaurus' },
+        text = { 'thesaurus', 'dictionary' },
+        markdown = { inherit_defaults = true, 'thesaurus', 'dictionary' },
         lua = { inherit_defaults = true, 'lazydev' },
       },
       providers = {
@@ -118,11 +118,12 @@ return {
           should_show_items = function(ctx) -- avoid triggering snippets after . " ' chars.
             return ctx.trigger.initial_kind ~= 'trigger_character'
           end,
+          score_offset = 20,
         },
         copilot = {
           name = 'Copilot',
           module = 'blink-copilot',
-          score_offset = 100,
+          score_offset = 10,
           async = true,
         },
         lazydev = {
