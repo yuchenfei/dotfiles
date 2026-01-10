@@ -2,9 +2,11 @@
 {
   imports = [
     ./cliPrograms/bun.nix
+    ./cliPrograms/claude-code.nix
     ./cliPrograms/common.nix
     ./cliPrograms/fastfetch.nix
     ./cliPrograms/fnm.nix
+    ./cliPrograms/gemini-cli.nix
     ./cliPrograms/git.nix
     ./cliPrograms/nix.nix
     ./cliPrograms/nvim.nix
