@@ -14,7 +14,7 @@ return {
     },
     -- Document existing key chains
     spec = {
-      { '<leader>a', group = 'Avante', icon = '󰚩' },
+      { '<leader>a', group = 'AI', icon = '󰚩' },
       { '<leader>f', group = 'Find' },
       { '<leader>g', group = 'Git', mode = { 'n', 'v' }, icon = '' },
       { '<leader>l', group = 'LSP', icon = '' },

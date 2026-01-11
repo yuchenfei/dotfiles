@@ -90,6 +90,14 @@ else
         },
         show_colors = true,
       },
+      {
+        function()
+          local status = require('sidekick.status').cli()
+          return ' ' .. (#status > 1 and #status or '')
+        end,
+        cond = function() return #require('sidekick.status').cli() > 0 end,
+        color = function() return { fg = Snacks.util.color('Special') } end,
+      },
       -- Conform formatter status
       -- - https://github.com/nvim-lualine/lualine.nvim/discussions/1153
       {
