@@ -12,6 +12,7 @@ return {
           -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
           settings = {
             Lua = {
+              codeLens = { enable = false },
               workspace = {
                 checkThirdParty = false,
               },

@@ -1,7 +1,7 @@
 -- https://github.com/MeanderingProgrammer/render-markdown.nvim
 
 require('render-markdown').setup({
-  file_types = { 'markdown', 'Avante' },
+  file_types = { 'markdown', 'codecompanion' },
   anti_conceal = {
     -- disabled_modes = { 'n' },
     ignore = {

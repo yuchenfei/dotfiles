@@ -2,7 +2,7 @@
 
 return {
   'HakonHarnes/img-clip.nvim',
-  ft = { 'markdown', 'Avante' },
+  ft = { 'markdown', 'codecompanion' },
   keys = {
     { '<leader>p', '<cmd>PasteImage<cr>', desc = 'Paste image from system clipboard' },
   },
@@ -28,6 +28,10 @@ return {
         process_cmd = 'convert - -quality 75 avif:-',
         copy_images = true,
         download_images = false,
+      },
+      codecompanion = {
+        template = '[Image]($FILE_PATH)',
+        use_absolute_path = true,
       },
     },
   },

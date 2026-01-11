@@ -49,7 +49,7 @@ return {
         mode = { 'n', 't', 'i', 'x' },
       },
       {
-        '<leader>aa',
+        '<leader>ao',
         function() require('sidekick.cli').toggle() end,
         desc = 'Sidekick Toggle CLI',
       },
