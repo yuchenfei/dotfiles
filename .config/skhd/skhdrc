@@ -124,6 +124,7 @@ alt - c : ~/.dotfiles/scripts/macOS/switch-app.sh "Visual Studio Code" Code
 alt - d : ~/.dotfiles/scripts/macOS/switch-app.sh Eudic 欧路词典
 alt - m : ~/.dotfiles/scripts/macOS/switch-app.sh Music 音乐
 alt - o : ~/.dotfiles/scripts/macOS/switch-app.sh Obsidian
+alt - i : ~/.dotfiles/scripts/macOS/switch-app.sh "Cherry Studio"
 
 alt - x : ~/.dotfiles/scripts/macOS/kitty-session.sh
 alt - y : ~/.dotfiles/scripts/macOS/kitty-session.sh yazi
