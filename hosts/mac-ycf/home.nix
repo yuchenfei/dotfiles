@@ -34,6 +34,8 @@ let
     # clang  # This will cause cargo install errors
     gnumake
     github-copilot-cli
+
+    obsidian
   ];
 
   dotfilesDir = "${config.home.homeDirectory}/.dotfiles";

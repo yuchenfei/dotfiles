@@ -93,7 +93,8 @@ return {
       default = { 'lsp', 'path', 'buffer', 'snippets' },
       per_filetype = {
         text = { 'thesaurus', 'dictionary' },
-        markdown = { inherit_defaults = true, 'thesaurus', 'dictionary' },
+        -- obsidian need list or function
+        markdown = function() return { inherit_defaults = true, 'thesaurus', 'dictionary' } end,
         lua = { inherit_defaults = true, 'lazydev' },
       },
       providers = {
