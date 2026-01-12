@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   user,
   ...
@@ -35,9 +36,17 @@ let
     github-copilot-cli
   ];
 
-  skhdPath = "${config.home.homeDirectory}/.dotfiles/.config/skhd";
-  yabaiPath = "${config.home.homeDirectory}/.dotfiles/.config/yabai";
-  markdownlintPath = "${config.home.homeDirectory}/.dotfiles/.config/.markdownlint-cli2.jsonc";
+  dotfilesDir = "${config.home.homeDirectory}/.dotfiles";
+
+  linkConfig = name: {
+    "${name}".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/.config/${name}";
+  };
+
+  configNames = [
+    "skhd"
+    "yabai"
+    ".markdownlint-cli2.jsonc"
+  ];
 in
 {
   home = {
@@ -49,17 +58,11 @@ in
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    ZK_NOTEBOOK_DIR = "${config.home.homeDirectory}/Notes";
+    ZK_NOTEBOOK_DIR = "${config.home.homeDirectory}/Notes/zk_note";
   };
 
-  xdg = {
-    enable = true;
-    configFile = {
-      "skhd".source = config.lib.file.mkOutOfStoreSymlink skhdPath;
-      "yabai".source = config.lib.file.mkOutOfStoreSymlink yabaiPath;
-      ".markdownlint-cli2.jsonc".source = config.lib.file.mkOutOfStoreSymlink markdownlintPath;
-    };
-  };
+  xdg.enable = true;
+  xdg.configFile = lib.mkMerge (map linkConfig configNames);
 
   services.skhd.enable = true;
 }

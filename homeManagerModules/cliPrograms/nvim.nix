@@ -8,7 +8,7 @@ let
   dotfilesDir = "${config.home.homeDirectory}/.dotfiles";
 
   linkConfig = name: {
-    ".config/${name}".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/.config/${name}";
+    "${name}".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/.config/${name}";
   };
 
   configNames = [
@@ -22,7 +22,13 @@ in
     neovim
   ];
 
-  home.file = lib.mkMerge (map linkConfig configNames);
+  # marksman global config
+  home.file."Library/Application Support/marksman/config.toml".text = ''
+    [core]
+    title_from_heading = false
+  '';
+
+  xdg.configFile = lib.mkMerge (map linkConfig configNames);
 
   programs = {
     fish = {
