@@ -7,8 +7,9 @@
 }:
 let
   packages = with pkgs; [
-    # Image processing/manipulation
+    # Media tools
     imagemagick
+    mediainfo
     pngpaste
 
     # Battery management

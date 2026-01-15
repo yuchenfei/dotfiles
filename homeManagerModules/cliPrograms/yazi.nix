@@ -1,23 +1,22 @@
+# Reference:
+#  - https://wiki.nixos.org/wiki/Yazi
+
 { pkgs, ... }:
 {
   programs.yazi = {
     enable = true;
     shellWrapperName = "y";
-    plugins = builtins.listToAttrs (
-      map
-        (n: {
-          name = n;
-          value = pkgs.yaziPlugins.${n};
-        })
-        [
-          "git"
-          "piper"
-          "smart-paste"
-          "starship"
-          "toggle-pane"
-          "vcs-files"
-        ]
-    );
+    plugins = {
+      inherit (pkgs.yaziPlugins)
+        git
+        mediainfo
+        piper
+        smart-paste
+        starship
+        toggle-pane
+        vcs-files
+        ;
+    };
     initLua = ''
       require("git"):setup()
       require("starship"):setup()
@@ -44,7 +43,33 @@
             run = "git";
           }
         ];
+        prepend_preloaders = [
+          {
+            mime = "{audio,video,image}/*";
+            run = "mediainfo";
+          }
+          {
+            mime = "application/subrip";
+            run = "mediainfo";
+          }
+          {
+            mime = "application/postscript";
+            run = "mediainfo";
+          }
+        ];
         prepend_previewers = [
+          {
+            mime = "{audio,video,image}/*";
+            run = "mediainfo";
+          }
+          {
+            mime = "application/subrip";
+            run = "mediainfo";
+          }
+          {
+            mime = "application/postscript";
+            run = "mediainfo";
+          }
           {
             name = "*.md";
             run = ''piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"'';
