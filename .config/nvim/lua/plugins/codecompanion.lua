@@ -53,7 +53,7 @@ return {
     end,
     keys = {
       {
-        '<leader>aa',
+        '<leader>ac',
         '<cmd>CodeCompanionChat Toggle<cr>',
         mode = { 'n', 'v' },
         noremap = true,

@@ -49,7 +49,7 @@ return {
         mode = { 'n', 't', 'i', 'x' },
       },
       {
-        '<leader>ao',
+        '<leader>aa',
         function() require('sidekick.cli').toggle() end,
         desc = 'Sidekick Toggle CLI',
       },
@@ -87,16 +87,6 @@ return {
         desc = 'Sidekick Select Prompt',
       },
       -- Example of a keybinding to open Claude directly
-      {
-        '<leader>ac',
-        function() require('sidekick.cli').toggle({ name = 'claude', focus = true }) end,
-        desc = 'Sidekick Toggle Claude',
-      },
-      {
-        '<leader>ag',
-        function() require('sidekick.cli').toggle({ name = 'gemini', focus = true }) end,
-        desc = 'Sidekick Toggle Gemini',
-      },
       {
         '<leader>ga',
         function() require('sidekick.cli').toggle({ name = 'gac', focus = true }) end,
