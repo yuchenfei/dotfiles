@@ -5,8 +5,8 @@
 return {
   {
     'obsidian-nvim/obsidian.nvim',
-    version = '*', -- use latest release, remove to use latest commit
     ft = 'markdown',
+    cmd = 'Obsidian',
     ---@module 'obsidian'
     ---@type obsidian.config
     opts = {
@@ -17,13 +17,80 @@ return {
           path = '~/Notes/Notebook',
         },
       },
+      note_id_func = function(title)
+        if title:match('^%l%l%l%l%s') then
+          return title
+        elseif title:match('^-') then
+          return (title:gsub('^-%s*', ''))
+        else
+          local prefix = ''
+          for _ = 1, 4 do
+            prefix = prefix .. string.char(math.random(97, 122))
+          end
+          return prefix .. ' ' .. title
+        end
+      end,
+      wiki_link_func = function(opts)
+        opts.label = opts.id
+        ---@diagnostic disable-next-line: param-type-mismatch
+        return require('obsidian.builtin').wiki_link_id_prefix(opts)
+      end,
+      templates = {
+        folder = 'Templates',
+        date_format = '%Y-%m-%d %a',
+        time_format = '%H:%M',
+      },
+      daily_notes = {
+        folder = 'Timestamps',
+        date_format = '%Y/%m-%B/%Y-%m-%d-%A',
+        default_tags = nil,
+        workdays_only = false,
+        template = 'Daily Notes Template',
+      },
+      ui = {
+        enable = false,
+      },
       callbacks = {
         post_set_workspace = function(workspace)
+          -- turn off diagnostics in obsidian workspace
           local path = vim.fs.normalize(tostring(workspace.path))
-          -- Snacks.toggle.diagnostics():set(false)
-          -- disable diagnostics in obsidian workspace
           if vim.uv.cwd() == path then Snacks.toggle.diagnostics():set(false) end
+          -- set locale to C for time formatting
+          os.setlocale('C', 'time')
         end,
+      },
+      footer = {
+        format = '{{backlinks}} backlinks  {{words}} words  {{chars}} chars',
+        separator = '',
+      },
+    },
+    keys = {
+      { '<leader>no', '<Cmd>Obsidian quick_switch<CR>', desc = 'Open Note' },
+      { '<leader>nn', '<Cmd>Obsidian new<CR>', desc = 'Create Note' },
+      { '<leader>nN', '<Cmd>Obsidian new_from_template<CR>', desc = 'Create Note from Template' },
+      { '<leader>nd', '<Cmd>Obsidian today<CR>', desc = 'Daily Notes - Today' },
+      { '<leader>nD', '<Cmd>Obsidian dailies -10<CR>', desc = 'Daily Notes' },
+      {
+        '<leader>nt',
+        ":'<,'>Obsidian link_new<CR>",
+        mode = 'v',
+        desc = 'New Note from Title Selection',
+      },
+      {
+        '<leader>nc',
+        ":'<,'>Obsidian extract_note<CR>",
+        mode = 'v',
+        desc = 'New Note from Content Selection',
+      },
+      { '<leader>nt', '<Cmd>Obsidian tags<CR>', desc = 'Tags' },
+      { '<leader>nl', '<Cmd>Obsidian links<CR>', desc = 'Links' },
+    },
+  },
+  {
+    'folke/which-key.nvim',
+    opts = {
+      spec = {
+        { '<leader>n', group = 'Obsidian', icon = '󰠮' },
       },
     },
   },

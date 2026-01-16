@@ -19,6 +19,12 @@ return {
               -- vim.cmd(':LspStop ' .. client.name)
               client.server_capabilities.completionProvider = false
             end
+            if require('obsidian.api').path_is_note(vim.fn.expand('%:p')) == true then
+              client.server_capabilities.completionProvider = false
+              client.server_capabilities.definitionProvider = false
+              client.server_capabilities.referencesProvider = false
+              client.server_capabilities.documentSymbolProvider = false
+            end
           end)
         end,
       },

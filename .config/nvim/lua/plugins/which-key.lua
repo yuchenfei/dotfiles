@@ -19,7 +19,7 @@ return {
       { '<leader>g', group = 'Git', mode = { 'n', 'v' }, icon = '' },
       { '<leader>l', group = 'LSP', icon = '' },
       { '<leader>m', group = 'Markdown', icon = '󰍔' },
-      { '<leader>n', group = 'Noice' },
+      { '<leader>N', group = 'Noice' },
       { '<leader>o', group = 'Overseer', icon = '󰑮' },
       { '<leader>p', icon = '' },
       { '<leader>q', group = 'Quit/Session' },
