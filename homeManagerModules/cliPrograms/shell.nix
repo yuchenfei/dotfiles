@@ -27,6 +27,7 @@
         set fish_greeting # Disable greeting
 
         fish_add_path ~/.local/bin
+        fish_add_path ~/.cache/.bun/bin
       '';
       plugins =
         map
