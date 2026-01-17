@@ -60,10 +60,10 @@ return {
     },
     mappings = {
       close = 'q',
-      go_in_plus = 'l',
-      go_in = 'L',
-      go_out_plus = 'h',
-      go_out = 'H',
+      go_in = 'l',
+      go_in_plus = 'L',
+      go_out = 'h',
+      go_out_plus = 'H',
       go_in_horizontal = '<C-s>', -- custom
       go_in_vertical = '<C-v>', -- custom
       go_in_tab = '<C-t>', -- custom
@@ -162,6 +162,7 @@ return {
       callback = function()
         set_mark('c', vim.fn.stdpath('config'), 'Config') -- path
         set_mark('w', vim.fn.getcwd, 'Working directory') -- callable
+        set_mark('n', '~/.dotfiles/.config/nvim', 'Neovim directory')
         set_mark('~', '~', 'Home directory')
       end,
     })
