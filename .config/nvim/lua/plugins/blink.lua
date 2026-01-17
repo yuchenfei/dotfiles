@@ -16,6 +16,9 @@ return {
     'folke/lazydev.nvim',
   },
   event = { 'InsertEnter', 'CmdlineEnter' },
+  opts_extend = {
+    'sources.default',
+  },
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {

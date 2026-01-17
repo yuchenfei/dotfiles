@@ -1,5 +1,6 @@
--- https://github.com/zbirenbaum/copilot.lua
--- https://github.com/copilotlsp-nvim/copilot-lsp
+-- References:
+--  - https://github.com/zbirenbaum/copilot.lua
+--  - https://github.com/copilotlsp-nvim/copilot-lsp
 
 return {
   'zbirenbaum/copilot.lua',

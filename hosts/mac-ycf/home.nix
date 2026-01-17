@@ -62,6 +62,7 @@ in
   home.sessionVariables = {
     EDITOR = "nvim";
     ZK_NOTEBOOK_DIR = "${config.home.homeDirectory}/Notes/zk_note";
+    CLIProxyAPI_KEY = "ycf-xc8ayh4nzqaw";
   };
 
   xdg.enable = true;

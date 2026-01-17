@@ -1,4 +1,4 @@
--- Reference:
+-- References:
 --  - https://github.com/folke/sidekick.nvim
 --  - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/ai/sidekick.lua
 
@@ -21,7 +21,7 @@ return {
             },
           },
           mux = {
-            enabled = true,
+            enabled = false, -- conflict with skhd script
             backend = 'tmux',
           },
           tools = {
@@ -49,36 +49,31 @@ return {
         mode = { 'n', 't', 'i', 'x' },
       },
       {
-        '<leader>aa',
-        function() require('sidekick.cli').toggle() end,
-        desc = 'Sidekick Toggle CLI',
+        '<leader>ao',
+        function() require('sidekick.cli').toggle({ name = 'opencode', focus = true }) end,
+        desc = 'Sidekick OpenCode',
       },
       {
-        '<leader>as',
+        '<leader>aO',
         function() require('sidekick.cli').select({ filter = { installed = true } }) end,
-        desc = 'Select CLI',
+        desc = 'Sidekick Select CLI',
       },
       {
         '<leader>ad',
         function() require('sidekick.cli').close() end,
-        desc = 'Detach a CLI Session',
+        desc = 'Sidekick Detach a CLI Session',
       },
       {
         '<leader>at',
         function() require('sidekick.cli').send({ msg = '{this}' }) end,
         mode = { 'x', 'n' },
-        desc = 'Send This',
-      },
-      {
-        '<leader>af',
-        function() require('sidekick.cli').send({ msg = '{file}' }) end,
-        desc = 'Send File',
+        desc = 'Sidekick Send This',
       },
       {
         '<leader>av',
         function() require('sidekick.cli').send({ msg = '{selection}' }) end,
         mode = { 'x' },
-        desc = 'Send Visual Selection',
+        desc = 'Sidekick Send Visual Selection',
       },
       {
         '<leader>ap',
@@ -86,7 +81,6 @@ return {
         mode = { 'n', 'x' },
         desc = 'Sidekick Select Prompt',
       },
-      -- Example of a keybinding to open Claude directly
       {
         '<leader>ga',
         function() require('sidekick.cli').toggle({ name = 'gac', focus = true }) end,
