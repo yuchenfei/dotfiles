@@ -13,24 +13,13 @@ return {
     ---@module 'avante'
     ---@type avante.Config
     opts = {
-      provider = 'copilot',
+      provider = 'gemini',
       providers = {
-        ['gemini'] = {
-          __inherited_from = 'openai',
-          endpoint = 'http://192.168.100.2:8317/v1',
-          api_key_name = 'CLIProxyAPI_KEY',
-          model = 'gemini-claude-sonnet-4-5',
+        gemini = {
+          endpoint = 'http://192.168.100.2:8317/v1beta/models',
+          model = 'gemini-3-pro-high',
         },
       },
-      input = {
-        provider = 'snacks',
-        provider_opts = {
-          title = 'Avante Input',
-          icon = ' ',
-          placeholder = 'Enter your API key...',
-        },
-      },
-
       behaviour = {
         auto_add_current_file = false,
       },
@@ -65,7 +54,7 @@ return {
           remove_file = 'd',
           add_file = '@',
           close = { '<Esc>', 'q' },
-          close_from_input = { normal = '<Esc>', insert = '<C-d>' },
+          close_from_input = { normal = { '<Esc>', 'q' }, insert = '<C-d>' },
         },
       },
       selection = {
