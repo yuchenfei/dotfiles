@@ -8,7 +8,7 @@ let
   dotfilesDir = "${config.home.homeDirectory}/.dotfiles";
 
   linkConfig = name: {
-    "${name}".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/.config/${name}";
+    "${name}".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/${name}";
   };
 
   configNames = [

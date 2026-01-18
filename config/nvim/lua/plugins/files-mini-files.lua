@@ -162,7 +162,7 @@ return {
       callback = function()
         set_mark('c', vim.fn.stdpath('config'), 'Config') -- path
         set_mark('w', vim.fn.getcwd, 'Working directory') -- callable
-        set_mark('n', '~/.dotfiles/.config/nvim', 'Neovim directory')
+        set_mark('n', '~/.dotfiles/config/nvim', 'Neovim directory')
         set_mark('~', '~', 'Home directory')
       end,
     })
