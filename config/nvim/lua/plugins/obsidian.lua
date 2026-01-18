@@ -66,10 +66,17 @@ return {
     },
     keys = {
       { '<leader>no', '<Cmd>Obsidian quick_switch<CR>', desc = 'Open Note' },
+      { '<leader>nx', '<Cmd>Obsidian open<CR>', desc = 'Open Note in Obsidian' },
       { '<leader>nn', '<Cmd>Obsidian new<CR>', desc = 'Create Note' },
       { '<leader>nN', '<Cmd>Obsidian new_from_template<CR>', desc = 'Create Note from Template' },
       { '<leader>nd', '<Cmd>Obsidian today<CR>', desc = 'Daily Notes - Today' },
       { '<leader>nD', '<Cmd>Obsidian dailies -10<CR>', desc = 'Daily Notes' },
+      {
+        '<leader>nc',
+        ":'<,'>Obsidian extract_note<CR>",
+        mode = 'v',
+        desc = 'New Note from Content Selection',
+      },
       {
         '<leader>nt',
         ":'<,'>Obsidian link_new<CR>",
@@ -77,13 +84,14 @@ return {
         desc = 'New Note from Title Selection',
       },
       {
-        '<leader>nc',
-        ":'<,'>Obsidian extract_note<CR>",
+        '<leader>nl',
+        ":'<,'>Obsidian link<CR>",
         mode = 'v',
-        desc = 'New Note from Content Selection',
+        desc = 'Link selection to Note',
       },
-      { '<leader>nt', '<Cmd>Obsidian tags<CR>', desc = 'Tags' },
       { '<leader>nl', '<Cmd>Obsidian links<CR>', desc = 'Links' },
+      { '<leader>nb', '<Cmd>Obsidian backlinks<CR>', desc = 'Backlinks' },
+      { '<leader>nt', '<Cmd>Obsidian tags<CR>', desc = 'Tags' },
     },
   },
   {

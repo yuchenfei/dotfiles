@@ -41,7 +41,7 @@ switch_tmux_session() {
 }
 
 if [[ "$SESSION" == "notes" ]]; then
-  switch_tmux_session "notes" "~/Notes"
+  switch_tmux_session "notes" "~/Notes/Notebook"
 elif [[ "$SESSION" == "config" ]]; then
   switch_tmux_session "config" "~/.dotfiles"
 else
