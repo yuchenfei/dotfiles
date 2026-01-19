@@ -13,13 +13,7 @@ return {
     ---@module 'avante'
     ---@type avante.Config
     opts = {
-      provider = 'gemini',
-      providers = {
-        gemini = {
-          endpoint = 'http://192.168.100.2:8317/v1beta/models',
-          model = 'gemini-3-pro-high',
-        },
-      },
+      provider = 'copilot',
       behaviour = {
         auto_add_current_file = false,
       },
