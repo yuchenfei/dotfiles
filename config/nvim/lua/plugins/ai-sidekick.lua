@@ -19,6 +19,10 @@ return {
             split = {
               width = 60,
             },
+            keys = {
+              buffers = { '<M-b>', 'buffers', mode = 'nt', desc = 'open buffer picker' },
+              files = { '<M-f>', 'files', mode = 'nt', desc = 'open file picker' },
+            },
           },
           mux = {
             enabled = false, -- conflict with skhd script

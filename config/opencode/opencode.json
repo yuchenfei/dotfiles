@@ -98,5 +98,9 @@
     }
   },
   "model": "google/antigravity-gemini-3-pro",
-  "small_model": "google/antigravity-gemini-3-flash"
+  "small_model": "google/antigravity-gemini-3-flash",
+  "keybinds": {
+    "messages_page_up": "pageup,ctrl+b",
+    "messages_page_down": "pagedown,ctrl+f"
+  }
 }
