@@ -10,10 +10,23 @@ return {
         and 'powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false'
       or 'make',
     event = 'VeryLazy',
+    keys = {
+      {
+        '<leader>aA',
+        '<Cmd>AvanteSwitchProvider opencode<CR>',
+        desc = 'avante: opencode provider',
+      },
+    },
     ---@module 'avante'
     ---@type avante.Config
     opts = {
       provider = 'copilot',
+      acp_providers = {
+        ['opencode'] = {
+          command = 'opencode',
+          args = { 'acp' },
+        },
+      },
       behaviour = {
         auto_add_current_file = false,
       },
