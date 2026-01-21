@@ -13,12 +13,6 @@ return {
       setup = {
         marksman = function()
           Snacks.util.lsp.on({ name = 'marksman' }, function(_, client)
-            if require('zk.util').notebook_root(vim.fn.expand('%:p')) ~= nil then
-              -- client.stop()
-              -- vim.lsp.stop_client(client, true)
-              -- vim.cmd(':LspStop ' .. client.name)
-              client.server_capabilities.completionProvider = false
-            end
             if require('obsidian.api').path_is_note(vim.fn.expand('%:p')) == true then
               client.server_capabilities.completionProvider = false
               client.server_capabilities.definitionProvider = false

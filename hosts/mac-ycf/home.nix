@@ -61,7 +61,6 @@ in
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    ZK_NOTEBOOK_DIR = "${config.home.homeDirectory}/Notes/zk_note";
     AVANTE_GEMINI_API_KEY = "ycf-xc8ayh4nzqaw"; # local CLI Proxy API key
   };
 

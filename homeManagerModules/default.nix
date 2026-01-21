@@ -12,7 +12,6 @@
     ./cliPrograms/tmux.nix
     ./cliPrograms/uv.nix
     ./cliPrograms/yazi.nix
-    ./cliPrograms/zk.nix
     ./guiPrograms/chrome.nix
     ./guiPrograms/kitty.nix
     ./guiPrograms/sketchybar.nix
