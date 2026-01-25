@@ -1,38 +1,37 @@
--- https://github.com/hakonharnes/img-clip.nvim
+-- References:
+--  - https://github.com/hakonharnes/img-clip.nvim
+--  - https://github.com/linkarzu/dotfiles-latest/blob/main/neovim/neobean/lua/config/keymaps.lua#L1308-L1308
 
+---@type LazySpec
 return {
   'HakonHarnes/img-clip.nvim',
-  ft = { 'markdown', 'codecompanion' },
-  keys = {
-    { '<leader>p', '<cmd>PasteImage<cr>', desc = 'Paste image from system clipboard' },
-  },
+  event = 'VeryLazy',
   opts = {
     default = {
-      file_name = '%y%m%d-%H%M%S',
-      -- required for Windows users
-      -- use_absolute_path = true,
+      -- file and directory options
+      use_absolute_path = false,
+      relative_to_current_file = false,
+
+      dir_path = 'assets',
+
       prompt_for_file_name = false,
-      embed_image_as_base64 = false,
-      drag_and_drop = {
-        insert_mode = false, -- true, notify 'content is not an image' when copying text
-      },
+      file_name = '%y%m%d-%H%M%S',
+
+      extension = 'avif',
+      process_cmd = 'convert - -quality 75 avif:-',
     },
     filetypes = {
       markdown = {
-        dir_path = './attachments',
-        -- template options
-        template = '![Image$CURSOR]($FILE_PATH)',
         url_encode_path = true,
-        -- image options
-        extension = 'avif',
-        process_cmd = 'convert - -quality 75 avif:-',
-        copy_images = true,
-        download_images = false,
       },
-      codecompanion = {
-        template = '[Image]($FILE_PATH)',
-        use_absolute_path = true,
+      AvanteInput = {
+        drag_and_drop = {
+          insert_mode = true,
+        },
       },
     },
+  },
+  keys = {
+    { '<leader>p', '<cmd>PasteImage<cr>', desc = 'Paste image from system clipboard' },
   },
 }
