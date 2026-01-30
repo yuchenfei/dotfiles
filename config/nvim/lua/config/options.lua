@@ -29,6 +29,20 @@ vim.o.timeoutlen = 300 -- Decrease mapped sequence wait time
 vim.o.undofile = true -- Save undo history
 vim.o.updatetime = 250 -- Decrease update time
 
+vim.opt.fillchars = {
+  fold = ' ',
+  foldopen = '',
+  foldclose = '',
+  foldsep = ' ',
+  eob = ' ', -- default ~ after the buffer
+}
+
+-- Folding
+vim.opt.foldcolumn = '1'
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
