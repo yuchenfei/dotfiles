@@ -39,6 +39,8 @@ vim.opt.fillchars = {
 
 -- Folding
 vim.opt.foldcolumn = '1'
+vim.opt.statuscolumn =
+  [[%s%=%{v:relnum?v:relnum:v:lnum} %#FoldColumn#%{foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? '󰍝' : '󰍟') : ' '}]]
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 vim.opt.foldenable = true
