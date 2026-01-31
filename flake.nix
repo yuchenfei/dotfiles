@@ -2,10 +2,11 @@
   description = "Chenfei nix-darwin system flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     catppuccin.url = "github:catppuccin/nix";
@@ -37,6 +38,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-unstable,
       nix-darwin,
       ...
     }@inputs:
@@ -44,6 +46,11 @@
       user = "yuchenfei";
       email = "cf.yu@qq.com";
       inherit (self) outputs;
+      # Configure unstable pkgs for mixed usage
+      pkgs-unstable = import nixpkgs-unstable {
+        system = "aarch64-darwin";
+        config.allowUnfree = true;
+      };
     in
     {
       # Build darwin flake using:
@@ -55,6 +62,7 @@
             outputs
             user
             email
+            pkgs-unstable
             ;
         };
         modules = [

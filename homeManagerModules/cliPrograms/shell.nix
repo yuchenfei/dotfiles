@@ -3,6 +3,7 @@
   programs = {
     zsh = {
       enable = true;
+      dotDir = "${config.xdg.configHome}/zsh";
       initContent = ''
         if [[ $(ps -o command= -p "$PPID" | awk '{print $1}') != 'fish' ]]
         then
