@@ -1,7 +1,8 @@
 -- References:
--- - https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
--- - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- - https://github.com/folke/snacks.nvim/blob/main/docs/keymap.md
+--  - https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
+--  - https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+--  - https://github.com/folke/snacks.nvim/blob/main/docs/keymap.md
+--  - https://github.com/linkarzu/dotfiles-latest/blob/main/neovim/neobean/lua/config/keymaps.lua
 
 -- [[ Basic Keymaps ]]
 
@@ -63,6 +64,13 @@ Snacks.keymap.set(
   '<localleader>mp',
   function() require('util.auto-link-title').paste_url() end,
   { ft = 'markdown', desc = 'Paste URL with Title' }
+)
+
+vim.keymap.set(
+  { 'n', 'v', 'i' },
+  '<M-c>',
+  require('util').copy_filepath_to_clipboard,
+  { desc = 'Copy file path to clipboard' }
 )
 
 -- [[ Buffers Keymaps ]]

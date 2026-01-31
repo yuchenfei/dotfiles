@@ -6,4 +6,11 @@ function M.reload_modules(prefix)
   end
 end
 
+-- Function to copy file path to clipboard
+function M.copy_filepath_to_clipboard()
+  local filePath = vim.fn.expand('%:~') -- Gets the file path relative to the home directory
+  vim.fn.setreg('+', filePath) -- Copy the file path to the clipboard register
+  vim.notify('Path copied to clipboard:\n' .. filePath, vim.log.levels.INFO)
+end
+
 return M
