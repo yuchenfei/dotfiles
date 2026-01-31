@@ -12,6 +12,7 @@
     focusEvents = true;
     escapeTime = 10;
     historyLimit = 10000;
+    # https://man.openbsd.org/OpenBSD-current/man1/tmux.1
     extraConfig = ''
       set -g default-terminal 'xterm-kitty'
       set -g renumber-windows on
@@ -23,7 +24,12 @@
 
       bind r source-file ~/.config/tmux/tmux.conf \; display-message "Reloaded!"
 
-      bind -N "Choose a session from a list" e choose-tree -swZ
+      bind -N "Switch to last session" space switch-client -l
+      # -s starts with sessions collapsed
+      # -w with windows collapsed
+      # -Z zooms the pane
+      # -O specifies the initial sort field: one of ‘index’, ‘name’, or ‘time’ (activity).
+      bind -N "Choose a session from a list" e choose-tree -swZ -O time
 
       # Open panes in current directory
       bind -N "Split the pane into two, left and right" v split-window -h -c "#{pane_current_path}"
@@ -32,7 +38,7 @@
       bind -N "Join a pane to choised window horizontally" g choose-window 'join-pane -h -t "%%"'
       bind -N "Join a pane to choised window vertically" G choose-window 'join-pane -t "%%"'
 
-      bind -N "Switch to last active window" space last-window
+      bind -N "Switch to last active window" ` last-window
       bind -N "Move current window to left" [ swap-window -t -1\; select-window -t -1
       bind -N "Move current window to right" ] swap-window -t +1\; select-window -t +1
 
@@ -52,9 +58,8 @@
       }
     ];
   };
+  # https://github.com/catppuccin/tmux/blob/main/catppuccin_options_tmux.conf
   catppuccin.tmux.extraConfig = ''
-    # https://github.com/catppuccin/tmux/blob/main/catppuccin_options_tmux.conf
-
     set -g status-position top
     set -g status-justify absolute-centre
 
