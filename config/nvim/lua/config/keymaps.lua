@@ -61,7 +61,7 @@ Snacks.keymap.set(
 Snacks.keymap.set(
   'n',
   '<localleader>mp',
-  function() require('util.auto-link-title').insert_markdown_url() end,
+  function() require('util.auto-link-title').paste_url() end,
   { ft = 'markdown', desc = 'Paste URL with Title' }
 )
 
