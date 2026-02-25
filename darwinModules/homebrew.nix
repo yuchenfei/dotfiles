@@ -14,6 +14,7 @@
       "brewforge/homebrew-extras" = inputs.homebrew-extras;
       "daipeihust/homebrew-tap" = inputs.im-select;
       "lihaoyun6/homebrew-tap" = inputs.airbattery;
+      "oven-sh/homebrew-bun" = inputs.bun;
     };
     autoMigrate = true;
     mutableTaps = false;

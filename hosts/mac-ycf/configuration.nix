@@ -48,6 +48,7 @@
   homebrew = {
     enable = true;
     brews = [
+      "bun" # tap
       "im-select" # tap
       "mas"
       "media-control"
