@@ -49,6 +49,7 @@ let
     "yabai"
     ".markdownlint-cli2.jsonc"
     "opencode/opencode.json"
+    "opencode/AGENTS.md"
   ];
 in
 {
