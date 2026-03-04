@@ -7,7 +7,7 @@
     ./cliPrograms/git.nix
     ./cliPrograms/nix.nix
     ./cliPrograms/nvim.nix
-    ./cliPrograms/shell.nix
+    ./cliPrograms/fish.nix
     ./cliPrograms/tmux.nix
     ./cliPrograms/uv.nix
     ./cliPrograms/yazi.nix
