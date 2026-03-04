@@ -28,10 +28,6 @@
       url = "github:daipeihust/homebrew-tap";
       flake = false;
     };
-    airbattery = {
-      url = "github:lihaoyun6/homebrew-tap";
-      flake = false;
-    };
     bun = {
       url = "github:oven-sh/homebrew-bun";
       flake = false;

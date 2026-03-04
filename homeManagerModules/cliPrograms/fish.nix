@@ -28,6 +28,8 @@
         set fish_greeting # Disable greeting
 
         fish_add_path ~/.local/bin
+
+        export BUN_INSTALL="$HOME/.bun"
       '';
       plugins =
         map

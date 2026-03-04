@@ -34,8 +34,6 @@ let
     # Development tools
     # clang  # This will cause cargo install errors
     gnumake
-
-    obsidian
   ];
 
   dotfilesDir = "${config.home.homeDirectory}/.dotfiles";
@@ -62,7 +60,6 @@ in
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    AVANTE_GEMINI_API_KEY = "ycf-xc8ayh4nzqaw"; # local CLI Proxy API key
   };
 
   xdg.enable = true;

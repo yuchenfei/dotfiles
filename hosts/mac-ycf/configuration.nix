@@ -9,6 +9,7 @@
 
 {
   imports = [
+    ./homebrew.nix
     ./yabai.nix
   ];
 
@@ -44,29 +45,6 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   # environment.systemPackages = with pkgs; [ ];
-
-  homebrew = {
-    enable = true;
-    brews = [
-      "bun" # tap
-      "im-select" # tap
-      "mas"
-      "media-control"
-    ];
-    casks = [
-      "airbattery" # tap
-      "font-sf-mono"
-      "font-sf-pro"
-      "font-sketchybar-app-font"
-      "lyricsx-mxiris" # homebrew-extras
-      "proxy-audio-device"
-      "sf-symbols"
-    ];
-    onActivation = {
-      autoUpdate = true;
-      upgrade = true;
-    };
-  };
 
   nix = {
     settings = {
