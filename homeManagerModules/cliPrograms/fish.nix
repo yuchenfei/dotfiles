@@ -30,6 +30,7 @@
         fish_add_path ~/.local/bin
 
         export BUN_INSTALL="$HOME/.bun"
+        export PATH="$BUN_INSTALL/bin:$PATH"
       '';
       plugins =
         map
