@@ -26,6 +26,17 @@
   security.pam.services.sudo_local.touchIdAuth = true;
   security.pam.services.sudo_local.watchIdAuth = true;
 
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    maple-mono.NF-CN-unhinted
+  ];
+
+  # List packages installed in system profile. To search by name, run:
+  # $ nix-env -qaP | grep wget
+  # environment.systemPackages = with pkgs; [ ];
+
+  services.tailscale.enable = true;
+
   home-manager = {
     extraSpecialArgs = { inherit inputs user email; };
     users.${user} = {
@@ -36,15 +47,6 @@
       ];
     };
   };
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    maple-mono.NF-CN-unhinted
-  ];
-
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
-  # environment.systemPackages = with pkgs; [ ];
 
   nix = {
     settings = {
