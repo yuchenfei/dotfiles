@@ -10,11 +10,6 @@ let
   linkConfig = name: {
     "${name}".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/${name}";
   };
-
-  configNames = [
-    "nvim"
-    "nvim-lazyvim"
-  ];
 in
 
 {
@@ -22,13 +17,12 @@ in
     neovim
   ];
 
-  # marksman global config
-  home.file."Library/Application Support/marksman/config.toml".text = ''
-    [core]
-    title_from_heading = false
-  '';
-
-  xdg.configFile = lib.mkMerge (map linkConfig configNames);
+  xdg.configFile = lib.mkMerge (
+    map linkConfig [
+      "nvim"
+      "nvim-lazyvim"
+    ]
+  );
 
   programs = {
     fish = {
@@ -37,4 +31,10 @@ in
       };
     };
   };
+
+  # marksman global config
+  home.file."Library/Application Support/marksman/config.toml".text = ''
+    [core]
+    title_from_heading = false
+  '';
 }

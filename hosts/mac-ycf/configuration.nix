@@ -6,11 +6,10 @@
   email,
   ...
 }:
-
 {
   imports = [
-    ./homebrew.nix
-    ./yabai.nix
+    ./darwin-homebrew.nix
+    ./darwin-yabai.nix
   ];
 
   # fist time need run with --flake ~/.dotfiles
