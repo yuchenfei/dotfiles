@@ -8,8 +8,6 @@
 let
   packages = with pkgs; [
     # Media tools
-    imagemagick
-    mediainfo
     pngpaste
 
     # Battery management
@@ -22,10 +20,8 @@ let
     # Disk & file utilities
     dust
     gdu
-    hexyl
     jless
     fx
-    glow
     most
 
     # Display & audio control

@@ -23,7 +23,7 @@ return {
     'LudoPinelli/comment-box.nvim',
     event = 'VeryLazy',
     keys = {
-      { '<Leader>cb', '<Cmd>CBccbox<CR>', mode = { 'n', 'v' }, desc = 'Box Title' },
+      { '<Leader>cb', '<Cmd>CBlcbox<CR>', mode = { 'n', 'v' }, desc = 'Box Title' },
       { '<Leader>ct', '<Cmd>CBllline<CR>', mode = { 'n', 'v' }, desc = 'Titled Line' },
       { '<Leader>cl', '<Cmd>CBline<CR>', desc = 'Simple Line' },
       { '<Leader>cm', '<Cmd>CBllbox14<CR>', mode = { 'n', 'v' }, desc = 'Marked' },

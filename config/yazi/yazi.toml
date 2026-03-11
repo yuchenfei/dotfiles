@@ -1,0 +1,63 @@
+# https://yazi-rs.github.io/docs/configuration/yazi
+# https://github.com/sxyazi/yazi/blob/shipped/yazi-config/preset/yazi-default.toml
+"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
+
+[mgr]
+ratio = [1, 4, 4]
+
+[preview]
+wrap       = "yes"
+max_width  = 1500
+max_height = 1500
+
+# ╭──────────────────────────────────────────────────────────╮
+# │                        Previewers                        │
+# ╰──────────────────────────────────────────────────────────╯
+
+# ── piper.yazi ────────────────────────────────────────────────────────
+# https://github.com/yazi-rs/plugins/tree/main/piper.yazi
+
+# ── mediainfo.yazi ────────────────────────────────────────────────────
+# https://github.com/boydaihungst/mediainfo.yazi
+
+[plugin]
+prepend_preloaders = [
+  { mime = "{audio,video,image}/*", run = "mediainfo" },
+  { mime = "application/subrip", run = "mediainfo" },
+]
+prepend_previewers = [
+  { mime = "{audio,video,image}/*", run = "mediainfo" },
+  { mime = "application/subrip", run = "mediainfo" },
+
+  { url = "*.csv", run = 'piper -- bat -p --color=always "$1"' },
+  { url = "*.md", run = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
+  { url = "*/", run = 'piper -- eza -TL=3 --color=always --icons=always --group-directories-first --no-quotes "$1"' },
+]
+append_previewers = [
+  { url = "*", run = 'piper -- hexyl --border=none --terminal-width=$w "$1"' },
+]
+
+# ╭──────────────────────────────────────────────────────────╮
+# │                        UI Plugins                        │
+# ╰──────────────────────────────────────────────────────────╯
+
+# ── git.yazi ──────────────────────────────────────────────────────────
+# https://github.com/yazi-rs/plugins/tree/main/git.yazi
+# config: init.lua
+[[plugin.prepend_fetchers]]
+id  = "git"
+url = "*"
+run = "git"
+
+[[plugin.prepend_fetchers]]
+id  = "git"
+url = "*/"
+run = "git"
+
+# ── starship.yazi ─────────────────────────────────────────────────────
+# https://github.com/Rolv-Apneseth/starship.yazi
+# config: init.lua
+
+# ── toggle-pane.yazi ──────────────────────────────────────────────────
+# https://github.com/yazi-rs/plugins/tree/main/toggle-pane.yazi
+# config: keymap.toml
