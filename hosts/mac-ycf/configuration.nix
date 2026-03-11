@@ -2,6 +2,7 @@
   inputs,
   outputs,
   pkgs,
+  pkgs-unstable,
   user,
   email,
   ...
@@ -37,7 +38,14 @@
   services.tailscale.enable = true;
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs user email; };
+    extraSpecialArgs = {
+      inherit
+        inputs
+        pkgs-unstable
+        user
+        email
+        ;
+    };
     users.${user} = {
       imports = [
         # inputs.catppuccin.homeModules.catppuccin

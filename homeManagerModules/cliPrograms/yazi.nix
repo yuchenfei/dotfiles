@@ -1,10 +1,14 @@
-# Reference:
-#  - https://wiki.nixos.org/wiki/Yazi
+# References:
+# - https://wiki.nixos.org/wiki/Yazi
+# - https://yazi-rs.github.io/docs/installation
+# - https://github.com/nix-community/home-manager/blob/master/modules/programs/yazi.nix
+# - https://search.nixos.org/packages?channel=unstable&query=yaziPlugins
 
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   programs.yazi = {
     enable = true;
+    package = inputs.yazi.packages.${pkgs.stdenv.hostPlatform.system}.default;
     shellWrapperName = "y";
     plugins = {
       inherit (pkgs.yaziPlugins)
@@ -23,7 +27,11 @@
     '';
     settings = {
       mgr = {
-        show_hidden = true;
+        ratio = [
+          1
+          4
+          4
+        ];
       };
       preview = {
         wrap = "yes";

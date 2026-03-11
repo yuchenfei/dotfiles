@@ -12,6 +12,7 @@
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     catppuccin.url = "github:catppuccin/nix";
+    yazi.url = "github:sxyazi/yazi";
 
     # Optional: Declarative tap management
     homebrew-core = {
