@@ -1,4 +1,5 @@
+.DS_Store
+
 bin/
-config/nvim/lazy-lock.json
 result
 result-*
