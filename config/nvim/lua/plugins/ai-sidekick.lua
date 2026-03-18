@@ -15,6 +15,9 @@ return {
             prompt = false,
           },
         },
+        tools = {
+          gac = { cmd = { "gac", "-os" } },
+        },
       },
     },
     keys = {
@@ -31,6 +34,13 @@ return {
         end,
         desc = "Sidekick Toggle",
         mode = { "n", "t", "i", "x" },
+      },
+      {
+        "<leader>ga",
+        function()
+          require("sidekick.cli").toggle({ name = "gac", focus = true })
+        end,
+        desc = "Sidekick Auto Commit",
       },
     },
   },
