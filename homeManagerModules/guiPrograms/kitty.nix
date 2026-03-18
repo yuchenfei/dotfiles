@@ -9,7 +9,7 @@
     ];
     font = {
       name = "Maple Mono NF CN";
-      size = 20;
+      size = 18;
     };
     settings = {
       # https://sw.kovidgoyal.net/kitty/conf/
@@ -28,7 +28,6 @@
       copy_on_select = true;
       # Window layout
       remember_window_position = true;
-      window_padding_width = "5 10";
       hide_window_decorations = "titlebar-only";
       # Tab bar
       tab_bar_edge = "top";
