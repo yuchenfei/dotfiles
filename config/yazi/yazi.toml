@@ -3,7 +3,8 @@
 "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
 [mgr]
-ratio = [1, 4, 4]
+ratio    = [1, 4, 4]
+linemode = "size_and_mtime"
 
 [preview]
 wrap       = "yes"
