@@ -2,15 +2,17 @@
   description = "Chenfei nix-darwin system flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.11-darwin";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
+    nixpkgs-linux.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
+    };
     home-manager.url = "github:nix-community/home-manager/release-25.11";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    agenix.url = "github:ryantm/agenix";
-    agenix.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    agenix.url = "github:ryantm/agenix";
     catppuccin.url = "github:catppuccin/nix";
     yazi.url = "github:sxyazi/yazi";
 
@@ -40,7 +42,8 @@
   outputs =
     {
       self,
-      nixpkgs,
+      nixpkgs-darwin,
+      nixpkgs-linux,
       nixpkgs-unstable,
       nix-darwin,
       ...
@@ -49,24 +52,26 @@
       user = "yuchenfei";
       email = "cf.yu@qq.com";
       inherit (self) outputs;
-      # Configure unstable pkgs for mixed usage
-      pkgs-unstable = import nixpkgs-unstable {
-        system = "aarch64-darwin";
-        config.allowUnfree = true;
-      };
     in
     {
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#MAC-YCF
       darwinConfigurations."MAC-YCF" = nix-darwin.lib.darwinSystem {
+        pkgs = import nixpkgs-darwin {
+          system = "aarch64-darwin";
+          config.allowUnfree = true;
+        };
         specialArgs = {
           inherit
             inputs
             outputs
             user
             email
-            pkgs-unstable
             ;
+          pkgs-unstable = import inputs.nixpkgs-unstable {
+            system = "aarch64-darwin";
+            config.allowUnfree = true;
+          };
         };
         modules = [
           ./hosts/mac-ycf/configuration.nix

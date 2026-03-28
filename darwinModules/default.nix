@@ -6,9 +6,6 @@
     ./fix-nix-apps-link.nix
   ];
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   users.users.${user} = {
     home = "/Users/${user}";
   };
