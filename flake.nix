@@ -80,7 +80,7 @@
         ];
       };
 
-      homeConfigurations."ubunte-ycf" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."ubuntu-ycf" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs-linux {
           system = "x86_64-linux";
           config.allowUnfree = true;
