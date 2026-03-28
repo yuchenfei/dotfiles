@@ -46,6 +46,7 @@
       nixpkgs-linux,
       nixpkgs-unstable,
       nix-darwin,
+      home-manager,
       ...
     }@inputs:
     let
@@ -77,6 +78,27 @@
           ./hosts/mac-ycf/configuration.nix
           ./darwinModules
         ];
+      };
+
+      homeConfigurations."ubunte-ycf" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs-linux {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
+
+        specialArgs = {
+          inherit
+            inputs
+            outputs
+            user
+            email
+            ;
+          pkgs-unstable = import inputs.nixpkgs-unstable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+        };
+        modules = [ ./hosts/ubuntu-ycf/home.nix ];
       };
 
       homeManagerModules.default = ./homeManagerModules;
