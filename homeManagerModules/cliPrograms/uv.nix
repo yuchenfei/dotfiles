@@ -1,5 +1,12 @@
-_: {
-  programs.uv.enable = true;
+{
+  pkgs-unstable,
+  ...
+}:
+{
+  programs.uv = {
+    enable = true;
+    package = pkgs-unstable.uv;
+  };
 
   programs.fish = {
     completions = {
