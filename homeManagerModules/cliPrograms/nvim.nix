@@ -33,8 +33,8 @@ in
   };
 
   # marksman global config
-  home.file."Library/Application Support/marksman/config.toml".text = ''
-    [core]
-    title_from_heading = false
-  '';
+  #home.file."Library/Application Support/marksman/config.toml".text = ''
+  #  [core]
+  #  title_from_heading = false
+  #'';
 }
