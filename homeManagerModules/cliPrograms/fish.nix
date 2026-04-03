@@ -47,9 +47,6 @@ in
       interactiveShellInit = ''
         set fish_greeting # Disable greeting
 
-        fish_add_path ~/.local/bin
-        ${lib.optionalString isDarwin "fish_add_path /Applications/Obsidian.app/Contents/MacOS"}
-
         export BUN_INSTALL="$HOME/.bun"
         export PATH="$BUN_INSTALL/bin:$PATH"
       '';

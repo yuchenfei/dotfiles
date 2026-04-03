@@ -52,6 +52,13 @@ in
     stateVersion = "25.05";
   };
 
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ]
+  ++ [
+    "/Applications/Obsidian.app/Contents/MacOS"
+  ];
+
   home.sessionVariables = {
     EDITOR = "nvim";
   };
