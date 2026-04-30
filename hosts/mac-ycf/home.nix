@@ -54,13 +54,13 @@ in
 
   home.sessionPath = [
     "$HOME/.local/bin"
-  ]
-  ++ [
+    "$HOME/.bun/bin"
     "/Applications/Obsidian.app/Contents/MacOS"
   ];
 
   home.sessionVariables = {
     EDITOR = "nvim";
+    BUN_INSTALL = "$HOME/.bun";
   };
 
   xdg.enable = true;

@@ -46,9 +46,6 @@ in
 
       interactiveShellInit = ''
         set fish_greeting # Disable greeting
-
-        export BUN_INSTALL="$HOME/.bun"
-        export PATH="$BUN_INSTALL/bin:$PATH"
       '';
 
       plugins = map (n: {
