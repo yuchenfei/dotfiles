@@ -5,6 +5,7 @@ local settings = require("settings")
 local keyboard_map = {
   ["com.apple.keylayout.ABC"] = "EN",
   ["com.tencent.inputmethod.wetype.pinyin"] = "中",
+  ["com.apple.inputmethod.SCIM.Shuangpin"] = "双",
 }
 
 local keyboard = Sbar.add("item", "keyboard", {
