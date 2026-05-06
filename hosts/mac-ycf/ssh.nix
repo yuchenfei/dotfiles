@@ -1,5 +1,5 @@
 # References:
-# - https://github.com/nix-community/home-manager/blob/release-25.11/modules/programs/ssh.nix
+# - https://github.com/nix-community/home-manager/blob/master/modules/programs/ssh.nix
 # - https://man.openbsd.org/ssh_config
 
 { config, ... }:

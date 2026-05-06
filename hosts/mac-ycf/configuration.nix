@@ -2,7 +2,6 @@
   inputs,
   outputs,
   pkgs,
-  pkgs-unstable,
   user,
   email,
   ...
@@ -41,7 +40,6 @@
     extraSpecialArgs = {
       inherit
         inputs
-        pkgs-unstable
         user
         email
         ;

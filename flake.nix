@@ -2,15 +2,14 @@
   description = "Chenfei nix-darwin system flake";
 
   inputs = {
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
-    nixpkgs-linux.url = "github:nixos/nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-linux.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+      url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager/master";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     agenix.url = "github:ryantm/agenix";
     catppuccin.url = "github:catppuccin/nix";
@@ -44,7 +43,6 @@
       self,
       nixpkgs-darwin,
       nixpkgs-linux,
-      nixpkgs-unstable,
       nix-darwin,
       home-manager,
       ...
@@ -69,10 +67,6 @@
             user
             email
             ;
-          pkgs-unstable = import inputs.nixpkgs-unstable {
-            system = "aarch64-darwin";
-            config.allowUnfree = true;
-          };
         };
         modules = [
           ./hosts/mac-ycf/configuration.nix
@@ -92,10 +86,6 @@
             user
             email
             ;
-          pkgs-unstable = import inputs.nixpkgs-unstable {
-            system = "x86_64-linux";
-            config.allowUnfree = true;
-          };
         };
         modules = [ ./hosts/ubuntu-ycf/home.nix ];
       };
