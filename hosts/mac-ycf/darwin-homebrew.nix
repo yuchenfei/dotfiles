@@ -6,6 +6,7 @@ _: {
       "im-select" # tap
       "mas"
       "media-control"
+      "mole"
     ];
     casks = [
       "font-sf-mono"

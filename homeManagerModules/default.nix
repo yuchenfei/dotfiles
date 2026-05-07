@@ -1,6 +1,7 @@
 {
   imports = [
     ./cliPrograms/agenix.nix
+    ./cliPrograms/btop.nix
     ./cliPrograms/common.nix
     ./cliPrograms/fastfetch.nix
     ./cliPrograms/fnm.nix
