@@ -1,3 +1,5 @@
+# https://nix-darwin.github.io/nix-darwin/manual/
+
 {
   inputs,
   outputs,
@@ -18,6 +20,11 @@
   system = {
     defaults = {
       dock.autohide = true;
+      NSGlobalDomain = {
+        _HIHideMenuBar = false;
+        NSStatusItemSelectionPadding = 3;
+        NSStatusItemSpacing = 6;
+      };
     };
   };
 

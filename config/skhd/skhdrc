@@ -7,9 +7,7 @@
 #          ╰──────────────────────────────────────────────────────────╯
 
 ctrl + alt + cmd - r : skhd --reload
-ctrl + alt + cmd - b : sketchybar --reload
 ctrl + alt + cmd - y : launchctl kickstart -k gui/$(id -u)/org.nixos.yabai
-ctrl + alt + cmd - space : sketchybar --bar hidden=toggle
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         Navigate                         │

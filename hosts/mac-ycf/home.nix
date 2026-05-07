@@ -40,7 +40,6 @@ let
 in
 {
   imports = [
-    ./sketchybar.nix
     ./skhd.nix
     ./ssh.nix
   ];
@@ -67,7 +66,6 @@ in
   xdg.configFile = lib.mkMerge (
     map linkConfig [
       ".markdownlint-cli2.jsonc"
-      "sketchybar"
       "skhd"
       "yabai"
     ]
