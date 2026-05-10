@@ -14,6 +14,7 @@ _: {
       "lyricsx-mxiris" # homebrew-extras
       "proxy-audio-device"
       "sf-symbols"
+      "thaw"
     ];
     onActivation = {
       autoUpdate = true;
