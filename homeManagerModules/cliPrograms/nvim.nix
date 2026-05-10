@@ -20,14 +20,14 @@ in
   xdg.configFile = lib.mkMerge (
     map linkConfig [
       "nvim"
-      "nvim-custom"
+      "lazyvim"
     ]
   );
 
   programs = {
     fish = {
       shellAliases = {
-        nvimc = ''NVIM_APPNAME="nvim-custom" nvim'';
+        lazyvim = ''NVIM_APPNAME="lazyvim" nvim'';
       };
     };
   };
