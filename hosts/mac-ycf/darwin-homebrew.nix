@@ -7,6 +7,7 @@ _: {
       "mas"
       "media-control"
       "mole"
+      "tree-sitter-cli"
     ];
     casks = [
       "font-sf-mono"
