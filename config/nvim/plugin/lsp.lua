@@ -9,6 +9,16 @@ local servers = {
   -- Python
   ty = {},
   ruff = {},
+  -- Nix
+  nil_ls = {  -- nil
+    settings = {
+      ['nil'] = {
+        formatting = {
+          command = { 'nixfmt' },
+        },
+      },
+    },
+  },
   -- Markdown
   marksman = {},
 }
