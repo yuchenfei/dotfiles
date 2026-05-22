@@ -9,6 +9,8 @@ local servers = {
   -- Python
   ty = {},
   ruff = {},
+  -- Markdown
+  marksman = {},
 }
 
 local function load_lspconfig()
