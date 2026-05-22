@@ -5,10 +5,10 @@ _: {
     shellAbbrs = {
       ff = "fastfetch";
     };
-    interactiveShellInit = ''
-      if type -q fastfetch
-        fastfetch
-      end
-    '';
+    # interactiveShellInit = ''
+    #   if type -q fastfetch
+    #     fastfetch
+    #   end
+    # '';
   };
 }
