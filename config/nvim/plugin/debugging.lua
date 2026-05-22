@@ -53,11 +53,148 @@ local function debugging_setup()
   })
 
   require('dap-python').setup('uv')
+
+  -- Typescript
+  -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/lang/typescript/init.lua
+  for _, adapterType in ipairs({ 'node', 'chrome', 'msedge' }) do
+    local pwaType = 'pwa-' .. adapterType
+
+    if not dap.adapters[pwaType] then
+      dap.adapters[pwaType] = {
+        type = 'server',
+        host = 'localhost',
+        port = '${port}',
+        executable = {
+          command = 'js-debug-adapter',
+          args = { '${port}' },
+        },
+      }
+    end
+
+    -- Define adapters without the "pwa-" prefix for VSCode compatibility
+    if not dap.adapters[adapterType] then
+      dap.adapters[adapterType] = function(cb, config)
+        local nativeAdapter = dap.adapters[pwaType]
+
+        config.type = pwaType
+
+        if type(nativeAdapter) == 'function' then
+          nativeAdapter(cb, config)
+        else
+          cb(nativeAdapter)
+        end
+      end
+    end
+  end
+
+  local js_filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' }
+
+  local function js_project_root()
+    local current_file = vim.api.nvim_buf_get_name(0)
+    local search_path = current_file ~= '' and current_file or vim.uv.cwd()
+    local markers = vim.fs.find({ 'vite.config.ts', 'vite.config.js', 'package.json' }, {
+      upward = true,
+      path = search_path,
+    })
+
+    return markers[1] and vim.fs.dirname(markers[1]) or vim.uv.cwd()
+  end
+
+  local function vite_source_map_overrides()
+    local root = js_project_root()
+
+    return {
+      ['/@fs/*'] = '/*',
+      ['/src/*'] = root .. '/src/*',
+      ['vite:///*'] = root .. '/*',
+      ['webpack:///*'] = root .. '/*',
+    }
+  end
+
+  local function js_resolve_source_map_locations()
+    return {
+      js_project_root() .. '/**',
+      '!**/node_modules/**',
+    }
+  end
+
+  local vscode = require('dap.ext.vscode')
+  vscode.type_to_filetypes['node'] = js_filetypes
+  vscode.type_to_filetypes['pwa-node'] = js_filetypes
+
+  for _, language in ipairs(js_filetypes) do
+    if not dap.configurations[language] then
+      local runtimeExecutable = nil
+      if language:find('typescript') then runtimeExecutable = vim.fn.executable('tsx') == 1 and 'tsx' or 'ts-node' end
+      dap.configurations[language] = {
+        {
+          type = 'pwa-node',
+          request = 'launch',
+          name = 'Launch file',
+          program = '${file}',
+          cwd = '${workspaceFolder}',
+          sourceMaps = true,
+          runtimeExecutable = runtimeExecutable,
+          skipFiles = {
+            '<node_internals>/**',
+            'node_modules/**',
+          },
+          resolveSourceMapLocations = {
+            '${workspaceFolder}/**',
+            '!**/node_modules/**',
+          },
+        },
+        {
+          type = 'pwa-node',
+          request = 'attach',
+          name = 'Attach',
+          processId = require('dap.utils').pick_process,
+          cwd = '${workspaceFolder}',
+          sourceMaps = true,
+          runtimeExecutable = runtimeExecutable,
+          skipFiles = {
+            '<node_internals>/**',
+            'node_modules/**',
+          },
+          resolveSourceMapLocations = {
+            '${workspaceFolder}/**',
+            '!**/node_modules/**',
+          },
+        },
+        {
+          type = 'pwa-chrome',
+          request = 'launch',
+          name = 'Launch Chrome (nvim-dap)',
+          url = 'http://localhost:5173',
+          cwd = js_project_root,
+          webRoot = js_project_root,
+          sourceMaps = true,
+          skipFiles = { '**/node_modules/**' },
+          resolveSourceMapLocations = js_resolve_source_map_locations,
+          sourceMapPathOverrides = vite_source_map_overrides,
+          preLaunchTask = 'bun dev',
+        },
+        {
+          type = 'pwa-msedge',
+          request = 'launch',
+          name = 'Launch Edge (nvim-dap)',
+          url = 'http://localhost:5173',
+          cwd = js_project_root,
+          webRoot = js_project_root,
+          sourceMaps = true,
+          skipFiles = { '**/node_modules/**' },
+          resolveSourceMapLocations = js_resolve_source_map_locations,
+          sourceMapPathOverrides = vite_source_map_overrides,
+          preLaunchTask = 'bun dev',
+        },
+      }
+    end
+  end
 end
 
 vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('debugging-setup', { clear = true }),
-  pattern = { 'python' },
+  pattern = { 'python', 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' },
   once = true,
   callback = debugging_setup,
 })

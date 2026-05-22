@@ -4,13 +4,13 @@
 local servers = {
   -- See :help lspconfig-all
   -- Lua
-  stylua = {},
   lua_ls = {}, -- lua-language-server
+  stylua = {},
   -- Python
   ty = {},
   ruff = {},
   -- Nix
-  nil_ls = {  -- nil
+  nil_ls = { -- nil
     settings = {
       ['nil'] = {
         formatting = {
@@ -19,6 +19,9 @@ local servers = {
       },
     },
   },
+  -- Web
+  tsgo = {},
+  biome = {},
   -- Markdown
   marksman = {},
 }
