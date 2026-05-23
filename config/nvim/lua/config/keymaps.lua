@@ -89,6 +89,23 @@ map('<leader>fw', function() Snacks.picker.grep_word() end, 'Visual selection or
 map('<leader>gb', function() Snacks.git.blame_line() end, 'Git Blame Line')
 map('<leader>gg', function() Snacks.lazygit() end, 'Lazygit')
 map('<leader>gx', function() Snacks.gitbrowse() end, 'Git Browse', { mode = { 'n', 'x' } })
+map(
+  '<leader>ga',
+  function()
+    Snacks.terminal.get('gac -os', {
+      auto_close = false,
+      win = {
+        position = 'float',
+        height = 0.6,
+        width = 0.6,
+        border = true,
+        title = ' AI Git Commit ',
+        title_pos = 'center',
+      },
+    })
+  end,
+  'AI Commit'
+)
 
 -- Other
 map('<leader>n', function() Snacks.picker.notifications() end, 'Notification History')
