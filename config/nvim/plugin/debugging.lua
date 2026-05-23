@@ -1,10 +1,15 @@
-local function debugging_setup()
+local dap_core_setup_done = false
+local dap_python_setup_done = false
+local dap_js_setup_done = false
+
+local function setup_dap_core()
+  if dap_core_setup_done then return end
+
   vim.pack.add({
     'https://github.com/mfussenegger/nvim-dap',
     'https://github.com/nvim-neotest/nvim-nio',
     'https://github.com/rcarriga/nvim-dap-ui',
     'https://github.com/theHamsta/nvim-dap-virtual-text',
-    'https://github.com/mfussenegger/nvim-dap-python',
   })
 
   require('which-key').add({
@@ -52,9 +57,30 @@ local function debugging_setup()
     virt_text_pos = 'eol',
   })
 
+  dap_core_setup_done = true
+end
+
+local function setup_dap_python()
+  if dap_python_setup_done then return end
+
+  setup_dap_core()
+
+  vim.pack.add({
+    'https://github.com/mfussenegger/nvim-dap-python',
+  })
+
   require('dap-python').setup('uv')
 
-  -- Typescript
+  dap_python_setup_done = true
+end
+
+local function setup_dap_js()
+  if dap_js_setup_done then return end
+
+  setup_dap_core()
+
+  local dap = require('dap')
+
   -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/extras/lang/typescript/init.lua
   for _, adapterType in ipairs({ 'node', 'chrome', 'msedge' }) do
     local pwaType = 'pwa-' .. adapterType
@@ -190,11 +216,18 @@ local function debugging_setup()
       }
     end
   end
+
+  dap_js_setup_done = true
 end
 
 vim.api.nvim_create_autocmd('FileType', {
-  group = vim.api.nvim_create_augroup('debugging-setup', { clear = true }),
-  pattern = { 'python', 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' },
-  once = true,
-  callback = debugging_setup,
+  group = vim.api.nvim_create_augroup('debugging-python-setup', { clear = true }),
+  pattern = 'python',
+  callback = setup_dap_python,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('debugging-js-setup', { clear = true }),
+  pattern = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' },
+  callback = setup_dap_js,
 })
