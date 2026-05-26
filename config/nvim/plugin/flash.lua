@@ -39,3 +39,10 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
   once = true,
   callback = flash_setup,
 })
+
+vim.api.nvim_create_autocmd('User', {
+  group = vim.api.nvim_create_augroup('kitty-flash-setup', { clear = true }),
+  pattern = 'KittyScrollbackLaunch',
+  once = true,
+  callback = flash_setup,
+})
