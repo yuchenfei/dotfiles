@@ -1,6 +1,7 @@
 local dap_core_setup_done = false
 local dap_python_setup_done = false
 local dap_js_setup_done = false
+local dap_rust_setup_done = false
 
 local function setup_dap_core()
   if dap_core_setup_done then return end
@@ -220,6 +221,40 @@ local function setup_dap_js()
   dap_js_setup_done = true
 end
 
+-- https://github.com/mfussenegger/nvim-dap/wiki/C-C---Rust-(via--codelldb)
+local function setup_dap_rust()
+  if dap_rust_setup_done then return end
+
+  setup_dap_core()
+
+  local dap = require('dap')
+
+  dap.adapters.codelldb = {
+    type = 'executable',
+    command = 'codelldb', -- or if not in $PATH: "/absolute/path/to/codelldb"
+  }
+
+  dap.configurations.rust = {
+    {
+      name = 'Launch file',
+      type = 'codelldb',
+      request = 'launch',
+      program = function() return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file') end,
+      cwd = '${workspaceFolder}',
+      stopOnEntry = false,
+    },
+    {
+      name = 'Attach to process',
+      type = 'codelldb',
+      request = 'attach',
+      pid = require('dap.utils').pick_process,
+      cwd = '${workspaceFolder}',
+    },
+  }
+
+  dap_rust_setup_done = true
+end
+
 vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('debugging-python-setup', { clear = true }),
   pattern = 'python',
@@ -230,4 +265,10 @@ vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('debugging-js-setup', { clear = true }),
   pattern = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' },
   callback = setup_dap_js,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('debugging-rust-setup', { clear = true }),
+  pattern = 'rust',
+  callback = setup_dap_rust,
 })

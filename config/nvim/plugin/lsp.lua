@@ -24,6 +24,10 @@ local servers = {
   biome = {},
   -- Markdown
   marksman = {},
+  -- Toml
+  taplo = {},
+  -- Rust
+  rust_analyzer = {}, -- `rustup component add rust-analyzer`
 }
 
 local function load_lspconfig()

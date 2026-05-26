@@ -30,6 +30,10 @@
       "rev": "06bb771690bc9df0763d14769b779062d8f12bc5",
       "src": "https://github.com/LudoPinelli/comment-box.nvim"
     },
+    "crates.nvim": {
+      "rev": "694357861ec9ebf12475ddcdd04ea45a0923c32d",
+      "src": "https://github.com/saecki/crates.nvim"
+    },
     "fidget.nvim": {
       "rev": "889e2e96edef4e144965571d46f7a77bcc4d0ddf",
       "src": "https://github.com/j-hui/fidget.nvim"
