@@ -23,13 +23,26 @@ local function load_mini_files()
   return mini_files
 end
 
+local get_explorer_anchor = function()
+  local buf_name = vim.api.nvim_buf_get_name(0)
+  if buf_name == '' then return vim.fn.getcwd() end
+
+  local path = vim.fs.normalize(buf_name)
+  if vim.uv.fs_stat(path) ~= nil then return path end
+
+  local parent = vim.fs.dirname(path)
+  if parent ~= nil and vim.uv.fs_stat(parent) ~= nil then return parent end
+
+  return vim.fn.getcwd()
+end
+
 -- Toggle explorer
 vim.keymap.set('n', '<leader>e', function()
   local mini_files = load_mini_files()
   if not mini_files.close() then
     -- reveal current file
     -- https://github.com/nvim-mini/mini.nvim/discussions/395#discussioncomment-6418353
-    mini_files.open(vim.api.nvim_buf_get_name(0))
+    mini_files.open(get_explorer_anchor())
     mini_files.reveal_cwd()
   end
 end, { desc = 'Toggle mini.files' })
