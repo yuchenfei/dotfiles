@@ -32,7 +32,7 @@
       "~/.orbstack/ssh/config"
       config.age.secrets.sshPrivateConfig.path
     ];
-    matchBlocks = {
+    settings = {
       "*" = {
         addKeysToAgent = "yes";
         controlMaster = "auto";
@@ -40,9 +40,7 @@
         forwardAgent = false;
         identitiesOnly = true;
         serverAliveInterval = 60;
-        extraOptions = {
-          UseKeychain = "yes";
-        };
+        UseKeychain = "yes";
       };
       "github.com" = {
         user = "git";
