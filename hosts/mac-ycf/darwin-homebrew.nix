@@ -7,6 +7,7 @@ _: {
       "mas"
       "media-control"
       "mole"
+      "socat"
       "tree-sitter-cli"
     ];
     casks = [
