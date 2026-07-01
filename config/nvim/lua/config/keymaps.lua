@@ -111,6 +111,8 @@ map(
 map('<leader>n', function() Snacks.picker.notifications() end, 'Notification History')
 map('<leader>un', function() Snacks.notifier.hide() end, 'Dismiss All Notifications')
 map('<c-/>', function() Snacks.terminal() end, 'Toggle Terminal', { mode = { 'n', 't' } })
+-- tmux usually interprets Ctrl-/ as Ctrl-_
+map('<c-_>', function() Snacks.terminal() end, 'Toggle Terminal', { mode = { 'n', 't' } })
 
 vim.schedule(function()
   Snacks.toggle.line_number():map('<leader>tl')

@@ -16,6 +16,7 @@
     extraConfig = ''
       set -g default-terminal 'xterm-kitty'
       set -g renumber-windows on
+      set -s extended-keys on
 
       # yazi
       set -g allow-passthrough on
