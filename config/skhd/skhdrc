@@ -117,18 +117,16 @@ ctrl + alt - right : yabai -m window --resize right:100:0 \
 #          ╰──────────────────────────────────────────────────────────╯
 
 # switch-app.sh app [app_name]
-# alt - a : ~/.dotfiles/scripts/macOS/switch-app.sh "Google Chrome"
-alt - a : ~/.dotfiles/scripts/macOS/switch-app.sh "Arc"
+alt - a : ~/.dotfiles/scripts/macOS/switch-app.sh "Google Chrome"
 # alt - c : ~/.dotfiles/scripts/macOS/switch-app.sh "Visual Studio Code" Code
-alt - c : ~/.dotfiles/scripts/macOS/switch-app.sh Codex
+alt - c : ~/.dotfiles/scripts/macOS/switch-app.sh ChatGPT
 alt - d : ~/.dotfiles/scripts/macOS/switch-app.sh Eudic 欧路词典
 alt - m : ~/.dotfiles/scripts/macOS/switch-app.sh Music 音乐
 alt - o : ~/.dotfiles/scripts/macOS/switch-app.sh Obsidian
-alt - i : ~/.dotfiles/scripts/macOS/switch-app.sh "Cherry Studio"
 
 alt - x : ~/.dotfiles/scripts/macOS/kitty-session.sh
-alt - y : ~/.dotfiles/scripts/macOS/kitty-session.sh yazi
-alt - z : ~/.dotfiles/scripts/macOS/sticky-notes.sh
-alt - n : ~/.dotfiles/scripts/macOS/tmux-session.sh notes
+# alt - y : ~/.dotfiles/scripts/macOS/kitty-session.sh yazi
+# alt - z : ~/.dotfiles/scripts/macOS/sticky-notes.sh
+# alt - n : ~/.dotfiles/scripts/macOS/tmux-session.sh notes
 # alt - ,
 alt - 0x2B : ~/.dotfiles/scripts/macOS/tmux-session.sh config
