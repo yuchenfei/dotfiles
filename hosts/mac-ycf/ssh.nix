@@ -61,6 +61,11 @@
         user = "yuchenfei";
         identityFile = config.age.secrets.home.path;
       };
+      voron = {
+        hostname = "voron.local";
+        user = "yuchenfei";
+        identityFile = config.age.secrets.home.path;
+      };
     };
   };
 }
