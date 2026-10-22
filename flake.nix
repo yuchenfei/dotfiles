@@ -2,14 +2,16 @@
   description = "Chenfei nix-darwin system flake";
 
   inputs = {
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-linux.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    home-manager.url = "github:nix-community/home-manager/master";
+    home-manager = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     agenix.url = "github:ryantm/agenix";
     catppuccin.url = "github:catppuccin/nix";
@@ -41,8 +43,7 @@
   outputs =
     {
       self,
-      nixpkgs-darwin,
-      nixpkgs-linux,
+      nixpkgs,
       nix-darwin,
       home-manager,
       ...
@@ -56,7 +57,7 @@
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#MAC-YCF
       darwinConfigurations."MAC-YCF" = nix-darwin.lib.darwinSystem {
-        pkgs = import nixpkgs-darwin {
+        pkgs = import nixpkgs {
           system = "aarch64-darwin";
           config.allowUnfree = true;
         };
@@ -75,7 +76,7 @@
       };
 
       homeConfigurations."ubuntu-ycf" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs-linux {
+        pkgs = import nixpkgs {
           system = "x86_64-linux";
           config.allowUnfree = true;
         };
@@ -88,6 +89,17 @@
             ;
         };
         modules = [ ./hosts/ubuntu-ycf/home.nix ];
+      };
+
+      homeConfigurations."Voron" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "aarch64-linux";
+          config.allowUnfree = true;
+        };
+        extraSpecialArgs = {
+          inherit user;
+        };
+        modules = [ ./hosts/voron/home.nix ];
       };
 
       homeManagerModules.default = ./homeManagerModules;
