@@ -7,6 +7,7 @@ _: {
       "mas"
       "media-control"
       "mole"
+      "pandoc"
       "socat"
       "tree-sitter-cli"
     ];
