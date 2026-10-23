@@ -69,6 +69,12 @@ local opts = {
   words = { enabled = true },
 }
 
+if vim.g.nvim_lite then
+  opts.dashboard.enabled = false
+  opts.scroll.enabled = false
+  opts.indent.enabled = false
+end
+
 require('snacks').setup(opts)
 
 vim.api.nvim_create_autocmd('FileType', {

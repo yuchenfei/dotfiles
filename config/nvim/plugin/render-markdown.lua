@@ -1,3 +1,5 @@
+if vim.g.nvim_lite then return end
+
 ---@type render.md.UserConfig
 local opts = {
   anti_conceal = {

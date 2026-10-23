@@ -1,3 +1,6 @@
+-- Select the profile before options, mappings, or runtime plugins are loaded.
+vim.g.nvim_lite = vim.env.NVIM_PROFILE == 'lite'
+
 -- ╭─────────────────────────────────────────────────────────╮
 -- │                       FOUNDATION                        │
 -- ╰─────────────────────────────────────────────────────────╯

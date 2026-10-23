@@ -111,7 +111,20 @@ local opts = {
   },
 }
 
+if vim.g.nvim_lite then
+  -- Keep completion self-contained; avoid dictionary downloads and native builds.
+  opts.fuzzy = { implementation = 'lua' }
+  opts.snippets = { preset = 'default' }
+  opts.sources.per_filetype = { lua = { inherit_defaults = true, 'lazydev' } }
+  opts.sources.providers = { lazydev = opts.sources.providers.lazydev }
+end
+
 local function completion_setup()
+  if vim.g.nvim_lite then
+    vim.pack.add({ { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range('1.*') } })
+    require('blink.cmp').setup(opts)
+    return
+  end
   vim.pack.add({
     { src = 'https://github.com/L3MON4D3/LuaSnip', version = vim.version.range('2.*') },
     { src = 'https://github.com/archie-judd/blink-cmp-words' },

@@ -1,3 +1,5 @@
+if vim.g.nvim_lite then return end
+
 local function mason_setup()
   vim.pack.add({ 'https://github.com/mason-org/mason.nvim' })
   require('mason').setup()

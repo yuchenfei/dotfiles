@@ -87,25 +87,27 @@ map('<leader>fw', function() Snacks.picker.grep_word() end, 'Visual selection or
 
 -- Git
 map('<leader>gb', function() Snacks.git.blame_line() end, 'Git Blame Line')
-map('<leader>gg', function() Snacks.lazygit() end, 'Lazygit')
+if not vim.g.nvim_lite then map('<leader>gg', function() Snacks.lazygit() end, 'Lazygit') end
 map('<leader>gx', function() Snacks.gitbrowse() end, 'Git Browse', { mode = { 'n', 'x' } })
-map(
-  '<leader>ga',
-  function()
-    Snacks.terminal.get('gac -os', {
-      auto_close = false,
-      win = {
-        position = 'float',
-        height = 0.6,
-        width = 0.6,
-        border = true,
-        title = ' AI Git Commit ',
-        title_pos = 'center',
-      },
-    })
-  end,
-  'AI Commit'
-)
+if not vim.g.nvim_lite then
+  map(
+    '<leader>ga',
+    function()
+      Snacks.terminal.get('gac -os', {
+        auto_close = false,
+        win = {
+          position = 'float',
+          height = 0.6,
+          width = 0.6,
+          border = true,
+          title = ' AI Git Commit ',
+          title_pos = 'center',
+        },
+      })
+    end,
+    'AI Commit'
+  )
+end
 
 -- Other
 map('<leader>n', function() Snacks.picker.notifications() end, 'Notification History')

@@ -1,3 +1,5 @@
+if vim.g.nvim_lite then return end
+
 ---@type AutoSession.Config
 local opts = {
   enabled = vim.env.KITTY_SCROLLBACK_NVIM ~= 'true',

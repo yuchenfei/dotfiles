@@ -1,3 +1,5 @@
+if vim.g.nvim_lite then return end
+
 local dap_core_setup_done = false
 local dap_python_setup_done = false
 local dap_js_setup_done = false

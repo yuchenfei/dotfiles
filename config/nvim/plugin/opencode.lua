@@ -1,3 +1,5 @@
+if vim.g.nvim_lite then return end
+
 local opencode_cmd = 'opencode --port'
 
 ---@type snacks.terminal.Opts

@@ -1,3 +1,5 @@
+if vim.g.nvim_lite then return end
+
 local function kitty_scrollback_setup()
   vim.pack.add({ 'https://github.com/mikesmithgh/kitty-scrollback.nvim' })
   require('kitty-scrollback').setup()

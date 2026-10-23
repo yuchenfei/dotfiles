@@ -30,6 +30,10 @@ local servers = {
   rust_analyzer = {}, -- `rustup component add rust-analyzer`
 }
 
+if vim.g.nvim_lite then
+  servers = { bashls = {}, lua_ls = {}, stylua = {}, nil_ls = servers.nil_ls }
+end
+
 local function load_lspconfig()
   vim.pack.add({ 'https://github.com/neovim/nvim-lspconfig' })
 

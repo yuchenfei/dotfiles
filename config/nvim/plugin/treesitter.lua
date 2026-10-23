@@ -1,10 +1,11 @@
 -- https://github.com/neovim/neovim/issues/39006
 -- https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
 
-vim.pack.add({
-  { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
-  'https://github.com/nvim-treesitter/nvim-treesitter-textobjects',
-})
+local plugins = { { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' } }
+if not vim.g.nvim_lite then
+  plugins[#plugins + 1] = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects'
+end
+vim.pack.add(plugins)
 
 local parsers = {
   'bash',
@@ -19,6 +20,8 @@ local parsers = {
   'vim',
   'vimdoc',
 }
+
+if vim.g.nvim_lite then parsers = { 'bash', 'lua', 'nix' } end
 
 require('nvim-treesitter').install(parsers)
 
@@ -57,7 +60,7 @@ vim.api.nvim_create_autocmd('FileType', {
     if vim.tbl_contains(installed_parsers, language) then
       -- Enable the parser if it is already installed
       treesitter_try_attach(buf, language)
-    elseif vim.tbl_contains(available_parsers, language) then
+    elseif not vim.g.nvim_lite and vim.tbl_contains(available_parsers, language) then
       -- If a parser is available in `nvim-treesitter`, auto-install it and enable it after the installation is done
       require('nvim-treesitter').install(language):await(function() treesitter_try_attach(buf, language) end)
     else
