@@ -77,6 +77,12 @@ end
 
 require('snacks').setup(opts)
 
+-- Register these only after setup: vim.pack.add() can process scheduled callbacks
+-- while waiting for first-time installs, before Snacks exists.
+Snacks.toggle.line_number():map('<leader>tl')
+Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map('<leader>tL')
+Snacks.toggle.option('wrap', { name = 'Wrap' }):map('<leader>tw')
+
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'snacks_picker_preview' },
   callback = function() vim.b.snacks_indent = false end,

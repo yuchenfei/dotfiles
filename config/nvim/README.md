@@ -20,3 +20,12 @@ Treesitter installs only Bash, Lua and Nix parsers; opening other file types doe
 not install additional parsers. Initial plugin/parser installation still needs
 network access and writable Neovim data directories. Profiles share the usual
 plugin storage and lockfile; lite does not remove existing full-profile plugins.
+
+On hosts with an unmanaged shell, source
+`~/.nix-profile/etc/profile.d/hm-session-vars.sh` from the login shell startup
+file so Home Manager session variables (including `NVIM_PROFILE`) take effect.
+Non-interactive SSH commands may still need `NVIM_PROFILE=lite` explicitly.
+
+Neovim 0.12 synchronizes every entry in the shared `nvim-pack-lock.json` on
+first use, including full-profile plugins. Lite skips loading those plugins,
+but the shared lockfile does not prevent their initial download.
