@@ -92,11 +92,6 @@ yabai -m rule --add app="微信" title="^(视频通话.*)$" manage=off space=com
 yabai -m rule --add app="Raycast" manage=off
 yabai -m rule --add app="Emby" manage=off space=media
 
-# TUI Apps
-yabai -m rule --add app="kitty" title="^S:yazi$" manage=off
-yabai -m rule --add app="kitty" title="^S:sticky-notes$" manage=off space=main
-yabai -m signal --add event=window_destroyed label="sticky-notes-closed" app="kitty" action="if [[ \$(yabai -m query --windows | jq -r '[.[] | select(.app==\"kitty\" and .title==\"S:sticky-notes\")][0].id') == null ]]; then yabai -m config --space main right_padding $PADDING; fi"
-
 # Apply rules
 yabai -m rule --apply
 

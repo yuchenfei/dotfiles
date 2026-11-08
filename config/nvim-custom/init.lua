@@ -1,5 +1,3 @@
-vim.g.neovim_mode = vim.env.NEOVIM_MODE or 'default'
-
 require('config.options')
 require('config.lazy')
 require('config.keymaps')
