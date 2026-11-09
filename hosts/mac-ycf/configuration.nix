@@ -33,6 +33,7 @@
   security.pam.services.sudo_local.watchIdAuth = true;
 
   fonts.packages = with pkgs; [
+    nerd-fonts.symbols-only
     nerd-fonts.jetbrains-mono
     maple-mono.NF-CN-unhinted
   ];
