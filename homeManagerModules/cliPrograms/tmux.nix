@@ -63,6 +63,8 @@
   catppuccin.tmux.extraConfig = ''
     set -g status-position top
     set -g status-justify absolute-centre
+    # tmux 3.8 defaults to underscore; let Catppuccin style the current window.
+    set -g window-status-current-style default
 
     set -g @catppuccin_status_background "none"
 
