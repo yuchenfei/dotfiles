@@ -3,31 +3,32 @@ _: {
     enable = true;
     brews = [
       "bun" # tap
-      {
-        name = "daipeihust/tap/im-select";
-        trusted = true;
-      }
       "mas"
       "media-control"
       "mole"
       "pandoc"
       "socat"
       "tree-sitter-cli"
+      {
+        name = "daipeihust/tap/im-select";
+        trusted = true;
+      }
     ];
     casks = [
       "font-sf-mono"
       "font-sf-pro"
+      "proxy-audio-device"
+      "sf-symbols"
+      "thaw"
       {
         name = "brewforge/extras/mxiris-lyricsx";
         trusted = true;
       }
-      "proxy-audio-device"
-      "sf-symbols"
-      "thaw"
     ];
     onActivation = {
       autoUpdate = false;
       upgrade = true;
+      # cleanup = "check";
     };
   };
 }
