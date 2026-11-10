@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (pkgs.stdenv) isDarwin isLinux;
+  inherit (pkgs.stdenv.hostPlatform) isDarwin isLinux;
 
   launchFish = ''
     if [[ $(ps -o command= -p "$PPID" | awk '{print $1}') != 'fish' ]]

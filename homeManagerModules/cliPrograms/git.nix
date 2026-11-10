@@ -27,9 +27,9 @@
       # https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
       # https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md
       settings = {
-        git.pagers = [
+        git.diffRenderers = [
           {
-            pager = "delta --dark --paging=never";
+            command = "delta --dark --paging=never";
           }
         ];
       };

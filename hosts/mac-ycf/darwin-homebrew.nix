@@ -3,7 +3,10 @@ _: {
     enable = true;
     brews = [
       "bun" # tap
-      "im-select" # tap
+      {
+        name = "daipeihust/tap/im-select";
+        trusted = true;
+      }
       "mas"
       "media-control"
       "mole"
@@ -14,13 +17,16 @@ _: {
     casks = [
       "font-sf-mono"
       "font-sf-pro"
-      "lyricsx-mxiris" # homebrew-extras
+      {
+        name = "brewforge/extras/mxiris-lyricsx";
+        trusted = true;
+      }
       "proxy-audio-device"
       "sf-symbols"
       "thaw"
     ];
     onActivation = {
-      autoUpdate = true;
+      autoUpdate = false;
       upgrade = true;
     };
   };

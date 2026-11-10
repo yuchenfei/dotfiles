@@ -15,7 +15,6 @@
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     agenix.url = "github:ryantm/agenix";
     catppuccin.url = "github:catppuccin/nix";
-    yazi.url = "github:sxyazi/yazi";
 
     # Optional: Declarative tap management
     homebrew-core = {

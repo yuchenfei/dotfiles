@@ -73,6 +73,7 @@
       keep-outputs = true;
       substitute = true;
       substituters = [
+        "https://mirrors.sjtug.sjtu.edu.cn/nix-channels/store?priority=30"
         "https://cache.nixos.org"
         "https://yazi.cachix.org"
       ];

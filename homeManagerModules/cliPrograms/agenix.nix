@@ -11,7 +11,7 @@
   ];
 
   home.packages = [
-    inputs.agenix.packages.${pkgs.system}.default
+    inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # Avoid agenix infinite restart loop on macOS by disabling KeepAlive entirely
