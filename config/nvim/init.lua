@@ -28,4 +28,7 @@ require('config.autocmds')
 -- To update plugins, run
 --   :lua vim.pack.update()
 
+-- Initialize Snacks before runtime plugins that depend on its shared APIs.
+require('config.snacks')
+
 -- The `plugin/` runtime files are sourced automatically during startup by Neovim itself.

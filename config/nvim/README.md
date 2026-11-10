@@ -1,3 +1,16 @@
+# Plugin configuration
+
+Files in `plugin/` are named `<category>-<plugin>.lua`, following functional
+categories: `colorscheme`, `ui`, `editor`, `coding`, `lsp`, `treesitter`, `dap`,
+`ai`, and `util`. Language-specific plugins share one `lang-<language>.lua`
+file per language, such as `lang-lua.lua`, `lang-markdown.lua`, and
+`lang-rust.lua`.
+
+Snacks lives in `lua/config/snacks.lua` and is explicitly initialized by
+`init.lua` before runtime plugins, which depend on its shared APIs. Neovim
+automatically sources the remaining `plugin/` files; no numeric prefixes or
+explicit import list are needed for them.
+
 # Neovim profiles
 
 Both profiles use this directory and require Neovim with `vim.pack` support.
