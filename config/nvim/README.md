@@ -30,6 +30,32 @@ plugins (or the current row), `U` to update all, `r` to check updates,
 this UI bypasses the native `vim.pack` confirmation buffer. Restart Neovim to
 load the updated plugin code.
 
+## AI CLI integration
+
+[Sidekick](https://github.com/folke/sidekick.nvim) loads on the first AI shortcut
+or `:Sidekick` command in the full profile. It uses a right-hand terminal split
+with file watching enabled. Copilot NES and tmux/Zellij persistence are disabled.
+The existing OpenCode integration remains available under `<leader>o`.
+
+| Key | Action |
+| --- | --- |
+| `<leader>ac` | Toggle Codex CLI |
+| `<leader>ag` | Toggle Antigravity CLI (`agy`) |
+| `<leader>aa` | Toggle the selected AI CLI |
+| `<leader>as` | Select an installed AI CLI |
+| `<leader>at` | Send the selection or current location |
+| `<leader>af` | Send the current file reference |
+| `<leader>ap` | Choose a prompt, such as explain, fix, or review |
+| `<leader>ad` | Detach the CLI session |
+
+Install and authenticate `codex` and `agy` separately before using them. Sidekick
+uses their existing login sessions. `agy` is a custom tool launching its standard
+interactive TUI; if it is absent from PATH, the config checks
+`/opt/homebrew/bin/agy`. Save files before sending references so the CLI reads
+the latest content. Context and prompts are inserted for review; press Enter in
+the CLI to submit. In the CLI terminal, `<C-.>` hides the window and `<C-q>`
+enters normal mode.
+
 ## Plugin discovery
 
 - [awesome-neovim](https://github.com/rockerBOO/awesome-neovim): browse curated
@@ -52,7 +78,7 @@ and Bash/Lua/Nix language services (plus StyLua and nixfmt formatting).
 Voron explicitly installs their dependencies, ripgrep, fd, Tree-sitter CLI and GCC.
 Python/web/Rust services are not enabled in lite.
 
-Lite skips DAP, OpenCode, Kitty scrollback, Mason, Rust crates, Markdown rendering,
+Lite skips DAP, Sidekick, OpenCode, Kitty scrollback, Mason, Rust crates, Markdown rendering,
 Treesitter context, session restoration, comment boxes and smooth scrolling.
 Lazygit and AI commit shortcuts are omitted. Completion uses built-in snippets
 and does not load LuaSnip or dictionary providers.

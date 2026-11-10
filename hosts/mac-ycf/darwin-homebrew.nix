@@ -15,6 +15,7 @@ _: {
       }
     ];
     casks = [
+      "antigravity-cli"
       "font-sf-mono"
       "font-sf-pro"
       "proxy-audio-device"

@@ -6,6 +6,7 @@ local opts = {
   spec = {
     {
       mode = { 'n', 'x' }, -- Nested mappings
+      { '<leader>a', group = 'AI', icon = '󰚩' },
       { '<leader>b', group = 'Buffer' },
       { '<leader>c', group = 'Comment Box', icon = '󰃔' },
       { '<leader>f', group = 'Find' },
@@ -26,7 +27,7 @@ local opts = {
 if vim.g.nvim_lite then
   local group = { mode = opts.spec[1].mode }
   for _, item in ipairs(opts.spec[1]) do
-    if item[1] ~= '<leader>o' and item[1] ~= '<leader>c' then group[#group + 1] = item end
+    if item[1] ~= '<leader>a' and item[1] ~= '<leader>o' and item[1] ~= '<leader>c' then group[#group + 1] = item end
   end
   opts.spec[1] = group
 end
