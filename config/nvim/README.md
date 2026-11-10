@@ -11,6 +11,34 @@ Snacks lives in `lua/config/snacks.lua` and is explicitly initialized by
 automatically sources the remaining `plugin/` files; no numeric prefixes or
 explicit import list are needed for them.
 
+## Plugin management
+
+[pack-ui.nvim](https://github.com/jtprogru/pack-ui.nvim) provides a floating UI
+for `vim.pack` in both full and lite profiles. It loads on the first management
+command or shortcut; startup only registers the commands and mappings.
+Automatic checks and updates are disabled.
+
+| Key | Command | Action |
+| --- | --- | --- |
+| `<leader>ps` | `:PackStatus` | Show plugin status without accessing the network |
+| `<leader>pu` | `:PackUpdate` | Check updates and open the selection UI |
+| `<leader>pU` | `:PackUpdateAll` | Check and apply all available updates |
+
+Inside the window, use `<Space>` / `<Tab>` to mark plugins, `u` to update marked
+plugins (or the current row), `U` to update all, `r` to check updates,
+`<CR>` / `K` to view changes, and `q` / `<Esc>` to close. Applying updates from
+this UI bypasses the native `vim.pack` confirmation buffer. Restart Neovim to
+load the updated plugin code.
+
+## Plugin discovery
+
+- [awesome-neovim](https://github.com/rockerBOO/awesome-neovim): browse curated
+  plugins by category when looking for alternatives or new capabilities.
+- [Dotfyle](https://dotfyle.com/): discover plugins and community configurations.
+  Use [Top](https://dotfyle.com/neovim/plugins/top) to see adoption across tracked
+  configurations, and [New](https://dotfyle.com/neovim/plugins/new) to find newly
+  listed plugins (not necessarily newly released).
+
 # Neovim profiles
 
 Both profiles use this directory and require Neovim with `vim.pack` support.

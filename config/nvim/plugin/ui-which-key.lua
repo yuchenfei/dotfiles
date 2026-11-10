@@ -13,6 +13,7 @@ local opts = {
       { '<leader>h', group = 'Hunks', icon = '' },
       { '<leader>l', group = 'LSP', icon = '' },
       { '<leader>o', group = 'Opencode', icon = '󰚩' },
+      { '<leader>p', group = 'Plugins', icon = '' },
       { '<leader>q', group = 'Quit' },
       { '<leader>R', icon = '󰜉' },
       { '<leader>t', group = 'Toggle' },
