@@ -44,6 +44,10 @@
 
   services.tailscale.enable = true;
 
+  environment.etc."resolver/ts.flyingspace.cn".text = ''
+    nameserver 100.100.100.100
+  '';
+
   home-manager = {
     extraSpecialArgs = {
       inherit

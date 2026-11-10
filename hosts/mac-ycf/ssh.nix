@@ -42,27 +42,39 @@
         serverAliveInterval = 60;
         UseKeychain = "yes";
       };
-      "github.com" = {
+      "github.com ssh.github.com" = {
+        hostname = "ssh.github.com";
+        port = 443;
         user = "git";
         identityFile = config.age.secrets.github.path;
       };
-      router = {
-        hostname = "immortalwrt.local";
+      immortalwrt = {
+        hostname = "immortalwrt";
+        user = "root";
+        identityFile = config.age.secrets.home.path;
+      };
+      immortalwrt-lan = {
+        hostname = "immortalwrt.lan";
         user = "root";
         identityFile = config.age.secrets.home.path;
       };
       tower = {
-        hostname = "tower.local";
+        hostname = "tower";
+        user = "root";
+        identityFile = config.age.secrets.home.path;
+      };
+      tower-lan = {
+        hostname = "tower.lan";
         user = "root";
         identityFile = config.age.secrets.home.path;
       };
       ubuntu = {
-        hostname = "ubuntu-ycf.local";
+        hostname = "ubuntu-ycf.lan";
         user = "yuchenfei";
         identityFile = config.age.secrets.home.path;
       };
       voron = {
-        hostname = "voron.local";
+        hostname = "voron.lan";
         user = "yuchenfei";
         identityFile = config.age.secrets.home.path;
       };
