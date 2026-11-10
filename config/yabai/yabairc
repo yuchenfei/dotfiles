@@ -64,7 +64,7 @@ yabai -m config \
 yabai -m config layout stack
 
 yabai -m space 1 --label main
-yabai -m space 2 --label terminal --layout bsp
+yabai -m space 2 --label terminal
 yabai -m space 3 --label communication
 yabai -m space 4 --label media
 
