@@ -29,8 +29,8 @@
       # -s starts with sessions collapsed
       # -w with windows collapsed
       # -Z zooms the pane
-      # -O specifies the initial sort field: one of ‘index’, ‘name’, or ‘time’ (activity).
-      bind -N "Choose a session from a list" e choose-tree -swZ -O time
+      # -O activity sorts by the most recent activity in tmux 3.8.
+      bind -N "Choose a session from a list" e choose-tree -swZ -O activity
 
       # Open panes in current directory
       bind -N "Split the pane into two, left and right" v split-window -h -c "#{pane_current_path}"
