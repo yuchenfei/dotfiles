@@ -20,6 +20,7 @@ local function load_sidekick()
       mux = { enabled = false },
       tools = {
         codex = {}, -- Use Sidekick's built-in Codex configuration.
+        opencode = {}, -- Use Sidekick's built-in OpenCode configuration.
         agy = {
           cmd = { agy },
           is_proc = '\\<agy\\>',
@@ -40,18 +41,36 @@ vim.api.nvim_create_user_command('Sidekick', function(args)
 end, { nargs = '?', range = true, desc = 'Sidekick' })
 
 vim.keymap.set('n', '<leader>aa', function() load_sidekick().toggle() end, { desc = 'Toggle AI CLI' })
-vim.keymap.set('n', '<leader>as', function()
-  load_sidekick().select({ filter = { installed = true } })
-end, { desc = 'Select AI CLI' })
-vim.keymap.set('n', '<leader>ac', function()
-  load_sidekick().toggle({ name = 'codex', focus = true })
-end, { desc = 'Toggle Codex' })
-vim.keymap.set('n', '<leader>ag', function()
-  load_sidekick().toggle({ name = 'agy', focus = true })
-end, { desc = 'Toggle Antigravity' })
-vim.keymap.set({ 'n', 'x' }, '<leader>at', function()
-  load_sidekick().send({ msg = '{this}' })
-end, { desc = 'Send This to AI' })
+vim.keymap.set(
+  'n',
+  '<leader>as',
+  function() load_sidekick().select({ filter = { installed = true } }) end,
+  { desc = 'Select AI CLI' }
+)
+vim.keymap.set(
+  'n',
+  '<leader>ac',
+  function() load_sidekick().toggle({ name = 'codex', focus = true }) end,
+  { desc = 'Toggle Codex' }
+)
+vim.keymap.set(
+  'n',
+  '<leader>ao',
+  function() load_sidekick().toggle({ name = 'opencode', focus = true }) end,
+  { desc = 'Toggle OpenCode' }
+)
+vim.keymap.set(
+  'n',
+  '<leader>ag',
+  function() load_sidekick().toggle({ name = 'agy', focus = true }) end,
+  { desc = 'Toggle Antigravity' }
+)
+vim.keymap.set(
+  { 'n', 'x' },
+  '<leader>at',
+  function() load_sidekick().send({ msg = '{this}' }) end,
+  { desc = 'Send This to AI' }
+)
 vim.keymap.set('n', '<leader>af', function() load_sidekick().send({ msg = '{file}' }) end, { desc = 'Send File to AI' })
 vim.keymap.set({ 'n', 'x' }, '<leader>ap', function() load_sidekick().prompt() end, { desc = 'Select AI Prompt' })
 vim.keymap.set('n', '<leader>ad', function() load_sidekick().close() end, { desc = 'Detach AI CLI' })
