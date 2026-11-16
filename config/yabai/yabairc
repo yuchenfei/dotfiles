@@ -84,6 +84,8 @@ yabai -m rule --add app="(Finder|访达)" manage=off sticky=on grid=20:20:1:1:18
 yabai -m rule --add app="(Preview|预览)" manage=off
 yabai -m rule --add app="(Music|音乐)" manage=off space=media grid=10:10:1:1:8:8
 yabai -m rule --add app="(Calendar|日历)" manage=off grid=10:10:1:1:8:8
+yabai -m rule --add app="^(预览|Preview)$" manage=off
+yabai -m rule --add title="^(Open|打开)$" manage=off
 
 # GUI Apps
 yabai -m rule --add app="(Eudic|欧路词典)" manage=off sticky=on grid=10:10:1:1:8:8
