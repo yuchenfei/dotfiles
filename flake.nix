@@ -37,6 +37,10 @@
       url = "github:oven-sh/homebrew-bun";
       flake = false;
     };
+    thaw-tap = {
+      url = "github:thaw-app/homebrew-tap";
+      flake = false;
+    };
   };
 
   outputs =

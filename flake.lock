@@ -250,7 +250,24 @@
         "im-select": "im-select",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_3",
+        "thaw-tap": "thaw-tap"
+      }
+    },
+    "thaw-tap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1793942719,
+        "narHash": "sha256-7cfAR+6+rwCgHPnU29YBJAu1bLsspcRzVvy+sre2DFw=",
+        "owner": "thaw-app",
+        "repo": "homebrew-tap",
+        "rev": "9d1a43efd2abf0277257e81ac9d323572b22bb36",
+        "type": "github"
+      },
+      "original": {
+        "owner": "thaw-app",
+        "repo": "homebrew-tap",
+        "type": "github"
       }
     }
   },

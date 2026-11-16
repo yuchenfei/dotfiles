@@ -14,6 +14,7 @@
       "brewforge/homebrew-extras" = inputs.homebrew-extras;
       "daipeihust/homebrew-tap" = inputs.im-select;
       "oven-sh/homebrew-bun" = inputs.bun;
+      "thaw-app/homebrew-tap" = inputs.thaw-tap;
     };
     mutableTaps = false;
   };

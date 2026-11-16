@@ -20,7 +20,10 @@ _: {
       "font-sf-pro"
       "proxy-audio-device"
       "sf-symbols"
-      "thaw"
+      {
+        name = "thaw-app/tap/thaw@2-beta";
+        trusted = true;
+      }
       {
         name = "brewforge/extras/mxiris-lyricsx";
         trusted = true;
