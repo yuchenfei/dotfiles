@@ -52,7 +52,13 @@ local opts = {
   },
   input = { enabled = true }, -- not for cmdline
   notifier = { enabled = true },
-  picker = { enabled = true },
+  picker = {
+    enabled = true,
+    sources = {
+      files = { hidden = true },
+      smart = { hidden = true },
+    },
+  },
   scope = { enabled = true }, -- ii, ai, [i, ]i
   scroll = { enabled = true },
   statuscolumn = { enabled = true },
