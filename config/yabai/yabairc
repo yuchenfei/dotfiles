@@ -31,6 +31,7 @@ yabai -m config \
 
 # Defaults
 yabai -m config \
+  external_bar all:32:0 \
   menubar_opacity 1.0 \
   mouse_follows_focus off \
   focus_follows_mouse off \

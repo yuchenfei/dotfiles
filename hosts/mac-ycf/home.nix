@@ -40,6 +40,7 @@ let
 in
 {
   imports = [
+    ./sketchybar.nix
     ./skhd.nix
     ./ssh.nix
   ];

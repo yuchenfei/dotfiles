@@ -21,7 +21,8 @@ Sbar.bar({
   padding_right = 10,
   topmost = "window",
   sticky = true,
-  shadow = true,
+  -- https://github.com/FelixKratz/SketchyBar/issues/827
+  shadow = false,
 })
 
 -- #### Changing Defaults #####

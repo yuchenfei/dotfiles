@@ -21,7 +21,7 @@
     defaults = {
       dock.autohide = true;
       NSGlobalDomain = {
-        _HIHideMenuBar = false;
+        _HIHideMenuBar = true;
         NSStatusItemSelectionPadding = 3;
         NSStatusItemSpacing = 6;
       };

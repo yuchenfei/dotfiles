@@ -6,8 +6,9 @@
 #          │                          System                          │
 #          ╰──────────────────────────────────────────────────────────╯
 
-ctrl + alt + cmd - r : skhd --reload
 ctrl + alt + cmd - y : launchctl kickstart -k gui/$(id -u)/org.nixos.yabai
+ctrl + alt + cmd - r : skhd --reload
+ctrl + alt + cmd - t : sketchybar --reload
 
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                         Navigate                         │
