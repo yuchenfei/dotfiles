@@ -39,6 +39,7 @@ The existing OpenCode integration remains available under `<leader>o`.
 
 | Key | Action |
 | --- | --- |
+| `<M-CR>` | Toggle Sidekick (Option+Enter in Kitty on macOS) |
 | `<leader>ac` | Toggle Codex CLI |
 | `<leader>ag` | Toggle Antigravity CLI (`agy`) |
 | `<leader>aa` | Toggle the selected AI CLI |
@@ -53,8 +54,13 @@ uses their existing login sessions. `agy` is a custom tool launching its standar
 interactive TUI; if it is absent from PATH, the config checks
 `/opt/homebrew/bin/agy`. Save files before sending references so the CLI reads
 the latest content. Context and prompts are inserted for review; press Enter in
-the CLI to submit. In the CLI terminal, `<C-.>` hides the window and `<C-q>`
-enters normal mode.
+the CLI to submit. In the CLI terminal, `<C-q>` enters normal mode.
+
+With Kitty and tmux 3.8, `Ctrl-.` can arrive as a plain `.` in legacy keyboard
+mode. Tmux's `extended-keys on` cannot recover a modifier Kitty did not send.
+`<M-CR>` can use the legacy Meta encoding (Escape followed by Enter) with
+Kitty's `macos_option_as_alt both` setting. See the
+[Kitty keyboard protocol](https://sw.kovidgoyal.net/kitty/keyboard-protocol/#legacy-key-event-encoding).
 
 ## Plugin discovery
 

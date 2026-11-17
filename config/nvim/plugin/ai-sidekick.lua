@@ -40,6 +40,7 @@ vim.api.nvim_create_user_command('Sidekick', function(args)
   require('sidekick.commands').cmd(args)
 end, { nargs = '?', range = true, desc = 'Sidekick' })
 
+vim.keymap.set({ 'n', 't', 'i', 'x' }, '<M-CR>', function() load_sidekick().toggle() end, { desc = 'Sidekick Toggle' })
 vim.keymap.set('n', '<leader>aa', function() load_sidekick().toggle() end, { desc = 'Toggle AI CLI' })
 vim.keymap.set(
   'n',
