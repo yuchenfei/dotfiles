@@ -21,12 +21,6 @@ end
 map('j', "v:count == 0 ? 'gj' : 'j'", 'Down', { mode = { 'n', 'x', 'v' }, expr = true, silent = true })
 map('k', "v:count == 0 ? 'gk' : 'k'", 'Up', { mode = { 'n', 'x', 'v' }, expr = true, silent = true })
 
--- Move to window using the <ctrl> hjkl keys
-map('<C-h>', '<C-w>h', 'Go to Left Window', { remap = true })
-map('<C-j>', '<C-w>j', 'Go to Lower Window', { remap = true })
-map('<C-k>', '<C-w>k', 'Go to Upper Window', { remap = true })
-map('<C-l>', '<C-w>l', 'Go to Right Window', { remap = true })
-
 -- Resize window using <ctrl> arrow keys
 map('<C-Up>', '<cmd>resize +2<cr>', 'Increase Window Height')
 map('<C-Down>', '<cmd>resize -2<cr>', 'Decrease Window Height')
