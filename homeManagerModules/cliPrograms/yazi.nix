@@ -9,7 +9,7 @@
   ...
 }:
 let
-  dotfilesDir = "${config.home.homeDirectory}/.dotfiles";
+  linkConfig = import ../lib/link-config.nix config;
 in
 {
   home.packages = with pkgs; [
@@ -22,7 +22,7 @@ in
   xdg.configFile = lib.attrsets.mapAttrs' (
     name: _type:
     lib.nameValuePair "yazi/${name}" {
-      source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/yazi/${name}";
+      source = linkConfig "yazi/${name}";
     }
   ) (builtins.readDir ../../config/yazi);
 

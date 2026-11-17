@@ -3,13 +3,15 @@
   pkgs,
   ...
 }:
+let
+  linkConfig = import ../lib/link-config.nix config;
+in
 {
   home.packages = with pkgs; [
     neovim
   ];
 
-  xdg.configFile.nvim.source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/nvim";
+  xdg.configFile.nvim.source = linkConfig "nvim";
 
   # marksman global config
   #home.file."Library/Application Support/marksman/config.toml".text = ''

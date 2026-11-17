@@ -5,6 +5,8 @@
   ...
 }:
 let
+  linkConfig = import ../lib/link-config.nix config;
+
   inherit (pkgs.stdenv.hostPlatform) isDarwin isLinux;
 
   launchFish = ''
@@ -58,6 +60,5 @@ in
   };
 
   catppuccin.starship.enable = false;
-  xdg.configFile."starship.toml".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/starship.toml";
+  xdg.configFile."starship.toml".source = linkConfig "starship.toml";
 }

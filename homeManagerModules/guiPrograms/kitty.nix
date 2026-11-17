@@ -7,20 +7,20 @@
   ...
 }:
 let
-  dotfilesDir = "${config.home.homeDirectory}/.dotfiles";
-
-  linkConfig = name: {
-    "${name}".source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/${name}";
-  };
+  linkConfig = import ../lib/link-config.nix config;
 in
 {
-  xdg.configFile = lib.mkMerge (
-    map linkConfig [
-      "kitty/settings.conf"
-      "kitty/shortcuts.conf"
-      "kitty/relative_resize.py"
-    ]
-  );
+  xdg.configFile =
+    lib.genAttrs
+      [
+        "kitty/settings.conf"
+        "kitty/shortcuts.conf"
+        "kitty/relative_resize.py"
+      ]
+      (name: {
+        source = linkConfig name;
+      });
+
   programs.kitty = {
     enable = true;
     shellIntegration.enableZshIntegration = true;

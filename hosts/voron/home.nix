@@ -1,17 +1,13 @@
 { user, pkgs, ... }:
 {
-  imports = [ ../../homeManagerModules/cliPrograms/nvim.nix ];
+  imports = [
+    ../../homeManagerModules/cliPrograms/home-manager.nix
+    ../../homeManagerModules/cliPrograms/nvim.nix
+  ];
 
   xdg.enable = true;
 
   home = {
-    username = user;
-    homeDirectory = "/home/${user}";
-    stateVersion = "26.05";
-    sessionVariables = {
-      NVIM_PROFILE = "lite";
-      EDITOR = "nvim";
-    };
     packages = with pkgs; [
       ripgrep
       fd
@@ -24,8 +20,14 @@
       nil
       nixfmt
     ];
+    sessionVariables = {
+      NVIM_PROFILE = "lite";
+      EDITOR = "nvim";
+    };
+    username = user;
+    homeDirectory = "/home/${user}";
+    stateVersion = "26.05";
   };
 
   programs.git.enable = true;
-  programs.home-manager.enable = true;
 }

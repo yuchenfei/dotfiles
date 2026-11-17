@@ -104,7 +104,5 @@
         };
         modules = [ ./hosts/voron/home.nix ];
       };
-
-      homeManagerModules.default = ./homeManagerModules;
     };
 }

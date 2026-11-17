@@ -56,13 +56,7 @@
         email
         ;
     };
-    users.${user} = {
-      imports = [
-        # inputs.catppuccin.homeModules.catppuccin
-        ./home.nix
-        outputs.homeManagerModules.default
-      ];
-    };
+    users.${user} = import ./home.nix;
   };
 
   nix = {
