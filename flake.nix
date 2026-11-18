@@ -94,7 +94,7 @@
         modules = [ ./hosts/ubuntu-ycf/home.nix ];
       };
 
-      homeConfigurations."${user}@voron" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."${user}@Voron" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "aarch64-linux";
           config.allowUnfree = true;
