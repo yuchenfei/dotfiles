@@ -29,10 +29,15 @@
   ];
 
   home = {
+    packages = with pkgs; [
+      maple-mono.NF-CN-unhinted
+    ];
     file.".terminfo".source = "${pkgs.kitty.terminfo}/share/terminfo";
     file.".terminfo".recursive = true;
     username = "${user}";
     homeDirectory = "/home/${user}";
     stateVersion = "25.11";
   };
+
+  fonts.fontconfig.enable = true;
 }
