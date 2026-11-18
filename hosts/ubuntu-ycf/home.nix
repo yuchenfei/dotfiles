@@ -31,6 +31,7 @@
 
   home = {
     packages = with pkgs; [
+      gnumake
       maple-mono.NF-CN-unhinted
     ];
     file.".terminfo".source = "${pkgs.kitty.terminfo}/share/terminfo";
