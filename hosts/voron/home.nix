@@ -3,6 +3,7 @@
   imports = [
     ../../homeManagerModules/cliPrograms/fd.nix
     ../../homeManagerModules/cliPrograms/gcc.nix
+    ../../homeManagerModules/cliPrograms/git.nix
     ../../homeManagerModules/cliPrograms/home-manager.nix
     ../../homeManagerModules/cliPrograms/lua.nix
     ../../homeManagerModules/cliPrograms/nix.nix
@@ -25,5 +26,8 @@
     stateVersion = "26.05";
   };
 
-  programs.git.enable = true;
+  programs.bash = {
+    enable = true;
+    shellAliases.hms = "home-manager switch";
+  };
 }

@@ -37,6 +37,9 @@ in
       }
       // lib.optionalAttrs isDarwin {
         drs = "sudo darwin-rebuild switch";
+      }
+      // lib.optionalAttrs isLinux {
+        hms = "home-manager switch";
       };
 
       shellAliases = {

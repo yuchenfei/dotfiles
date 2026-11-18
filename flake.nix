@@ -78,7 +78,7 @@
         ];
       };
 
-      homeConfigurations."ubuntu-ycf" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."${user}@ubuntu-ycf" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "x86_64-linux";
           config.allowUnfree = true;
@@ -94,13 +94,13 @@
         modules = [ ./hosts/ubuntu-ycf/home.nix ];
       };
 
-      homeConfigurations."Voron" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."${user}@voron" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "aarch64-linux";
           config.allowUnfree = true;
         };
         extraSpecialArgs = {
-          inherit user;
+          inherit user email;
         };
         modules = [ ./hosts/voron/home.nix ];
       };
