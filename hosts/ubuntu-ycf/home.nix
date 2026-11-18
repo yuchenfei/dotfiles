@@ -29,7 +29,6 @@
     packages = with pkgs; [
       curl
       gcc
-      tree-sitter
     ];
     file.".terminfo".source = "${pkgs.kitty.terminfo}/share/terminfo";
     file.".terminfo".recursive = true;

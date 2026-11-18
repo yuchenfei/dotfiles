@@ -11,7 +11,6 @@
     packages = with pkgs; [
       ripgrep
       fd
-      tree-sitter
       gcc
       # Only the configuration-maintenance language services and formatters.
       bash-language-server

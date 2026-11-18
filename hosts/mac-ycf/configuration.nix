@@ -36,6 +36,7 @@
     nerd-fonts.symbols-only
     nerd-fonts.jetbrains-mono
     maple-mono.NF-CN-unhinted
+    sketchybar-app-font
   ];
 
   # List packages installed in system profile. To search by name, run:

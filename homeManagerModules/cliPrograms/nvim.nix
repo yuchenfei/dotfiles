@@ -9,6 +9,7 @@ in
 {
   home.packages = with pkgs; [
     neovim
+    tree-sitter # CLI used by nvim-treesitter to install parsers
   ];
 
   xdg.configFile.nvim.source = linkConfig "nvim";

@@ -1,14 +1,14 @@
 _: {
   homebrew = {
     enable = true;
+    taps = [ "homebrew/cask" ];
     brews = [
-      "bun" # tap
+      "oven-sh/bun/bun"
       "mas"
       "media-control"
       "mole"
       "pandoc"
       "socat"
-      "tree-sitter-cli"
       {
         name = "daipeihust/tap/im-select";
         trusted = true;
@@ -32,7 +32,7 @@ _: {
     onActivation = {
       autoUpdate = false;
       upgrade = true;
-      # cleanup = "check";
+      cleanup = "uninstall";
     };
   };
 }
