@@ -23,6 +23,7 @@ in
     ../../homeManagerModules/cliPrograms/git.nix
     ../../homeManagerModules/cliPrograms/home-manager.nix
     ../../homeManagerModules/cliPrograms/jq.nix
+    ../../homeManagerModules/cliPrograms/lua.nix
     ../../homeManagerModules/cliPrograms/nix.nix
     ../../homeManagerModules/cliPrograms/nvim.nix
     ../../homeManagerModules/cliPrograms/ripgrep.nix

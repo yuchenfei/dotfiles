@@ -1,23 +1,20 @@
 { user, pkgs, ... }:
 {
   imports = [
+    ../../homeManagerModules/cliPrograms/fd.nix
+    ../../homeManagerModules/cliPrograms/gcc.nix
     ../../homeManagerModules/cliPrograms/home-manager.nix
+    ../../homeManagerModules/cliPrograms/lua.nix
+    ../../homeManagerModules/cliPrograms/nix.nix
     ../../homeManagerModules/cliPrograms/nvim.nix
+    ../../homeManagerModules/cliPrograms/ripgrep.nix
   ];
 
   xdg.enable = true;
 
   home = {
     packages = with pkgs; [
-      ripgrep
-      fd
-      gcc
-      # Only the configuration-maintenance language services and formatters.
       bash-language-server
-      lua-language-server
-      stylua
-      nil
-      nixfmt
     ];
     sessionVariables = {
       NVIM_PROFILE = "lite";

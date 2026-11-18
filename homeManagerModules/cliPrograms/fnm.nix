@@ -1,8 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    fnm
-  ];
+  home.packages = [ pkgs.fnm ];
 
   programs.fish = {
     interactiveShellInit = ''
