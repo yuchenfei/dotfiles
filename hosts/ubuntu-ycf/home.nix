@@ -27,8 +27,12 @@
 
   home = {
     packages = with pkgs; [
+      curl
       gcc
+      tree-sitter
     ];
+    file.".terminfo".source = "${pkgs.kitty.terminfo}/share/terminfo";
+    file.".terminfo".recursive = true;
     username = "${user}";
     homeDirectory = "/home/${user}";
     stateVersion = "25.11";

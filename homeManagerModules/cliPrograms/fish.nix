@@ -26,7 +26,7 @@ in
 
     bash = lib.mkIf isLinux {
       enable = true;
-      bashrcExtra = launchFish;
+      initExtra = launchFish;
     };
 
     fish = {
