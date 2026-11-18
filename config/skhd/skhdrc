@@ -14,6 +14,12 @@ ctrl + alt + cmd - t : sketchybar --reload
 #          │                         Navigate                         │
 #          ╰──────────────────────────────────────────────────────────╯
 
+# Cursor (right Option + H/J/K/L)
+ralt - h : skhd -k "left"
+ralt - j : skhd -k "down"
+ralt - k : skhd -k "up"
+ralt - l : skhd -k "right"
+
 # Space
 hyper - 1 : yabai -m space --focus 1
 hyper - 2 : yabai -m space --focus 2
@@ -118,8 +124,8 @@ ctrl + alt - right : yabai -m window --resize right:100:0 \
 #          ╰──────────────────────────────────────────────────────────╯
 
 # switch-app.sh app [app_name]
-alt - a : ~/.dotfiles/scripts/macOS/switch-app.sh Hermes
-alt - c : ~/.dotfiles/scripts/macOS/switch-app.sh "Google Chrome"
+alt - a : ~/.dotfiles/scripts/macOS/switch-app.sh "Google Chrome"
+alt - c : ~/.dotfiles/scripts/macOS/switch-app.sh ChatGPT
 alt - d : ~/.dotfiles/scripts/macOS/switch-app.sh Eudic 欧路词典
 alt - m : ~/.dotfiles/scripts/macOS/switch-app.sh Music 音乐
 alt - o : ~/.dotfiles/scripts/macOS/switch-app.sh Obsidian
