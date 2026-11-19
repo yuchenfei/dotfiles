@@ -123,11 +123,6 @@
       "rev": "5c7b0263797dfd1bd6202f2b219f3b53a80b2187",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
     },
-    "opencode.nvim": {
-      "rev": "4851ae503585dc5142ad66a98e8952a74e1f7b3a",
-      "src": "https://github.com/nickjvandyke/opencode.nvim",
-      "version": "'main'"
-    },
     "pack-ui.nvim": {
       "rev": "ba1684984424856a3df8dd62078915f2620b99da",
       "src": "https://github.com/jtprogru/pack-ui.nvim"
