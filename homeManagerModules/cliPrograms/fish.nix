@@ -10,7 +10,8 @@ let
   inherit (pkgs.stdenv.hostPlatform) isDarwin isLinux;
 
   launchFish = ''
-    if [[ $(ps -o command= -p "$PPID" | awk '{print $1}') != 'fish' ]]
+    # Keep non-TTY shell probes (for example, desktop PATH detection) in the current shell.
+    if [[ -t 0 && -t 1 ]] && [[ $(ps -o command= -p "$PPID" | awk '{print $1}') != 'fish' ]]
     then
         exec fish -l
     fi

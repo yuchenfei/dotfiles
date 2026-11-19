@@ -44,6 +44,13 @@
 
   fonts.fontconfig.enable = true;
 
+  # The Hermes-generated service sets PATH explicitly and never reads shell profiles.
+  # Keep its runtime tools available while adding the stable Nix profile paths.
+  xdg.configFile."systemd/user/hermes-gateway.service.d/nix-path.conf".text = ''
+    [Service]
+    Environment="PATH=/home/${user}/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/home/${user}/.hermes/hermes-agent/node_modules/.bin:/home/${user}/.hermes/tools/node-26.12.1-linux-x64/bin:/home/${user}/.hermes/tools/npm-12.2.2-linux-x64/bin:/home/${user}/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+  '';
+
   home.file.".bash_profile".source = lib.mkForce (pkgs.writeText "bash_profile" ''
     case ":$PATH:" in
       *":$HOME/.local/bin:"*) ;;
