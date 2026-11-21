@@ -7,11 +7,14 @@ local function load_sidekick()
 
   vim.pack.add({ 'https://github.com/folke/sidekick.nvim' })
 
-  -- GUI/managed shells may not include Homebrew in PATH.
+  -- GUI/managed shells may omit Homebrew and user executables from PATH.
   local agy = 'agy'
   if vim.fn.executable(agy) == 0 and vim.fn.executable('/opt/homebrew/bin/agy') == 1 then
     agy = '/opt/homebrew/bin/agy'
   end
+  local hermes = 'hermes'
+  local hermes_local = vim.fn.expand('~/.local/bin/hermes')
+  if vim.fn.executable(hermes) == 0 and vim.fn.executable(hermes_local) == 1 then hermes = hermes_local end
 
   require('sidekick').setup({
     nes = { enabled = false },
@@ -25,6 +28,10 @@ local function load_sidekick()
           cmd = { agy },
           is_proc = '\\<agy\\>',
           url = 'https://antigravity.google/docs/cli/overview',
+        },
+        hermes = {
+          cmd = { hermes, '--tui' },
+          url = 'https://hermes-agent.nousresearch.com/docs/',
         },
       },
     },
@@ -65,6 +72,12 @@ vim.keymap.set(
   '<leader>ag',
   function() load_sidekick().toggle({ name = 'agy', focus = true }) end,
   { desc = 'Toggle Antigravity' }
+)
+vim.keymap.set(
+  'n',
+  '<leader>ah',
+  function() load_sidekick().toggle({ name = 'hermes', focus = true }) end,
+  { desc = 'Toggle Hermes' }
 )
 vim.keymap.set(
   { 'n', 'x' },
