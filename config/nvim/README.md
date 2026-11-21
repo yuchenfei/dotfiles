@@ -42,6 +42,7 @@ The existing OpenCode integration remains available under `<leader>o`.
 | `<M-CR>` | Toggle Sidekick (Option+Enter in Kitty on macOS) |
 | `<leader>ac` | Toggle Codex CLI |
 | `<leader>ag` | Toggle Antigravity CLI (`agy`) |
+| `<leader>ah` | Toggle Hermes Agent |
 | `<leader>aa` | Toggle the selected AI CLI |
 | `<leader>as` | Select an installed AI CLI |
 | `<leader>at` | Send the selection or current location |
@@ -52,7 +53,9 @@ The existing OpenCode integration remains available under `<leader>o`.
 Install and authenticate `codex` and `agy` separately before using them. Sidekick
 uses their existing login sessions. `agy` is a custom tool launching its standard
 interactive TUI; if it is absent from PATH, the config checks
-`/opt/homebrew/bin/agy`. Save files before sending references so the CLI reads
+`/opt/homebrew/bin/agy`. Hermes uses `hermes --tui` in the split regardless of
+the standalone interface setting, and falls back to `~/.local/bin/hermes` if
+needed. Save files before sending references so the CLI reads
 the latest content. Context and prompts are inserted for review; press Enter in
 the CLI to submit. In the CLI terminal, `<C-q>` enters normal mode.
 
