@@ -96,4 +96,25 @@ in
       hermes completion fish | source
     end
   '';
+
+  # Periodically prune uncompressed .bmp cache files leaked by macOS WallpaperImageExtension
+  launchd.agents.cleanup-wallpaper-cache = {
+    enable = true;
+    config = {
+      ProgramArguments = [
+        "/bin/sh"
+        "-c"
+        ''
+          dir="${config.home.homeDirectory}/Library/Containers/com.apple.wallpaper.agent/Data/Library/Caches/com.apple.wallpaper.caches/extension-com.apple.wallpaper.extension.image"
+          if [ -d "$dir" ]; then
+            /usr/bin/find "$dir" -maxdepth 1 -type f -name '*.bmp' -mtime +1 -delete
+          fi
+        ''
+      ];
+      RunAtLoad = true;
+      StartInterval = 21600; # every 6 hours
+      LowPriorityIO = true;
+      ProcessType = "Background";
+    };
+  };
 }
