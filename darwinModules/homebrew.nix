@@ -7,6 +7,12 @@
   nix-homebrew = {
     inherit user;
     enable = true;
+    # Temporary: use a brew compatible with the pinned homebrew-core.
+    # Remove with the homebrew-brew input once nix-homebrew's default catches up.
+    package = inputs.homebrew-brew // {
+      name = "brew-7.0.15";
+      version = "7.0.15";
+    };
     enableRosetta = true; # Apple Silicon Only
     taps = {
       "homebrew/homebrew-core" = inputs.homebrew-core;

@@ -16,6 +16,14 @@
     agenix.url = "github:ryantm/agenix";
     catppuccin.url = "github:catppuccin/nix";
 
+    # Temporary workaround: nix-homebrew pins brew 7.0.11, which lacks
+    # manifest_sha256 support required by newer homebrew-core formulae.
+    # Remove this input and the package override in darwinModules/homebrew.nix
+    # once the locked nix-homebrew provides a compatible brew by default.
+    homebrew-brew = {
+      url = "github:Homebrew/brew/7.0.15";
+      flake = false;
+    };
     # Optional: Declarative tap management
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
