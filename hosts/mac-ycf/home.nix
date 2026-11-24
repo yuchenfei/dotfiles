@@ -20,6 +20,7 @@ in
     ../../homeManagerModules/cliPrograms/fish.nix
     ../../homeManagerModules/cliPrograms/fnm.nix
     ../../homeManagerModules/cliPrograms/fzf.nix
+    ../../homeManagerModules/cliPrograms/gh.nix
     ../../homeManagerModules/cliPrograms/git.nix
     ../../homeManagerModules/cliPrograms/home-manager.nix
     ../../homeManagerModules/cliPrograms/jq.nix
